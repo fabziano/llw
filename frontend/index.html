@@ -599,10 +599,11 @@
 
 
 <h1 id="configuracao-da-vm-frontend">Configuração da VM Frontend<a class="headerlink" href="#configuracao-da-vm-frontend" title="Permanent link">&para;</a></h1>
-<p>A <strong>VM Frontend</strong> é responsável por hospedar a interface do sistema utilizando o servidor web <strong>nginx</strong>, e também atua como <strong>servidor de backups</strong>, armazenando os arquivos de backup de todas as outras VMs, incluindo ela mesma. Por esse motivo, ela possui um arquivo <strong>authorized_kyes</strong> com a <strong>chave pública rsa</strong> de cada uma das outras máquinas virtuais em seu usuário <strong>backup_sys</strong>, permitindo que os arquivos backup sejam recebidos via scp.</p>
+<p>A <strong>VM Frontend</strong> é responsável por hospedar a interface do sistema utilizando o servidor web <strong>nginx</strong>, e também atua como <strong>servidor de backups</strong>, armazenando os arquivos de backup de todas as outras VMs, incluindo ela mesma. Por esse motivo, ela possui um arquivo <strong>authorized_kyes</strong> com a <strong>chave pública rsa</strong> de cada uma das outras máquinas virtuais em seu usuário <strong>backup_sys</strong>, permitindo que os arquivos de backup sejam recebidos via scp.</p>
 <hr />
 <h3 id="1-clonando-a-vm-base">1. Clonando a VM Base<a class="headerlink" href="#1-clonando-a-vm-base" title="Permanent link">&para;</a></h3>
-<p>Começamos fazendo o clone da <strong>VM base</strong>, que foi criada previamente.  </p>
+<p>Começamos fazendo o clone do tipo completo da <strong>VM base</strong>, que foi criada previamente.  </p>
+<p><img alt="Clonar VM" src="../images/clonar.png" /></p>
 <hr />
 <h3 id="2-alterando-o-hostname">2. Alterando o Hostname<a class="headerlink" href="#2-alterando-o-hostname" title="Permanent link">&para;</a></h3>
 <p>Para diferenciar a VM Frontend das demais, alteramos seu hostname para <strong>frontend</strong>, editando o arquivo de hostname:</p>
@@ -687,6 +688,7 @@ error_log<span class="w"> </span>/var/log/nginx/frontend_error.log<span class="p
 <blockquote>
 <p>Com esse passo já foi possível visualizar a tela inicial do projeto utilizando o ip da VM Frontend no navegador.</p>
 </blockquote>
+<p><img alt="LLW" src="../images/paginainicial.png" /></p>
 <hr />
 <h3 id="8-preparando-o-ambiente-para-o-backup">8. Preparando o ambiente para o backup<a class="headerlink" href="#8-preparando-o-ambiente-para-o-backup" title="Permanent link">&para;</a></h3>
 <p>Criamos um diretório para armazenar os backups:</p>

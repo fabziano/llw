@@ -358,51 +358,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-configuracoes-iniciais-da-vm-database" class="md-nav__link">
+  <a href="#2-alterando-o-hostname" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Configurações Iniciais da VM Database
+      2. Alterando o Hostname
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="2. Configurações Iniciais da VM Database">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#alterando-o-hostname" class="md-nav__link">
-    <span class="md-ellipsis">
-      Alterando o Hostname
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#definindo-uma-senha-segura-para-o-usuario-root" class="md-nav__link">
-    <span class="md-ellipsis">
-      Definindo uma senha segura para o usuário root
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configurando-resolucao-de-ips-no-arquivo-etchosts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configurando resolução de IPs no arquivo /etc/hosts
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-instalando-mariadb" class="md-nav__link">
+  <a href="#3-configurando-resolucao-de-nome-para-os-ips" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Instalando MariaDB
+      3. Configurando resolução de nome para os IPs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-instalando-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Instalando MariaDB
     </span>
   </a>
   
@@ -479,51 +455,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-configuracoes-iniciais-da-vm-database" class="md-nav__link">
+  <a href="#2-alterando-o-hostname" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Configurações Iniciais da VM Database
+      2. Alterando o Hostname
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="2. Configurações Iniciais da VM Database">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#alterando-o-hostname" class="md-nav__link">
-    <span class="md-ellipsis">
-      Alterando o Hostname
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#definindo-uma-senha-segura-para-o-usuario-root" class="md-nav__link">
-    <span class="md-ellipsis">
-      Definindo uma senha segura para o usuário root
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configurando-resolucao-de-ips-no-arquivo-etchosts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configurando resolução de IPs no arquivo /etc/hosts
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-instalando-mariadb" class="md-nav__link">
+  <a href="#3-configurando-resolucao-de-nome-para-os-ips" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Instalando MariaDB
+      3. Configurando resolução de nome para os IPs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-instalando-mariadb" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Instalando MariaDB
     </span>
   </a>
   
@@ -573,67 +525,48 @@
 
 
 <h1 id="configuracao-da-vm-database">Configuração da VM Database<a class="headerlink" href="#configuracao-da-vm-database" title="Permanent link">&para;</a></h1>
-<blockquote>
-<p>Este arquivo documenta, passo a passo, todo o processo de configuração da <strong>VM Database</strong>. Ela será responsável por armazenar o banco de dados que será utilizado pela API para armazenar as informações necessarias para seu funcionamento, usaremos <strong>MariaDB</strong> como sgbd e para acesso e configuração do banco o <strong>mysql-client</strong>.</p>
-</blockquote>
+<p>A  <strong>VM Database</strong> é responsável por armazenar o banco de dados que será utilizado pela API e o SGBD escolhido para o projeto é o <strong>MariaDB</strong> em conjunto com o <strong>mysql-client</strong>.</p>
 <hr />
 <h3 id="1-clonando-a-vm-base">1. Clonando a VM Base<a class="headerlink" href="#1-clonando-a-vm-base" title="Permanent link">&para;</a></h3>
-<p>Começaremos clonando a <strong>VM base</strong>, que já foi criada previamente.<br />
-A configuração dessa VM base está documentada no <strong>Arquivo de configuração da VM base</strong>.</p>
+<p>Começamos fazendo o clone do tipo completo da <strong>VM base</strong>, que foi criada previamente.  </p>
+<p><img alt="Clonar VM" src="../images/clonar.png" /></p>
 <hr />
-<h3 id="2-configuracoes-iniciais-da-vm-database">2. Configurações Iniciais da VM Database<a class="headerlink" href="#2-configuracoes-iniciais-da-vm-database" title="Permanent link">&para;</a></h3>
-<p>Antes de passar para as configurações dessa VM vamos personalizar a identidade dela e garantir que ela esteja preparada para se comunicar corretamente com as outras.</p>
-<hr />
-<h4 id="alterando-o-hostname">Alterando o Hostname<a class="headerlink" href="#alterando-o-hostname" title="Permanent link">&para;</a></h4>
-<p>Para diferenciar a VM Database das demais, alteraremos seu hostname para <strong>database</strong>, editando o arquivo:</p>
-<div class="codehilite"><pre><span></span><code>vi<span class="w"> </span>/etc/hostname
+<h3 id="2-alterando-o-hostname">2. Alterando o Hostname<a class="headerlink" href="#2-alterando-o-hostname" title="Permanent link">&para;</a></h3>
+<p>Para diferenciar a VM Database das demais, alteramos seu hostname para <strong>database</strong>, editando o arquivo de hostname:</p>
+<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/hostname
 </code></pre></div>
 
 <blockquote>
 <p>As alterações no hostname só têm efeito após um reboot:</p>
 </blockquote>
 <hr />
-<h4 id="definindo-uma-senha-segura-para-o-usuario-root">Definindo uma senha segura para o usuário root<a class="headerlink" href="#definindo-uma-senha-segura-para-o-usuario-root" title="Permanent link">&para;</a></h4>
-<p>Se ainda <strong>não definiu uma senha forte para o root</strong> durante o setup da VM, faça-o:</p>
-<div class="codehilite"><pre><span></span><code>passwd
+<h3 id="3-configurando-resolucao-de-nome-para-os-ips">3. Configurando resolução de nome para  os IPs<a class="headerlink" href="#3-configurando-resolucao-de-nome-para-os-ips" title="Permanent link">&para;</a></h3>
+<p>Para nosso projeto utilizamos o nome <code>backend.llw</code> para o backend e é através dele que a VM Database vai saber quem está conectado a ela, por isso editamos o arquivo <code>hosts</code>:</p>
+<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/hosts
 </code></pre></div>
 
-<blockquote>
-<p>Crie uma senha segura e guarde-a. Considere uma senha com no mínimo 12 caracteres, incluindo letras maiúsculas, minúsculas, números e símbolos, já que viemos da VM-base, a senha antiga era root (nada seguro).</p>
-</blockquote>
+<p>E informamos o IP do backend com seu respectivo nome:</p>
+<div class="codehilite"><pre><span></span><code><span class="s2">&quot;192.168.0.1&quot;</span><span class="w"> </span>backend.llw
+</code></pre></div>
+
 <hr />
-<h4 id="configurando-resolucao-de-ips-no-arquivo-etchosts">Configurando resolução de IPs no arquivo /etc/hosts<a class="headerlink" href="#configurando-resolucao-de-ips-no-arquivo-etchosts" title="Permanent link">&para;</a></h4>
-<p>Para que o mariadb possa saber quem está se conectando a ela ajuste a resolução de ip de hosts, por isso, edite o arquivo:</p>
-<div class="codehilite"><pre><span></span><code>vi<span class="w"> </span>/etc/hosts
-</code></pre></div>
-
-<p>E adicione a resolução do ip corretamente:</p>
-<div class="codehilite"><pre><span></span><code>&quot;192.168.0.1&quot; backend.llw
-</code></pre></div>
-
-<blockquote>
-<p>O ip acima é apenas um exemplo, coloque o ip da sua vm back-end no lugar daquele, e saiba que sempre que nessa documentação for referida um ip com fim .llw significa que ele está resolvendo o ip de uma das VM's, Front, Back ou Database.</p>
-<p>Priorize um <strong>reboot</strong> da maquina, após mudanças no arquivo de hosts, porque por mais que "não precise", outros serviços lerão o arquivo de hosts somente na hora do boot, e não vao atualizando sua leitura, por isso nomes podem não ser resolvidos corretamente.</p>
-<p>Isso permite que a VM Front-End resolva o domínio <code>backend.llw</code> para o IP especificado, facilitando possíveis mudanças de IP no ambiente sem a necessidade de re-buildar o projeto.</p>
-</blockquote>
-<hr />
-<h3 id="3-instalando-mariadb">3. Instalando MariaDB<a class="headerlink" href="#3-instalando-mariadb" title="Permanent link">&para;</a></h3>
-<p>Adicione o serviço do MariaDB e todas suas depedencias, junto do cliente mysql:</p>
+<h3 id="4-instalando-mariadb">4. Instalando MariaDB<a class="headerlink" href="#4-instalando-mariadb" title="Permanent link">&para;</a></h3>
+<p>Instalamos o <strong>MariaDB</strong> em conjunto com o <strong>mysql-client</strong>:</p>
 <div class="codehilite"><pre><span></span><code>apk<span class="w"> </span>add<span class="w"> </span>mariadb<span class="w"> </span>mysql-client
 </code></pre></div>
 
 <blockquote>
-<p>MariaDB será nosso <strong>SGBD</strong>, mas o mysql-client será usado para acessar a base de dados para, manutenção e configuração de usuários e permissões.</p>
+<p>MariaDB é nosso <strong>SGBD</strong>, mas utilizamos o mysql-client para acessar a base de dados para manutenção e configuração de usuários e permissões.</p>
 </blockquote>
-<p>Rode o script de setup do MariaDB com o comando:</p>
+<p>Rodamos o script de setup do MariaDB:</p>
 <div class="codehilite"><pre><span></span><code>/etc/init.d/mariadb<span class="w"> </span>setup
 </code></pre></div>
 
-<p>Agora edite o arquivo de configuração do MariaDB</p>
-<div class="codehilite"><pre><span></span><code>vi<span class="w"> </span>/etc/my.cnf.d/mariadb-server.cnf
+<p>E editamos o arquivo de configuração:</p>
+<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/my.cnf.d/mariadb-server.cnf
 </code></pre></div>
 
-<p>Modifique o conjunto de configuração do mysql:</p>
+<p>Modificamos o conjunto de configuração do mysql:</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span>mysqld<span class="o">]</span>
 <span class="c1">#skip-networking</span>
 
@@ -641,39 +574,38 @@ bind-address<span class="o">=</span>database.llw
 <span class="nv">port</span><span class="o">=</span><span class="m">3306</span>
 </code></pre></div>
 
-<p>Inicie e adicione o serviço a nivel de boot, para inicar junto com o sistema:</p>
+<p>Iniciamos o serviço e configuramos para que inicie automaticamente:</p>
 <div class="codehilite"><pre><span></span><code>rc-service<span class="w"> </span>mariadb<span class="w"> </span>start
-rc-update<span class="w"> </span>add<span class="w"> </span>mariadb<span class="w"> </span>boot
+rc-update<span class="w"> </span>add<span class="w"> </span>mariadb
 </code></pre></div>
 
 <blockquote>
-<p>Após esses passos o MariaDB vai rodar sempre que ligar VM, e vai receber conexões de todas as interfaces de rede pela porta 3306.</p>
+<p>Com esse passo o MariaDB vai rodar sempre que ligarmos VM, e vai receber conexões de todas as interfaces de rede pela porta 3306 que tiverem permissão.</p>
 </blockquote>
 <hr />
 <h3 id="4-configurando-o-ambiente-do-banco-de-dados">4. Configurando o ambiente do Banco de Dados<a class="headerlink" href="#4-configurando-o-ambiente-do-banco-de-dados" title="Permanent link">&para;</a></h3>
-<p>Entrar no mysql-client utilizando o usuario root, sem senha (padrão)</p>
+<p>Entramos no mysql-client utilizando o usuário root, sem senha no primeiro acesso:</p>
 <div class="codehilite"><pre><span></span><code>mysql<span class="w"> </span>-u<span class="w"> </span>root
 </code></pre></div>
 
-<p>Adicionaremos uma senha forte ao user root, por questões de segurança e requisito de projeto</p>
-<div class="codehilite"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;PePeFaFe!05&#39;</span><span class="p">;</span>
+<p>Escolhemos uma senha forte para o root:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;SenhaForte&#39;</span><span class="p">;</span>
 </code></pre></div>
 
 <blockquote>
-<p>A senha do root será a mesma do user advocacia por questões de facilitar a implementação, mas deveriam ser distintas.</p>
+<p>Nossa senha do root não será informada na documentação.</p>
 </blockquote>
-<p>Criar a base de dados utilizada pela API:</p>
+<p>Criamos a base de dados utilizada por nossa API:</p>
 <div class="codehilite"><pre><span></span><code><span class="k">create</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="n">adv</span><span class="p">;</span>
 </code></pre></div>
 
-<p>Agora criaremos o user mysql que será utilizado pela API para acessar a database:</p>
+<p>Em seguida criamos o user mysql que será utilizado pela API para acessar a database:</p>
 <div class="codehilite"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;llw&#39;</span><span class="o">@</span><span class="s1">&#39;backend.llw&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;PePeFaFe!05&#39;</span><span class="p">;</span>
 <span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="k">INSERT</span><span class="p">,</span><span class="k">UPDATE</span><span class="p">,</span><span class="k">DELETE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">adv</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;llw&#39;</span><span class="o">@</span><span class="s1">&#39;backend.llw&#39;</span><span class="p">;</span>
 </code></pre></div>
 
 <blockquote>
-<p>Caso seja a primeira execução do back, e o banco estiver vazio, pode ser necessario dar permissões de <strong>CREATE</strong>, mas lembre-se de remove-las depois com <strong>REVOKE</strong>.</p>
-<p>No fim esse usuário só terá permissão para operar na database que será utilizada pela API, e só podera fazer comandos SQL limitados, nada que altere as estruturas das tabelas.</p>
+<p>Na primeira execução foi dada a permissão de CREATE, porém após a criação das tabelas removemos a permissão com REVOKE. </p>
 </blockquote>
 <hr />
 <h3 id="6-configurarando-o-script-de-backup">6. Configurarando o script de backup<a class="headerlink" href="#6-configurarando-o-script-de-backup" title="Permanent link">&para;</a></h3>
