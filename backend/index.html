@@ -353,44 +353,20 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-configuracoes-iniciais-da-vm-back-end" class="md-nav__link">
+  <a href="#2-alterando-o-hostname" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Configurações Iniciais da VM Back-End
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Configurações Iniciais da VM Back-End">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#alterando-o-hostname" class="md-nav__link">
-    <span class="md-ellipsis">
-      Alterando o Hostname
+      2. Alterando o Hostname
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#definindo-uma-senha-segura-para-o-usuario-root" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#3-configurando-resolucao-de-nome-para-os-ips" class="md-nav__link">
     <span class="md-ellipsis">
-      Definindo uma senha segura para o usuário root
+      3. Configurando resolução de nome para os IPs
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configurando-resolucao-de-ips-no-arquivo-etchosts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configurando resolução de IPs no arquivo /etc/hosts
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -422,11 +398,26 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-configurarando-o-script-de-backup" class="md-nav__link">
+  <a href="#6-configurando-o-script-de-backup" class="md-nav__link">
     <span class="md-ellipsis">
-      6. Configurarando o script de backup
+      6. Configurando o script de backup
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="6. Configurando o script de backup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-resolvendo-o-nome-do-ip-de-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Resolvendo o nome do IP de backup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -520,44 +511,20 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-configuracoes-iniciais-da-vm-back-end" class="md-nav__link">
+  <a href="#2-alterando-o-hostname" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Configurações Iniciais da VM Back-End
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. Configurações Iniciais da VM Back-End">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#alterando-o-hostname" class="md-nav__link">
-    <span class="md-ellipsis">
-      Alterando o Hostname
+      2. Alterando o Hostname
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#definindo-uma-senha-segura-para-o-usuario-root" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#3-configurando-resolucao-de-nome-para-os-ips" class="md-nav__link">
     <span class="md-ellipsis">
-      Definindo uma senha segura para o usuário root
+      3. Configurando resolução de nome para os IPs
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configurando-resolucao-de-ips-no-arquivo-etchosts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configurando resolução de IPs no arquivo /etc/hosts
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -589,11 +556,26 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-configurarando-o-script-de-backup" class="md-nav__link">
+  <a href="#6-configurando-o-script-de-backup" class="md-nav__link">
     <span class="md-ellipsis">
-      6. Configurarando o script de backup
+      6. Configurando o script de backup
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="6. Configurando o script de backup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-resolvendo-o-nome-do-ip-de-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Resolvendo o nome do IP de backup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -623,13 +605,11 @@
 
 
 <h1 id="configuracao-da-vm-backend">Configuração da VM Backend<a class="headerlink" href="#configuracao-da-vm-backend" title="Permanent link">&para;</a></h1>
-<blockquote>
-<p>Este arquivo documenta, passo a passo, todo o processo de configuração da <strong>VM Back-End</strong>. Ela será responsável por executar a nossa <strong>API</strong> utilizando o <strong>Java 17</strong>, ela terá um usuário dedicado <strong>backend</strong> que executará o processo, e tambem um script de inicialização que executará automaticamente ao ligar a maquina.</p>
-</blockquote>
+<p>A <strong>VM Backend</strong> é responsável por executar a nossa <strong>API</strong> utilizando o <strong>Java 17</strong>, ela possui um usuário dedicado <strong>backend</strong> que executará o processo, e também um script de inicialização que executará automaticamente ao ligar a máquina virtual.</p>
 <hr />
 <h3 id="1-clonando-a-vm-base">1. Clonando a VM Base<a class="headerlink" href="#1-clonando-a-vm-base" title="Permanent link">&para;</a></h3>
-<p>Começaremos clonando a <strong>VM base</strong>, que já foi criada previamente.<br />
-A configuração dessa VM base está documentada no <strong>Arquivo de configuração da VM base</strong>.</p>
+<p>Começamos fazendo o clone do tipo completo da <strong>VM base</strong>, que foi criada previamente.  </p>
+<p><img alt="Clonar VM" src="../images/clonar.png" /></p>
 <hr />
 <h4 id="11-configuracao-da-interface-em-modo-bridge">1.1 Configuração da Interface em modo bridge<a class="headerlink" href="#11-configuracao-da-interface-em-modo-bridge" title="Permanent link">&para;</a></h4>
 <p>Para cada VM que clonamos foi necessário atribuir um IP próprio editando o arquivo de interfaces:</p>
@@ -645,7 +625,7 @@ iface<span class="w"> </span>eth0<span class="w"> </span>inet<span class="w"> </
 
 auto<span class="w"> </span>eth1
 iface<span class="w"> </span>eth1<span class="w"> </span>inet<span class="w"> </span>static
-<span class="w">    </span>address<span class="w"> </span><span class="m">192</span>.168.0.2
+<span class="w">    </span>address<span class="w"> </span><span class="m">192</span>.168.0.1
 <span class="w">    </span>netmask<span class="w"> </span><span class="m">255</span>.255.255.0
 </code></pre></div>
 
@@ -654,92 +634,66 @@ iface<span class="w"> </span>eth1<span class="w"> </span>inet<span class="w"> </
 </code></pre></div>
 
 <hr />
-<h3 id="2-configuracoes-iniciais-da-vm-back-end">2. Configurações Iniciais da VM Back-End<a class="headerlink" href="#2-configuracoes-iniciais-da-vm-back-end" title="Permanent link">&para;</a></h3>
-<p>Antes de passar para as configurações dessa VM vamos personalizar a identidade dela e garantir que ela esteja preparada para se comunicar corretamente com as outras.</p>
-<hr />
-<h4 id="alterando-o-hostname">Alterando o Hostname<a class="headerlink" href="#alterando-o-hostname" title="Permanent link">&para;</a></h4>
-<p>Para diferenciar a VM Back-End das demais, alteraremos seu hostname para <strong>backend</strong>, editando o arquivo:</p>
-<div class="codehilite"><pre><span></span><code>vi<span class="w"> </span>/etc/hostname
+<h3 id="2-alterando-o-hostname">2. Alterando o Hostname<a class="headerlink" href="#2-alterando-o-hostname" title="Permanent link">&para;</a></h3>
+<p>Para diferenciar a VM Frontend das demais, alteramos seu hostname para <strong>frontend</strong>, editando o arquivo de hostname:</p>
+<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/hostname
 </code></pre></div>
 
 <blockquote>
 <p>As alterações no hostname só têm efeito após um reboot:</p>
 </blockquote>
 <hr />
-<h4 id="definindo-uma-senha-segura-para-o-usuario-root">Definindo uma senha segura para o usuário root<a class="headerlink" href="#definindo-uma-senha-segura-para-o-usuario-root" title="Permanent link">&para;</a></h4>
-<p>Se ainda <strong>não definiu uma senha forte para o root</strong> durante o setup da VM, faça-o:</p>
-<div class="codehilite"><pre><span></span><code>passwd
+<h3 id="3-configurando-resolucao-de-nome-para-os-ips">3. Configurando resolução de nome para  os IPs<a class="headerlink" href="#3-configurando-resolucao-de-nome-para-os-ips" title="Permanent link">&para;</a></h3>
+<p>Para nosso projeto utilizamos o nome <code>database.llw</code> para o banco de dados e é através dele que o backend se comunica com a VM de database, então foi necessário alterar o arquivo <code>hosts</code>:</p>
+<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/hosts
 </code></pre></div>
 
-<blockquote>
-<p>Crie uma senha segura e guarde-a. Considere uma senha com no mínimo 12 caracteres, incluindo letras maiúsculas, minúsculas, números e símbolos, já que viemos da VM-base, a senha antiga era root (nada seguro).</p>
-</blockquote>
-<hr />
-<h4 id="configurando-resolucao-de-ips-no-arquivo-etchosts">Configurando resolução de IPs no arquivo /etc/hosts<a class="headerlink" href="#configurando-resolucao-de-ips-no-arquivo-etchosts" title="Permanent link">&para;</a></h4>
-<p>Para que o back-end possa fazer a conexão com o endereço correto ajuste a resolução de ip de hosts, por isso, edite o arquivo:</p>
-<div class="codehilite"><pre><span></span><code>vi<span class="w"> </span>/etc/hosts
+<p>E informamos o IP da database com seu respectivo nome:</p>
+<div class="codehilite"><pre><span></span><code><span class="s2">&quot;192.168.0.2&quot;</span><span class="w"> </span>database.llw
 </code></pre></div>
 
-<p>E adicione a resolução do ip corretamente:</p>
-<div class="codehilite"><pre><span></span><code>&quot;192.168.0.1&quot; database.llw
-</code></pre></div>
-
-<blockquote>
-<p>O ip acima é apenas um exemplo, coloque o ip da sua VM Database no lugar daquele, e saiba que sempre que nessa documentação for referida um ip com fim .llw significa que ele está resolvendo o ip de uma das VM's, Front, Back ou Database.</p>
-<p>Priorize um <strong>reboot</strong> da maquina, após mudanças no arquivo de hosts, porque por mais que "não precise", outros serviços lerão o arquivo de hosts somente na hora do boot, e não vao atualizando sua leitura, por isso nomes podem não ser resolvidos corretamente.</p>
-<p>Isso permite que a VM Back-End resolva o domínio <code>database.llw</code> para o IP especificado, facilitando possíveis mudanças de IP no ambiente sem a necessidade de re-buildar o projeto.</p>
-</blockquote>
 <hr />
 <h3 id="3-instalando-o-java-17">3. Instalando o Java 17<a class="headerlink" href="#3-instalando-o-java-17" title="Permanent link">&para;</a></h3>
-<p>Adicione o serviço openjdk17 e todas suas depedencias:</p>
+<p>Instalamos o Java 17 com o comando :</p>
 <div class="codehilite"><pre><span></span><code>apk<span class="w"> </span>add<span class="w"> </span>openjdk17
 </code></pre></div>
 
 <hr />
 <h3 id="4-buildando-o-projeto">4. Buildando o Projeto<a class="headerlink" href="#4-buildando-o-projeto" title="Permanent link">&para;</a></h3>
-<p>Antes de buildar o projeto, revise as configurações de conexão com o banco no arquivo <strong>application.properties</strong>:</p>
+<p>No Windows antes de fazer a build do backend, foi necessário configurar corretamente o endereço IP da VM Database junto com o usuário e senha do banco de dados.</p>
+<p>Editamos o arquivo <strong>application.properties</strong>:</p>
 <div class="codehilite"><pre><span></span><code><span class="na">spring.datasource.url</span><span class="o">=</span><span class="s">jdbc:mysql://database.llw:3306/adv</span>
 <span class="na">spring.datasource.username</span><span class="o">=</span><span class="s">advocacia</span>
 <span class="na">spring.datasource.password</span><span class="o">=</span><span class="s">PePeFaFe!05</span>
 </code></pre></div>
 
-<blockquote>
-<p>Nesse caso deve ser preenchido com o Usuário e senha mysql corretos, que foram criados ao configurar o ambiente do banco de dados na <strong>VM Database</strong>, tambem o ip de conexão que nesse caso será um ip resolvido pelo arquivo de hosts na <strong>VM Back-End</strong>, na porta liberada 3306.</p>
-</blockquote>
-<p>No host complete a build do projeto e mande o arquivo jar para o caminho correto na VM:</p>
-<div class="codehilite"><pre><span></span><code>scp<span class="w"> </span>api.jar<span class="w"> </span>root@192.168.105:/opt/backend/
+<p>Depois enviamos o arquivo jar por scp para o diretório <code>/opt/backend</code> que criamos na VM:</p>
+<div class="codehilite"><pre><span></span><code>scp<span class="w"> </span>backend.jar<span class="w"> </span>root@192.168.105:/opt/backend/
 </code></pre></div>
 
-<blockquote>
-<p>Tenha certeza de que o caminho que está tentando ser mandando o arquivo, realmente exista, caso o contrário falhará.</p>
-</blockquote>
-<p>Agora já é possivel testar o projeto executando o jar com o comando:</p>
-<div class="codehilite"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>api.jar
+<p>Após esse passo executamos o comando:</p>
+<div class="codehilite"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>backend.jar
 </code></pre></div>
 
-<blockquote>
-<p>Se todas as informações de conexão com o banco na projeto buildado estiverem corretas, e se o banco de dados estiver configurado corretamente, o projeto spring deve rodar sem nenhum erro.</p>
-</blockquote>
+<p><img alt="spring" src="../images/spring.png" /></p>
+<p>Como tudo foi configurado corretamente, a aplicação iniciou.</p>
+<p><img alt="backend" src="../images/backend.png" /></p>
 <hr />
 <h3 id="5-criando-o-script-para-rodar-a-api-automaticamente">5. Criando o script para rodar a API automaticamente<a class="headerlink" href="#5-criando-o-script-para-rodar-a-api-automaticamente" title="Permanent link">&para;</a></h3>
-<p>Antes de criarmos o script, será necessário criar um usuário dedicado apenas a rodar a API, pois não será o <code>root</code> quem irá fazer isso:</p>
-<div class="codehilite"><pre><span></span><code>adduser<span class="w"> </span>-h<span class="w"> </span>/opt/backend/<span class="w"> </span>backend
+<p>Adicionamos um novo usuário chamado <code>backend</code> que é o responsável por rodar a aplicação e definimos a home dele em <code>/opt/backend</code>:</p>
+<div class="codehilite"><pre><span></span><code>adduser<span class="w"> </span>-h<span class="w"> </span>/opt/backend<span class="w"> </span>backend
 </code></pre></div>
 
-<blockquote>
-<p>Será solicitado a senha e depois a confirmação da senha, usaremos: <code>PePeFaFe!05</code></p>
-<p>Definimos a home do user backend como sendo <strong>/opt/backend/</strong> porque é só ali que ele vai operar, rodando a API.</p>
-</blockquote>
-<p>Agora passamos para criação do script, criamos o arquivo:</p>
-<div class="codehilite"><pre><span></span><code>vi<span class="w"> </span>/etc/init.d/backend
+<p>Em seguida dentro do diretório <code>/etc/init.d /</code> abrimos um novo arquivo em branco chamado backend:</p>
+<div class="codehilite"><pre><span></span><code>vim<span class="w">  </span>/etc/init.d/backend
 </code></pre></div>
 
-<p>E adicionamos ao script o seguinte conteúdo:</p>
+<p>Preenchemos ele com o seguinte script:</p>
 <div class="codehilite"><pre><span></span><code><span class="ch">#!/sbin/openrc-run</span>
 
 <span class="nv">description</span><span class="o">=</span><span class="s2">&quot;Lionlaw&quot;</span>
 <span class="nv">java</span><span class="o">=</span><span class="s2">&quot;/usr/bin/java&quot;</span>
-<span class="nv">arquivo</span><span class="o">=</span><span class="s2">&quot;/opt/backend/api.jar&quot;</span>
+<span class="nv">arquivo</span><span class="o">=</span><span class="s2">&quot;/opt/backend/backend.jar&quot;</span>
 <span class="nv">pidfile</span><span class="o">=</span><span class="s2">&quot;/opt/backend/lionlaw.pid&quot;</span>
 <span class="nv">output_log</span><span class="o">=</span><span class="s2">&quot;/opt/backend/backend.out&quot;</span>
 <span class="nv">usuario</span><span class="o">=</span><span class="s2">&quot;backend&quot;</span>
@@ -779,46 +733,32 @@ stop<span class="o">()</span><span class="w"> </span><span class="o">{</span>
 <span class="o">}</span>
 </code></pre></div>
 
-<p>Daremos permissão de execução ao script:</p>
-<div class="codehilite"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>/etc/init.d/backend-api
+<p>Tornamos o arquivo executável:</p>
+<div class="codehilite"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>/etc/init.d/backend
 </code></pre></div>
 
-<p>Testar se o script inicia corretamente:</p>
+<p>Iniciamos a aplicação e configuramos para que inicie automaticamente :</p>
 <div class="codehilite"><pre><span></span><code>service<span class="w"> </span>backend<span class="w"> </span>start
+rc-update<span class="w"> </span>add<span class="w"> </span>backend<span class="w"> </span>
 </code></pre></div>
 
-<p>E adicionar para iniciar automaticamente com o sistema:</p>
-<div class="codehilite"><pre><span></span><code>rc-update<span class="w"> </span>add<span class="w"> </span>backend<span class="w"> </span>boot
-</code></pre></div>
-
-<blockquote>
-<p>Agora toda vez que iniciarmos essa VM, a API vai ser iniciada pelo user backend.</p>
-</blockquote>
-<h3 id="6-configurarando-o-script-de-backup">6. Configurarando o script de backup<a class="headerlink" href="#6-configurarando-o-script-de-backup" title="Permanent link">&para;</a></h3>
-<p>Crie o arquivo de script em algum lugar seguro</p>
+<p>Com essa configuração a aplicação executa automaticamente ao ligar a máquina virtual</p>
+<p><img alt="backendscript" src="../images/backendscript.png" /></p>
+<hr />
+<h3 id="6-configurando-o-script-de-backup">6. Configurando o script de backup<a class="headerlink" href="#6-configurando-o-script-de-backup" title="Permanent link">&para;</a></h3>
+<p>Criamos o arquivo em <code>/root/</code>:</p>
 <div class="codehilite"><pre><span></span><code>vi<span class="w"> </span>/root/backup_backend
 </code></pre></div>
 
-<blockquote>
-<p>Criamos na pasta root, não há nada de sensivel no backup do back, mas no dump do banco é necessario ter a senha e user mysql, oque é importante proteger.</p>
-</blockquote>
-<p>Esse será nosso script:</p>
-<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
+<p>E preenchemos da seguinte forma: </p>
+<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/ash</span>
 
-<span class="c1">#Timestamp para identificar horario dos backups</span>
 <span class="nv">timestamp</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%Y-%m-%d_%H-%M-%S&#39;</span><span class="k">)</span>
-
-<span class="c1">#Arquivo temporario, para organizar tudo</span>
 <span class="nv">temp_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/backup_backend_</span><span class="nv">$timestamp</span><span class="s2">&quot;</span>
-
-<span class="c1">#Localização dos arquivos alvo do backup</span>
 <span class="nv">init_script</span><span class="o">=</span><span class="s2">&quot;/etc/init.d/backend&quot;</span>
 <span class="nv">authorized_keys</span><span class="o">=</span><span class="s2">&quot;/root/.ssh/authorized_keys&quot;</span>
-
-<span class="c1">#Local e nome do arquivo compactado tar gz</span>
 <span class="nv">tar_file</span><span class="o">=</span><span class="s2">&quot;/tmp/backup_backend_</span><span class="nv">$timestamp</span><span class="s2">.tar.gz&quot;</span>
 
-<span class="c1"># Caminhos de destino</span>
 <span class="nv">remote_user</span><span class="o">=</span><span class="s2">&quot;backup_sys&quot;</span>
 <span class="nv">remote_host</span><span class="o">=</span><span class="s2">&quot;frontend.llw&quot;</span>
 <span class="nv">remote_path</span><span class="o">=</span><span class="s2">&quot;/opt/backup/backend&quot;</span>
@@ -844,26 +784,26 @@ rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;</sp
 <span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
 </code></pre></div>
 
-<p>Torne-o executavel com o comando:</p>
-<div class="codehilite"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>/root/backup_backend
+<h4 id="61-resolvendo-o-nome-do-ip-de-backup">6.1 Resolvendo o nome do IP de backup<a class="headerlink" href="#61-resolvendo-o-nome-do-ip-de-backup" title="Permanent link">&para;</a></h4>
+<p>Escolhemos o nome <code>frontend.llw</code>para a <strong>VM Frontend</strong> e para o script funcionar corretamente foi necessário resolver o nome do IP de destino:</p>
+<p>editamos o arquivo <code>hosts</code>:</p>
+<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/hosts
 </code></pre></div>
 
-<blockquote>
-<p>Agora já será possivel chamar o script manualmente, <strong>/root/backup_backend</strong>.</p>
-</blockquote>
+<p>E informamos o IP do frontend com seu respectivo nome:</p>
+<div class="codehilite"><pre><span></span><code><span class="s2">&quot;192.168.0.3&quot;</span><span class="w"> </span>frontend.llw
+</code></pre></div>
+
 <hr />
 <h2 id="7-agendamento-de-script-backup-com-crontab">7. Agendamento de Script Backup com Crontab<a class="headerlink" href="#7-agendamento-de-script-backup-com-crontab" title="Permanent link">&para;</a></h2>
-<p>Edite o arquivo de agendamento do service padrão do Linux Alpine com o codigo:</p>
-<div class="codehilite"><pre><span></span><code>crontab<span class="w"> </span>-e
+<p>Editamos o arquivo de agendamento padrão do Linux Alpine:</p>
+<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/crontabs/root
 </code></pre></div>
 
-<p>Dentro do arquivo adicione essa linha ao final:</p>
+<p>Adicionamos essa linha ao final do arquivo para rodar o script de backup automaticamente a cada 3 horas:</p>
 <div class="codehilite"><pre><span></span><code><span class="m">0</span><span class="w"> </span>*/3<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/root/backup_backend<span class="w"> </span><span class="m">1</span>&gt;&gt;<span class="w"> </span>/var/log/backup_backend.log<span class="w"> </span><span class="m">2</span>&gt;&gt;<span class="w"> </span>/var/log/backup_backend_error.log
 </code></pre></div>
 
-<blockquote>
-<p>Essa linha garantirá que o script será executado no <strong>minuto 0</strong> a cada <strong>3 horas</strong>, e também redireciona a saida padrão <strong>stdout 1&gt;&gt;</strong> para um arquivo de log, e a saida de erros <strong>stderr 2&gt;&gt;</strong> para um arquivo de log separado, apenas para erros.</p>
-</blockquote>
 <hr />
 
 

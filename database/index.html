@@ -415,6 +415,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="6. Configurando o script de backup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-resolvendo-o-nome-do-ip-de-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Resolvendo o nome do IP de backup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -526,6 +541,21 @@
       6. Configurando o script de backup
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="6. Configurando o script de backup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-resolvendo-o-nome-do-ip-de-backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 Resolvendo o nome do IP de backup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -712,6 +742,16 @@ rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;</sp
 
 <p>E por fim tornamos o arquivo executável:</p>
 <div class="codehilite"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>/root/backup_database
+</code></pre></div>
+
+<h4 id="61-resolvendo-o-nome-do-ip-de-backup">6.1 Resolvendo o nome do IP de backup<a class="headerlink" href="#61-resolvendo-o-nome-do-ip-de-backup" title="Permanent link">&para;</a></h4>
+<p>Escolhemos o nome <code>frontend.llw</code>para a <strong>VM Frontend</strong> e para o script funcionar corretamente foi necessário resolver o nome do IP de destino:</p>
+<p>editamos o arquivo <code>hosts</code>:</p>
+<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/hosts
+</code></pre></div>
+
+<p>E informamos o IP do frontend com seu respectivo nome:</p>
+<div class="codehilite"><pre><span></span><code><span class="s2">&quot;192.168.0.3&quot;</span><span class="w"> </span>frontend.llw
 </code></pre></div>
 
 <hr />
