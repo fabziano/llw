@@ -335,6 +335,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="1. Clonando a VM Base">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-configuracao-da-interface-em-modo-bridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Configuração da Interface em modo bridge
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -487,6 +502,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="1. Clonando a VM Base">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-configuracao-da-interface-em-modo-bridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Configuração da Interface em modo bridge
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -600,6 +630,29 @@
 <h3 id="1-clonando-a-vm-base">1. Clonando a VM Base<a class="headerlink" href="#1-clonando-a-vm-base" title="Permanent link">&para;</a></h3>
 <p>Começaremos clonando a <strong>VM base</strong>, que já foi criada previamente.<br />
 A configuração dessa VM base está documentada no <strong>Arquivo de configuração da VM base</strong>.</p>
+<hr />
+<h4 id="11-configuracao-da-interface-em-modo-bridge">1.1 Configuração da Interface em modo bridge<a class="headerlink" href="#11-configuracao-da-interface-em-modo-bridge" title="Permanent link">&para;</a></h4>
+<p>Para cada VM que clonamos foi necessário atribuir um IP próprio editando o arquivo de interfaces:</p>
+<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/network/interfaces
+</code></pre></div>
+
+<p>Como a nossa interface em modo bridge é o adaptador 2, ela fica identificada como eth1:</p>
+<div class="codehilite"><pre><span></span><code>auto<span class="w"> </span>lo
+iface<span class="w"> </span>lo<span class="w"> </span>inet<span class="w"> </span>loopback
+
+auto<span class="w"> </span>eth0
+iface<span class="w"> </span>eth0<span class="w"> </span>inet<span class="w"> </span>dhcp
+
+auto<span class="w"> </span>eth1
+iface<span class="w"> </span>eth1<span class="w"> </span>inet<span class="w"> </span>static
+<span class="w">    </span>address<span class="w"> </span><span class="m">192</span>.168.0.2
+<span class="w">    </span>netmask<span class="w"> </span><span class="m">255</span>.255.255.0
+</code></pre></div>
+
+<p>Após salvar o arquivo reiniciamos o serviço:</p>
+<div class="codehilite"><pre><span></span><code>rc-service<span class="w"> </span>networking<span class="w"> </span>restart
+</code></pre></div>
+
 <hr />
 <h3 id="2-configuracoes-iniciais-da-vm-back-end">2. Configurações Iniciais da VM Back-End<a class="headerlink" href="#2-configuracoes-iniciais-da-vm-back-end" title="Permanent link">&para;</a></h3>
 <p>Antes de passar para as configurações dessa VM vamos personalizar a identidade dela e garantir que ela esteja preparada para se comunicar corretamente com as outras.</p>

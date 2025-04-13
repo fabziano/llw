@@ -355,6 +355,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="1. Clonando a VM Base">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-configuracao-da-interface-em-modo-bridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Configuração da Interface em modo bridge
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -394,9 +409,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-configurarando-o-script-de-backup" class="md-nav__link">
+  <a href="#6-configurando-o-script-de-backup" class="md-nav__link">
     <span class="md-ellipsis">
-      6. Configurarando o script de backup
+      6. Configurando o script de backup
     </span>
   </a>
   
@@ -452,6 +467,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="1. Clonando a VM Base">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-configuracao-da-interface-em-modo-bridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Configuração da Interface em modo bridge
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -491,9 +521,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-configurarando-o-script-de-backup" class="md-nav__link">
+  <a href="#6-configurando-o-script-de-backup" class="md-nav__link">
     <span class="md-ellipsis">
-      6. Configurarando o script de backup
+      6. Configurando o script de backup
     </span>
   </a>
   
@@ -530,6 +560,29 @@
 <h3 id="1-clonando-a-vm-base">1. Clonando a VM Base<a class="headerlink" href="#1-clonando-a-vm-base" title="Permanent link">&para;</a></h3>
 <p>Começamos fazendo o clone do tipo completo da <strong>VM base</strong>, que foi criada previamente.  </p>
 <p><img alt="Clonar VM" src="../images/clonar.png" /></p>
+<hr />
+<h4 id="11-configuracao-da-interface-em-modo-bridge">1.1 Configuração da Interface em modo bridge<a class="headerlink" href="#11-configuracao-da-interface-em-modo-bridge" title="Permanent link">&para;</a></h4>
+<p>Para cada VM que clonamos foi necessário atribuir um IP próprio editando o arquivo de interfaces:</p>
+<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/network/interfaces
+</code></pre></div>
+
+<p>Como a nossa interface em modo bridge é o adaptador 2, ela fica identificada como eth1:</p>
+<div class="codehilite"><pre><span></span><code>auto<span class="w"> </span>lo
+iface<span class="w"> </span>lo<span class="w"> </span>inet<span class="w"> </span>loopback
+
+auto<span class="w"> </span>eth0
+iface<span class="w"> </span>eth0<span class="w"> </span>inet<span class="w"> </span>dhcp
+
+auto<span class="w"> </span>eth1
+iface<span class="w"> </span>eth1<span class="w"> </span>inet<span class="w"> </span>static
+<span class="w">    </span>address<span class="w"> </span><span class="m">192</span>.168.0.2
+<span class="w">    </span>netmask<span class="w"> </span><span class="m">255</span>.255.255.0
+</code></pre></div>
+
+<p>Após salvar o arquivo reiniciamos o serviço:</p>
+<div class="codehilite"><pre><span></span><code>rc-service<span class="w"> </span>networking<span class="w"> </span>restart
+</code></pre></div>
+
 <hr />
 <h3 id="2-alterando-o-hostname">2. Alterando o Hostname<a class="headerlink" href="#2-alterando-o-hostname" title="Permanent link">&para;</a></h3>
 <p>Para diferenciar a VM Database das demais, alteramos seu hostname para <strong>database</strong>, editando o arquivo de hostname:</p>
@@ -608,36 +661,27 @@ rc-update<span class="w"> </span>add<span class="w"> </span>mariadb
 <p>Na primeira execução foi dada a permissão de CREATE, porém após a criação das tabelas removemos a permissão com REVOKE. </p>
 </blockquote>
 <hr />
-<h3 id="6-configurarando-o-script-de-backup">6. Configurarando o script de backup<a class="headerlink" href="#6-configurarando-o-script-de-backup" title="Permanent link">&para;</a></h3>
-<p>Crie o arquivo de script em algum lugar seguro</p>
+<h3 id="6-configurando-o-script-de-backup">6. Configurando o script de backup<a class="headerlink" href="#6-configurando-o-script-de-backup" title="Permanent link">&para;</a></h3>
+<p>Criamos o arquivo em <code>/root/</code>:</p>
 <div class="codehilite"><pre><span></span><code>vi<span class="w"> </span>/root/backup_database
 </code></pre></div>
 
-<blockquote>
-<p>Criamos na pasta root pois o script terá a senha e user mysql, que é importante proteger.</p>
-</blockquote>
-<p>Esse será nosso script:</p>
+<p>E preenchemos da seguinte forma: </p>
 <div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/ash</span>
 
-<span class="c1"># Timestamp para identificar o backup</span>
 <span class="nv">timestamp</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%Y-%m-%d_%H-%M-%S&#39;</span><span class="k">)</span>
 
-<span class="c1">#Arquivo temporario, para organizar tudo</span>
 <span class="nv">temp_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/backup_database_</span><span class="nv">$timestamp</span><span class="s2">&quot;</span>
 
-<span class="c1">#Localização dos arquivos alvo do backup</span>
 <span class="nv">dump_file</span><span class="o">=</span><span class="s2">&quot;/tmp/lionlaw_</span><span class="nv">$timestamp</span><span class="s2">.sql&quot;</span>
 <span class="nv">ssh_key</span><span class="o">=</span><span class="s2">&quot;/root/.ssh/authorized_keys&quot;</span>
 
-<span class="c1">#Local e nome do arquivo compactado tar gz</span>
 <span class="nv">tar_file</span><span class="o">=</span><span class="s2">&quot;/tmp/backup_database_</span><span class="nv">$timestamp</span><span class="s2">.tar.gz&quot;</span>
 
-<span class="c1"># Caminhos de destino</span>
 <span class="nv">remote_user</span><span class="o">=</span><span class="s2">&quot;backup_sys&quot;</span>
 <span class="nv">remote_host</span><span class="o">=</span><span class="s2">&quot;frontend.llw&quot;</span>
 <span class="nv">remote_path</span><span class="o">=</span><span class="s2">&quot;/opt/backup/database&quot;</span>
 
-<span class="c1"># Variáveis do banco</span>
 <span class="nv">db_user</span><span class="o">=</span><span class="s2">&quot;USER&quot;</span>
 <span class="nv">db_pass</span><span class="o">=</span><span class="s2">&quot;SENHA&quot;</span>
 <span class="nv">db_name</span><span class="o">=</span><span class="s2">&quot;adv&quot;</span>
@@ -666,26 +710,20 @@ rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;</sp
 <span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
 </code></pre></div>
 
-<p>Torne-o executavel com o comando:</p>
+<p>E por fim tornamos o arquivo executável:</p>
 <div class="codehilite"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>/root/backup_database
 </code></pre></div>
 
-<blockquote>
-<p>Agora já será possivel chamar o script manualmente, <strong>/root/backup_database</strong>.</p>
-</blockquote>
 <hr />
 <h2 id="7-agendamento-de-script-backup-com-crontab">7. Agendamento de Script Backup com Crontab<a class="headerlink" href="#7-agendamento-de-script-backup-com-crontab" title="Permanent link">&para;</a></h2>
-<p>Edite o arquivo de agendamento do service padrão do Linux Alpine com o codigo:</p>
-<div class="codehilite"><pre><span></span><code>crontab<span class="w"> </span>-e
+<p>Editamos o arquivo de agendamento padrão do Linux Alpine:</p>
+<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/crontabs/root
 </code></pre></div>
 
-<p>Dentro do arquivo adicione essa linha ao final:</p>
+<p>Adicionamos essa linha ao final do arquivo para rodar o script de backup automaticamente a cada 6 horas:</p>
 <div class="codehilite"><pre><span></span><code><span class="m">0</span><span class="w"> </span>*/6<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/root/backup_database<span class="w"> </span><span class="m">1</span>&gt;&gt;<span class="w"> </span>/var/log/backup_database.log<span class="w"> </span><span class="m">2</span>&gt;&gt;<span class="w"> </span>/var/log/backup_database_error.log
 </code></pre></div>
 
-<blockquote>
-<p>Essa linha garantirá que o script será executado no <strong>minuto 0</strong> a cada <strong>6 horas</strong>, e também redireciona a saida padrão <strong>stdout 1&gt;&gt;</strong> para um arquivo de log, e a saida de erros <strong>stderr 2&gt;&gt;</strong> para um arquivo de log separado, apenas para erros.</p>
-</blockquote>
 <hr />
 
 
