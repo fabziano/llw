@@ -460,6 +460,28 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Segurança Extra
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -804,8 +826,14 @@ rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;</sp
 <div class="codehilite"><pre><span></span><code><span class="m">0</span><span class="w"> </span>*/3<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/root/backup_backend<span class="w"> </span><span class="m">1</span>&gt;&gt;<span class="w"> </span>/var/log/backup_backend.log<span class="w"> </span><span class="m">2</span>&gt;&gt;<span class="w"> </span>/var/log/backup_backend_error.log
 </code></pre></div>
 
-<p>Resultado do log do Cron: </p>
+<p>Utilizamos o comando <code>cat</code> em <code>messages</code> depois do tempo proposto </p>
+<div class="codehilite"><pre><span></span><code>cat<span class="w"> </span>/var/log/messages<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>backup<span class="w"> </span>
+</code></pre></div>
+
 <p><img alt="backupbackend" src="../images/backupbackend.png" /></p>
+<blockquote>
+<p>Resultado do log do Cron</p>
+</blockquote>
 <hr />
 
 
