@@ -649,7 +649,7 @@ iface<span class="w"> </span>eth1<span class="w"> </span>inet<span class="w"> </
 <div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/my.cnf.d/mariadb-server.cnf
 </code></pre></div>
 
-<p>Modificamos o conjunto de configuração do mysql:</p>
+<p>Modificamos o arquivo de configurações do mysql:</p>
 <div class="codehilite"><pre><span></span><code><span class="o">[</span>mysqld<span class="o">]</span>
 <span class="c1">#skip-networking</span>
 
@@ -764,6 +764,8 @@ rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;</sp
 <div class="codehilite"><pre><span></span><code><span class="m">0</span><span class="w"> </span>*/6<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/root/backup_database<span class="w"> </span><span class="m">1</span>&gt;&gt;<span class="w"> </span>/var/log/backup_database.log<span class="w"> </span><span class="m">2</span>&gt;&gt;<span class="w"> </span>/var/log/backup_database_error.log
 </code></pre></div>
 
+<p>Resultado do log do Cron: </p>
+<p><img alt="backupdatabase" src="../images/backupdatabase.png" /></p>
 <hr />
 
 

@@ -400,6 +400,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="9. Recebendo as chaves RSA das outras VM&#39;s:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-criando-o-par-de-chaves" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.1 Criando o par de chaves
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-enviando-a-chave-publica-para-backup_sys" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.2 Enviando a chave pública para backup_sys
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-retirando-a-autenticacao-por-senha" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.3 Retirando a autenticação por senha
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -592,6 +625,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="9. Recebendo as chaves RSA das outras VM&#39;s:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-criando-o-par-de-chaves" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.1 Criando o par de chaves
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-enviando-a-chave-publica-para-backup_sys" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.2 Enviando a chave pública para backup_sys
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-retirando-a-autenticacao-por-senha" class="md-nav__link">
+    <span class="md-ellipsis">
+      9.3 Retirando a autenticação por senha
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -759,6 +825,7 @@ mkdir<span class="w"> </span>/opt/backup/database/
 </code></pre></div>
 
 <h3 id="9-recebendo-as-chaves-rsa-das-outras-vms">9. Recebendo as chaves RSA das outras VM's:<a class="headerlink" href="#9-recebendo-as-chaves-rsa-das-outras-vms" title="Permanent link">&para;</a></h3>
+<h4 id="91-criando-o-par-de-chaves">9.1 Criando o par de chaves<a class="headerlink" href="#91-criando-o-par-de-chaves" title="Permanent link">&para;</a></h4>
 <p>Na VM <strong>Backend</strong> e <strong>Database</strong> criamos as chaves RSA:</p>
 <div class="codehilite"><pre><span></span><code>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>rsa<span class="w"> </span>-b<span class="w"> </span><span class="m">4096</span><span class="w"> </span>-f<span class="w"> </span>id_rsa
 </code></pre></div>
@@ -771,6 +838,11 @@ mkdir<span class="w"> </span>/opt/backup/database/
 <div class="codehilite"><pre><span></span><code>PasswordAuthentication<span class="w"> </span>yes
 </code></pre></div>
 
+<p>Reiniciamos o serviço para aplicar as configurações:</p>
+<div class="codehilite"><pre><span></span><code>rc-service<span class="w"> </span>sshd<span class="w"> </span>restart
+</code></pre></div>
+
+<h4 id="92-enviando-a-chave-publica-para-backup_sys">9.2 Enviando a chave pública para backup_sys<a class="headerlink" href="#92-enviando-a-chave-publica-para-backup_sys" title="Permanent link">&para;</a></h4>
 <p>Enviamos a chave pública da VM Backend para o backup_sys modificando o nome para <code>authorized_keys</code>:</p>
 <div class="codehilite"><pre><span></span><code>scp<span class="w"> </span>id_rsa.pub<span class="w"> </span>backup_sys@frontend.llw:/opt/backup/.ssh/authorized_keys
 </code></pre></div>
@@ -793,6 +865,15 @@ mkdir<span class="w"> </span>/opt/backup/database/
 
 <p>E alteramos o proprietário dessa pasta .ssh localizada em <code>/opt/backup</code>:</p>
 <div class="codehilite"><pre><span></span><code>chown<span class="w"> </span>-R<span class="w"> </span>backup_sys:backup_sys<span class="w"> </span>/opt/backup/.ssh
+</code></pre></div>
+
+<h4 id="93-retirando-a-autenticacao-por-senha">9.3 Retirando a autenticação por senha<a class="headerlink" href="#93-retirando-a-autenticacao-por-senha" title="Permanent link">&para;</a></h4>
+<p>Por fim editamos novamente o <code>sshd_config</code>, dessa vez para impedir o acesso por senha:</p>
+<div class="codehilite"><pre><span></span><code>PasswordAuthentication<span class="w"> </span>no
+</code></pre></div>
+
+<p>E reiniciamos o serviço para aplicar as configurações uma última vez:</p>
+<div class="codehilite"><pre><span></span><code>rc-service<span class="w"> </span>sshd<span class="w"> </span>restart
 </code></pre></div>
 
 <hr />
@@ -843,6 +924,8 @@ rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;</sp
 <div class="codehilite"><pre><span></span><code><span class="m">0</span><span class="w"> </span>*/3<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/root/backup_front<span class="w"> </span><span class="m">1</span>&gt;&gt;<span class="w"> </span>/var/log/backup_front.log<span class="w"> </span><span class="m">2</span>&gt;&gt;<span class="w"> </span>/var/log/backup_front_error.log
 </code></pre></div>
 
+<p>Resultado do log do Cron: </p>
+<p><img alt="backupfrontend" src="../images/backupfrontend.png" /></p>
 <hr />
 
 
