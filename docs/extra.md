@@ -87,7 +87,7 @@ Resolvemos os nomes para os IPs da rede interna:
 10.10.10.3 frontend.llw
 ```
 
-### 2.4 Configuração do nginx 
+### 2.3 Configuração do nginx 
 
 Editamos o arquivo de configuração do nginx para configurar o **proxy reverso**:
 
