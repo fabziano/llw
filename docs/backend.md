@@ -66,7 +66,7 @@ vim /etc/hosts
 E informamos o IP da database com seu respectivo nome:
 
 ```bash
-"192.168.0.2" database.llw
+192.168.0.2 database.llw
 ```
 
 ---

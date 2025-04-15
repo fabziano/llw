@@ -66,7 +66,7 @@ vim /etc/hosts
 E informamos o IP do backend com seu respectivo nome:
 
 ```bash
-"192.168.0.1" backend.llw
+192.168.0.1 backend.llw
 ```
 
 ---

@@ -1,19 +1,136 @@
-## 1. Revisão da configuração SSH
+## 1. Rede Interna
 
-Começamos revisando se o acesso ao root e por senha estavam bloqueados em todas as VMs
+### 1.1 Configuração de Rede nas VMs
+
+Alteramos o **Adaptador 2** das VMs Backend e Database para `Rede Interna` e nomeamos a rede como llw
+
+![Rede Interna](images/redeinterna1.png)
+
+Para a VM Frontend incluímos um terceiro adaptador como `rede interna` e também nomeamos como llw
+
+![Rede Interna](images/redeinterna2.png)
+
+### 1.2 Configuração dos IPs 
+
+O IP escolhido para a rede interna foi 10.10.10.0/29, então foi necessário configurar o arquivo `interfaces` e o arquivo de `hosts` das VMs. 
+
+Em cada uma delas usamos o comando de editar o arquivo 
 
 ```bash
-vim /etc/ssh/sshd_config
+vim /etc/network/interfaces 
 ```
 
-Garantimos que não será possível conectar-se ao root, nem conectar utilizando senha, apenas chaves RSA.
+VM Frontend 
 
 ```bash
-PermitRootLogin no
-PasswordAuthentication no
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet dhcp
+
+auto eth1
+iface eth1 inet static
+    address 192.168.0.3
+    netmask 255.255.255.0
+
+auto eth2
+iface eth2 inet static
+    address 10.10.10.3
+    netmask 255.255.255.248
+    network 10.10.10.0 
 ```
 
----
+VM Backend 
+
+```bash
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet dhcp
+
+auto eth1
+iface eth1 inet static
+    address 10.10.10.1
+    netmask 255.255.255.248
+    network 10.10.10.0
+```
+
+VM Database 
+
+```bash
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet dhcp
+
+auto eth1
+iface eth1 inet static
+    address 10.10.10.2
+    netmask 255.255.255.248
+    network 10.10.10.0
+```
+
+E para os hosts usamos o comando de edição do arquivo:
+
+```bash
+vim /etc/hosts 
+```
+
+Resolvemos os nomes para os IPs da rede interna:
+
+```bash
+10.10.10.1 backend.llw
+10.10.10.2 database.llw
+10.10.10.3 frontend.llw
+```
+
+### 2.4 Configuração do nginx 
+
+Editamos o arquivo de configuração do nginx para configurar o **proxy reverso**:
+
+```bash
+vim /etc/nginx/http.d/default.conf
+```
+
+O arquivo foi editado com essas informações:
+
+```bash 
+server {
+    listen 80;
+    listen 8080;
+    listen [::]:80;
+
+    server_name backend.llw;
+
+    access_log /var/log/nginx/frontend_access.log;
+    error_log /var/log/nginx/frontend_error.log;
+
+    location / {
+        root /opt/frontend;
+        index index.html;
+        try_files $uri $uri/ /index.html;
+    }
+
+    location /api/ {
+        proxy_pass http://backend.llw:8080;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_pass_request_headers on;
+        proxy_pass_request_body on;
+    }
+
+    location = /404.html {
+        internal;
+    }
+}
+```
+
 
 ## 2. Firewall
 
