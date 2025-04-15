@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-revisao-da-configuracao-ssh" class="md-skip">
+        <a href="#1-rede-interna" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -389,11 +389,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-revisao-da-configuracao-ssh" class="md-nav__link">
+  <a href="#1-rede-interna" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Revisão da configuração SSH
+      1. Rede Interna
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="1. Rede Interna">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-configuracao-de-rede-nas-vms" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Configuração de Rede nas VMs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-configuracao-dos-ips" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Configuração dos IPs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-configuracao-do-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 Configuração do nginx
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -472,11 +505,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-revisao-da-configuracao-ssh" class="md-nav__link">
+  <a href="#1-rede-interna" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Revisão da configuração SSH
+      1. Rede Interna
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="1. Rede Interna">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-configuracao-de-rede-nas-vms" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 Configuração de Rede nas VMs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-configuracao-dos-ips" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 Configuração dos IPs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-configuracao-do-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4 Configuração do nginx
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -540,15 +606,106 @@
 
   <h1>Segurança Extra</h1>
 
-<h2 id="1-revisao-da-configuracao-ssh">1. Revisão da configuração SSH<a class="headerlink" href="#1-revisao-da-configuracao-ssh" title="Permanent link">&para;</a></h2>
-<p>Começamos revisando se o acesso ao root e por senha estavam bloqueados em todas as VMs</p>
-<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/ssh/sshd_config
+<h2 id="1-rede-interna">1. Rede Interna<a class="headerlink" href="#1-rede-interna" title="Permanent link">&para;</a></h2>
+<h3 id="11-configuracao-de-rede-nas-vms">1.1 Configuração de Rede nas VMs<a class="headerlink" href="#11-configuracao-de-rede-nas-vms" title="Permanent link">&para;</a></h3>
+<p>Alteramos o <strong>Adaptador 2</strong> das VMs Backend e Database para <code>Rede Interna</code> e nomeamos a rede como llw</p>
+<p><img alt="Rede Interna" src="../images/redeinterna1.png" /></p>
+<p>Para a VM Frontend incluímos um terceiro adaptador como <code>rede interna</code> e também nomeamos como llw</p>
+<p><img alt="Rede Interna" src="../images/redeinterna2.png" /></p>
+<h3 id="12-configuracao-dos-ips">1.2 Configuração dos IPs<a class="headerlink" href="#12-configuracao-dos-ips" title="Permanent link">&para;</a></h3>
+<p>O IP escolhido para a rede interna foi 10.10.10.0/29, então foi necessário configurar o arquivo <code>interfaces</code> e o arquivo de <code>hosts</code> das VMs. </p>
+<p>Em cada uma delas usamos o comando de editar o arquivo </p>
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/network/interfaces<span class="w"> </span>
 </code></pre></div>
-<p>Garantimos que não será possível conectar-se ao root, nem conectar utilizando senha, apenas chaves RSA.</p>
-<div class="highlight"><pre><span></span><code>PermitRootLogin<span class="w"> </span>no
-PasswordAuthentication<span class="w"> </span>no
+<p>VM Frontend </p>
+<div class="highlight"><pre><span></span><code>auto<span class="w"> </span>lo
+iface<span class="w"> </span>lo<span class="w"> </span>inet<span class="w"> </span>loopback
+
+auto<span class="w"> </span>eth0
+iface<span class="w"> </span>eth0<span class="w"> </span>inet<span class="w"> </span>dhcp
+
+auto<span class="w"> </span>eth1
+iface<span class="w"> </span>eth1<span class="w"> </span>inet<span class="w"> </span>static
+<span class="w">    </span>address<span class="w"> </span><span class="m">192</span>.168.0.3
+<span class="w">    </span>netmask<span class="w"> </span><span class="m">255</span>.255.255.0
+
+auto<span class="w"> </span>eth2
+iface<span class="w"> </span>eth2<span class="w"> </span>inet<span class="w"> </span>static
+<span class="w">    </span>address<span class="w"> </span><span class="m">10</span>.10.10.3
+<span class="w">    </span>netmask<span class="w"> </span><span class="m">255</span>.255.255.248
+<span class="w">    </span>network<span class="w"> </span><span class="m">10</span>.10.10.0<span class="w"> </span>
 </code></pre></div>
-<hr />
+<p>VM Backend </p>
+<div class="highlight"><pre><span></span><code>auto<span class="w"> </span>lo
+iface<span class="w"> </span>lo<span class="w"> </span>inet<span class="w"> </span>loopback
+
+auto<span class="w"> </span>eth0
+iface<span class="w"> </span>eth0<span class="w"> </span>inet<span class="w"> </span>dhcp
+
+auto<span class="w"> </span>eth1
+iface<span class="w"> </span>eth1<span class="w"> </span>inet<span class="w"> </span>static
+<span class="w">    </span>address<span class="w"> </span><span class="m">10</span>.10.10.1
+<span class="w">    </span>netmask<span class="w"> </span><span class="m">255</span>.255.255.248
+<span class="w">    </span>network<span class="w"> </span><span class="m">10</span>.10.10.0
+</code></pre></div>
+<p>VM Database </p>
+<div class="highlight"><pre><span></span><code>auto<span class="w"> </span>lo
+iface<span class="w"> </span>lo<span class="w"> </span>inet<span class="w"> </span>loopback
+
+auto<span class="w"> </span>eth0
+iface<span class="w"> </span>eth0<span class="w"> </span>inet<span class="w"> </span>dhcp
+
+auto<span class="w"> </span>eth1
+iface<span class="w"> </span>eth1<span class="w"> </span>inet<span class="w"> </span>static
+<span class="w">    </span>address<span class="w"> </span><span class="m">10</span>.10.10.2
+<span class="w">    </span>netmask<span class="w"> </span><span class="m">255</span>.255.255.248
+<span class="w">    </span>network<span class="w"> </span><span class="m">10</span>.10.10.0
+</code></pre></div>
+<p>E para os hosts usamos o comando de edição do arquivo:</p>
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/hosts<span class="w"> </span>
+</code></pre></div>
+<p>Resolvemos os nomes para os IPs da rede interna:</p>
+<div class="highlight"><pre><span></span><code><span class="m">10</span>.10.10.1<span class="w"> </span>backend.llw
+<span class="m">10</span>.10.10.2<span class="w"> </span>database.llw
+<span class="m">10</span>.10.10.3<span class="w"> </span>frontend.llw
+</code></pre></div>
+<h3 id="24-configuracao-do-nginx">2.4 Configuração do nginx<a class="headerlink" href="#24-configuracao-do-nginx" title="Permanent link">&para;</a></h3>
+<p>Editamos o arquivo de configuração do nginx para configurar o <strong>proxy reverso</strong>:</p>
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/nginx/http.d/default.conf
+</code></pre></div>
+<p>O arquivo foi editado com essas informações:</p>
+<div class="highlight"><pre><span></span><code>server<span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>listen<span class="w"> </span><span class="m">80</span><span class="p">;</span>
+<span class="w">    </span>listen<span class="w"> </span><span class="m">8080</span><span class="p">;</span>
+<span class="w">    </span>listen<span class="w"> </span><span class="o">[</span>::<span class="o">]</span>:80<span class="p">;</span>
+
+<span class="w">    </span>server_name<span class="w"> </span>backend.llw<span class="p">;</span>
+
+<span class="w">    </span>access_log<span class="w"> </span>/var/log/nginx/frontend_access.log<span class="p">;</span>
+<span class="w">    </span>error_log<span class="w"> </span>/var/log/nginx/frontend_error.log<span class="p">;</span>
+
+<span class="w">    </span>location<span class="w"> </span>/<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span>root<span class="w"> </span>/opt/frontend<span class="p">;</span>
+<span class="w">        </span>index<span class="w"> </span>index.html<span class="p">;</span>
+<span class="w">        </span>try_files<span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri</span>/<span class="w"> </span>/index.html<span class="p">;</span>
+<span class="w">    </span><span class="o">}</span>
+
+<span class="w">    </span>location<span class="w"> </span>/api/<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span>proxy_pass<span class="w"> </span>http://backend.llw:8080<span class="p">;</span>
+<span class="w">        </span>proxy_http_version<span class="w"> </span><span class="m">1</span>.1<span class="p">;</span>
+<span class="w">        </span>proxy_set_header<span class="w"> </span>Host<span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<span class="w">        </span>proxy_set_header<span class="w"> </span>X-Real-IP<span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
+<span class="w">        </span>proxy_set_header<span class="w"> </span>X-Forwarded-For<span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<span class="w">        </span>proxy_set_header<span class="w"> </span>X-Forwarded-Proto<span class="w"> </span><span class="nv">$scheme</span><span class="p">;</span>
+<span class="w">        </span>proxy_pass_request_headers<span class="w"> </span>on<span class="p">;</span>
+<span class="w">        </span>proxy_pass_request_body<span class="w"> </span>on<span class="p">;</span>
+<span class="w">    </span><span class="o">}</span>
+
+<span class="w">    </span><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/404.html<span class="w"> </span><span class="o">{</span>
+<span class="w">        </span>internal<span class="p">;</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
 <h2 id="2-firewall">2. Firewall<a class="headerlink" href="#2-firewall" title="Permanent link">&para;</a></h2>
 <p>Utilizamos iptables para bloquear todos o acesso às portas inutilizadas.</p>
 <p>Instalamos iptables em todas as VMs: </p>
