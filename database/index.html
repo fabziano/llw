@@ -639,11 +639,10 @@
 <hr />
 <h4 id="11-configuracao-da-interface-em-modo-bridge">1.1 Configuração da Interface em modo bridge<a class="headerlink" href="#11-configuracao-da-interface-em-modo-bridge" title="Permanent link">&para;</a></h4>
 <p>Para cada VM que clonamos foi necessário atribuir um IP próprio editando o arquivo de interfaces:</p>
-<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/network/interfaces
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/network/interfaces
 </code></pre></div>
-
 <p>Como a nossa interface em modo bridge é o adaptador 2, ela fica identificada como eth1:</p>
-<div class="codehilite"><pre><span></span><code>auto<span class="w"> </span>lo
+<div class="highlight"><pre><span></span><code>auto<span class="w"> </span>lo
 iface<span class="w"> </span>lo<span class="w"> </span>inet<span class="w"> </span>loopback
 
 auto<span class="w"> </span>eth0
@@ -654,110 +653,89 @@ iface<span class="w"> </span>eth1<span class="w"> </span>inet<span class="w"> </
 <span class="w">    </span>address<span class="w"> </span><span class="m">192</span>.168.0.2
 <span class="w">    </span>netmask<span class="w"> </span><span class="m">255</span>.255.255.0
 </code></pre></div>
-
 <p>Após salvar o arquivo reiniciamos o serviço:</p>
-<div class="codehilite"><pre><span></span><code>rc-service<span class="w"> </span>networking<span class="w"> </span>restart
+<div class="highlight"><pre><span></span><code>rc-service<span class="w"> </span>networking<span class="w"> </span>restart
 </code></pre></div>
-
 <hr />
 <h3 id="2-alterando-o-hostname">2. Alterando o Hostname<a class="headerlink" href="#2-alterando-o-hostname" title="Permanent link">&para;</a></h3>
 <p>Para diferenciar a VM Database das demais, alteramos seu hostname para <strong>database</strong>, editando o arquivo de hostname:</p>
-<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/hostname
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/hostname
 </code></pre></div>
-
 <blockquote>
 <p>As alterações no hostname só têm efeito após um reboot:</p>
 </blockquote>
 <hr />
 <h3 id="3-configurando-resolucao-de-nome-para-os-ips">3. Configurando resolução de nome para  os IPs<a class="headerlink" href="#3-configurando-resolucao-de-nome-para-os-ips" title="Permanent link">&para;</a></h3>
 <p>Para nosso projeto utilizamos o nome <code>backend.llw</code> para o backend e é através dele que a VM Database vai saber quem está conectado a ela, por isso editamos o arquivo <code>hosts</code>:</p>
-<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/hosts
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/hosts
 </code></pre></div>
-
 <p>E informamos o IP do backend com seu respectivo nome:</p>
-<div class="codehilite"><pre><span></span><code><span class="s2">&quot;192.168.0.1&quot;</span><span class="w"> </span>backend.llw
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;192.168.0.1&quot;</span><span class="w"> </span>backend.llw
 </code></pre></div>
-
 <hr />
 <h3 id="4-instalando-mariadb">4. Instalando MariaDB<a class="headerlink" href="#4-instalando-mariadb" title="Permanent link">&para;</a></h3>
 <p>Instalamos o <strong>MariaDB</strong> em conjunto com o <strong>mysql-client</strong>:</p>
-<div class="codehilite"><pre><span></span><code>apk<span class="w"> </span>add<span class="w"> </span>mariadb<span class="w"> </span>mysql-client
+<div class="highlight"><pre><span></span><code>apk<span class="w"> </span>add<span class="w"> </span>mariadb<span class="w"> </span>mysql-client
 </code></pre></div>
-
 <blockquote>
 <p>MariaDB é nosso <strong>SGBD</strong>, mas utilizamos o mysql-client para acessar a base de dados para manutenção e configuração de usuários e permissões.</p>
 </blockquote>
 <p>Rodamos o script de setup do MariaDB:</p>
-<div class="codehilite"><pre><span></span><code>/etc/init.d/mariadb<span class="w"> </span>setup
+<div class="highlight"><pre><span></span><code>/etc/init.d/mariadb<span class="w"> </span>setup
 </code></pre></div>
-
 <p>E editamos o arquivo de configuração:</p>
-<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/my.cnf.d/mariadb-server.cnf
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/my.cnf.d/mariadb-server.cnf
 </code></pre></div>
-
 <p>Modificamos o arquivo de configurações do mysql:</p>
-<div class="codehilite"><pre><span></span><code><span class="o">[</span>mysqld<span class="o">]</span>
+<div class="highlight"><pre><span></span><code><span class="o">[</span>mysqld<span class="o">]</span>
 <span class="c1">#skip-networking</span>
 
 bind-address<span class="o">=</span>database.llw
 <span class="nv">port</span><span class="o">=</span><span class="m">3306</span>
 </code></pre></div>
-
 <p>Iniciamos o serviço e configuramos para que inicie automaticamente:</p>
-<div class="codehilite"><pre><span></span><code>rc-service<span class="w"> </span>mariadb<span class="w"> </span>start
+<div class="highlight"><pre><span></span><code>rc-service<span class="w"> </span>mariadb<span class="w"> </span>start
 rc-update<span class="w"> </span>add<span class="w"> </span>mariadb
 </code></pre></div>
-
 <blockquote>
 <p>Com esse passo o MariaDB vai rodar sempre que ligarmos VM, e vai receber conexões de todas as interfaces de rede pela porta 3306 que tiverem permissão.</p>
 </blockquote>
 <hr />
 <h3 id="4-configurando-o-ambiente-do-banco-de-dados">4. Configurando o ambiente do Banco de Dados<a class="headerlink" href="#4-configurando-o-ambiente-do-banco-de-dados" title="Permanent link">&para;</a></h3>
 <p>Entramos no mysql-client utilizando o usuário root, sem senha no primeiro acesso:</p>
-<div class="codehilite"><pre><span></span><code>mysql<span class="w"> </span>-u<span class="w"> </span>root
+<div class="highlight"><pre><span></span><code>mysql<span class="w"> </span>-u<span class="w"> </span>root
 </code></pre></div>
-
 <p>Escolhemos uma senha forte para o root:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;SenhaForte&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">ALTER</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;SenhaForte&#39;</span><span class="p">;</span>
 </code></pre></div>
-
 <blockquote>
 <p>Nossa senha do root não será informada na documentação.</p>
 </blockquote>
 <p>Criamos a base de dados utilizada por nossa API:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">create</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="n">adv</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">create</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="n">adv</span><span class="p">;</span>
 </code></pre></div>
-
 <p>Em seguida criamos o user mysql que será utilizado pela API para acessar a database:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;llw&#39;</span><span class="o">@</span><span class="s1">&#39;backend.llw&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;PePeFaFe!05&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;llw&#39;</span><span class="o">@</span><span class="s1">&#39;backend.llw&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;PePeFaFe!05&#39;</span><span class="p">;</span>
 <span class="k">GRANT</span><span class="w"> </span><span class="k">SELECT</span><span class="p">,</span><span class="k">INSERT</span><span class="p">,</span><span class="k">UPDATE</span><span class="p">,</span><span class="k">DELETE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">adv</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;llw&#39;</span><span class="o">@</span><span class="s1">&#39;backend.llw&#39;</span><span class="p">;</span>
 </code></pre></div>
-
 <blockquote>
 <p>Na primeira execução foi dada a permissão de CREATE, porém após a criação das tabelas removemos a permissão com REVOKE. </p>
 </blockquote>
 <hr />
 <h3 id="6-configurando-o-script-de-backup">6. Configurando o script de backup<a class="headerlink" href="#6-configurando-o-script-de-backup" title="Permanent link">&para;</a></h3>
 <p>Criamos o arquivo em <code>/root/</code>:</p>
-<div class="codehilite"><pre><span></span><code>vi<span class="w"> </span>/root/backup_database
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/root/backup_database
 </code></pre></div>
-
 <p>E preenchemos da seguinte forma: </p>
-<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/ash</span>
-
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/ash</span>
 <span class="nv">timestamp</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%Y-%m-%d_%H-%M-%S&#39;</span><span class="k">)</span>
-
 <span class="nv">temp_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/backup_database_</span><span class="nv">$timestamp</span><span class="s2">&quot;</span>
-
 <span class="nv">dump_file</span><span class="o">=</span><span class="s2">&quot;/tmp/lionlaw_</span><span class="nv">$timestamp</span><span class="s2">.sql&quot;</span>
 <span class="nv">ssh_key</span><span class="o">=</span><span class="s2">&quot;/root/.ssh/authorized_keys&quot;</span>
-
 <span class="nv">tar_file</span><span class="o">=</span><span class="s2">&quot;/tmp/backup_database_</span><span class="nv">$timestamp</span><span class="s2">.tar.gz&quot;</span>
-
 <span class="nv">remote_user</span><span class="o">=</span><span class="s2">&quot;backup_sys&quot;</span>
 <span class="nv">remote_host</span><span class="o">=</span><span class="s2">&quot;frontend.llw&quot;</span>
 <span class="nv">remote_path</span><span class="o">=</span><span class="s2">&quot;/opt/backup/database&quot;</span>
-
 <span class="nv">db_user</span><span class="o">=</span><span class="s2">&quot;USER&quot;</span>
 <span class="nv">db_pass</span><span class="o">=</span><span class="s2">&quot;SENHA&quot;</span>
 <span class="nv">db_name</span><span class="o">=</span><span class="s2">&quot;adv&quot;</span>
@@ -785,35 +763,28 @@ scp<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$tar_f
 rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$temp_dir</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$dump_file</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$tar_file</span><span class="s2">&quot;</span>
 <span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
 </code></pre></div>
-
 <p>E por fim tornamos o arquivo executável:</p>
-<div class="codehilite"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>/root/backup_database
+<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>/root/backup_database
 </code></pre></div>
-
 <h4 id="61-resolvendo-o-nome-do-ip-de-backup">6.1 Resolvendo o nome do IP de backup<a class="headerlink" href="#61-resolvendo-o-nome-do-ip-de-backup" title="Permanent link">&para;</a></h4>
 <p>Escolhemos o nome <code>frontend.llw</code>para a <strong>VM Frontend</strong> e para o script funcionar corretamente foi necessário resolver o nome do IP de destino:</p>
 <p>editamos o arquivo <code>hosts</code>:</p>
-<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/hosts
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/hosts
 </code></pre></div>
-
 <p>E informamos o IP do frontend com seu respectivo nome:</p>
-<div class="codehilite"><pre><span></span><code><span class="s2">&quot;192.168.0.3&quot;</span><span class="w"> </span>frontend.llw
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;192.168.0.3&quot;</span><span class="w"> </span>frontend.llw
 </code></pre></div>
-
 <hr />
 <h2 id="7-agendamento-de-script-backup-com-crontab">7. Agendamento de Script Backup com Crontab<a class="headerlink" href="#7-agendamento-de-script-backup-com-crontab" title="Permanent link">&para;</a></h2>
 <p>Editamos o arquivo de agendamento padrão do Linux Alpine:</p>
-<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/crontabs/root
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/crontabs/root
 </code></pre></div>
-
 <p>Adicionamos essa linha ao final do arquivo para rodar o script de backup automaticamente a cada 6 horas:</p>
-<div class="codehilite"><pre><span></span><code><span class="m">0</span><span class="w"> </span>*/6<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/root/backup_database<span class="w"> </span><span class="m">1</span>&gt;&gt;<span class="w"> </span>/var/log/backup_database.log<span class="w"> </span><span class="m">2</span>&gt;&gt;<span class="w"> </span>/var/log/backup_database_error.log
+<div class="highlight"><pre><span></span><code><span class="m">0</span><span class="w"> </span>*/6<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/root/backup_database<span class="w"> </span><span class="m">1</span>&gt;&gt;<span class="w"> </span>/var/log/backup_database.log<span class="w"> </span><span class="m">2</span>&gt;&gt;<span class="w"> </span>/var/log/backup_database_error.log
 </code></pre></div>
-
-<p>Utilizamos o comando <code>cat</code> em <code>messages</code> depois do tempo proposto </p>
-<div class="codehilite"><pre><span></span><code>cat<span class="w"> </span>/var/log/messages<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>backup<span class="w"> </span>
+<p>Utilizamos o comando <code>cat</code> em <code>messages</code> depois do tempo proposto: </p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/log/messages<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>backup<span class="w"> </span>
 </code></pre></div>
-
 <p><img alt="backupdatabase" src="../images/backupdatabase.png" /></p>
 <blockquote>
 <p>Resultado do log do Cron</p>

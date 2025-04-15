@@ -657,11 +657,10 @@
 <hr />
 <h4 id="11-configuracao-da-interface-em-modo-bridge">1.1 Configuração da Interface em modo bridge<a class="headerlink" href="#11-configuracao-da-interface-em-modo-bridge" title="Permanent link">&para;</a></h4>
 <p>Para cada VM que clonamos foi necessário atribuir um IP próprio editando o arquivo de interfaces:</p>
-<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/network/interfaces
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/network/interfaces
 </code></pre></div>
-
 <p>Como a nossa interface em modo bridge é o adaptador 2, ela fica identificada como eth1:</p>
-<div class="codehilite"><pre><span></span><code>auto<span class="w"> </span>lo
+<div class="highlight"><pre><span></span><code>auto<span class="w"> </span>lo
 iface<span class="w"> </span>lo<span class="w"> </span>inet<span class="w"> </span>loopback
 
 auto<span class="w"> </span>eth0
@@ -672,69 +671,59 @@ iface<span class="w"> </span>eth1<span class="w"> </span>inet<span class="w"> </
 <span class="w">    </span>address<span class="w"> </span><span class="m">192</span>.168.0.1
 <span class="w">    </span>netmask<span class="w"> </span><span class="m">255</span>.255.255.0
 </code></pre></div>
-
 <p>Após salvar o arquivo reiniciamos o serviço:</p>
-<div class="codehilite"><pre><span></span><code>rc-service<span class="w"> </span>networking<span class="w"> </span>restart
+<div class="highlight"><pre><span></span><code>rc-service<span class="w"> </span>networking<span class="w"> </span>restart
 </code></pre></div>
-
 <hr />
 <h3 id="2-alterando-o-hostname">2. Alterando o Hostname<a class="headerlink" href="#2-alterando-o-hostname" title="Permanent link">&para;</a></h3>
 <p>Para diferenciar a VM Frontend das demais, alteramos seu hostname para <strong>frontend</strong>, editando o arquivo de hostname:</p>
-<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/hostname
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/hostname
 </code></pre></div>
-
 <blockquote>
 <p>As alterações no hostname só têm efeito após um reboot:</p>
 </blockquote>
 <hr />
 <h3 id="3-configurando-resolucao-de-nome-para-os-ips">3. Configurando resolução de nome para  os IPs<a class="headerlink" href="#3-configurando-resolucao-de-nome-para-os-ips" title="Permanent link">&para;</a></h3>
 <p>Para nosso projeto utilizamos o nome <code>database.llw</code> para o banco de dados e é através dele que o backend se comunica com a VM de database, então foi necessário alterar o arquivo <code>hosts</code>:</p>
-<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/hosts
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/hosts
 </code></pre></div>
-
 <p>E informamos o IP da database com seu respectivo nome:</p>
-<div class="codehilite"><pre><span></span><code><span class="s2">&quot;192.168.0.2&quot;</span><span class="w"> </span>database.llw
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;192.168.0.2&quot;</span><span class="w"> </span>database.llw
 </code></pre></div>
-
 <hr />
 <h3 id="3-instalando-o-java-17">3. Instalando o Java 17<a class="headerlink" href="#3-instalando-o-java-17" title="Permanent link">&para;</a></h3>
-<p>Instalamos o Java 17 com o comando :</p>
-<div class="codehilite"><pre><span></span><code>apk<span class="w"> </span>add<span class="w"> </span>openjdk17
+<p>Instalamos o Java 17 com o comando:</p>
+<div class="highlight"><pre><span></span><code>apk<span class="w"> </span>add<span class="w"> </span>openjdk17
 </code></pre></div>
-
 <hr />
 <h3 id="4-buildando-o-projeto">4. Buildando o Projeto<a class="headerlink" href="#4-buildando-o-projeto" title="Permanent link">&para;</a></h3>
 <p>No Windows antes de fazer a build do backend, foi necessário configurar corretamente o endereço IP da VM Database junto com o usuário e senha do banco de dados.</p>
 <p>Editamos o arquivo <strong>application.properties</strong>:</p>
-<div class="codehilite"><pre><span></span><code><span class="na">spring.datasource.url</span><span class="o">=</span><span class="s">jdbc:mysql://database.llw:3306/adv</span>
-<span class="na">spring.datasource.username</span><span class="o">=</span><span class="s">advocacia</span>
-<span class="na">spring.datasource.password</span><span class="o">=</span><span class="s">PePeFaFe!05</span>
+<div class="highlight"><pre><span></span><code><span class="nx">spring</span><span class="p">.</span><span class="nx">datasource</span><span class="p">.</span><span class="nx">url</span><span class="o">=</span><span class="nx">jdbc</span><span class="o">:</span><span class="kt">mysql</span><span class="o">:</span><span class="c1">//database.llw:3306/adv</span>
+<span class="nx">spring</span><span class="p">.</span><span class="nx">datasource</span><span class="p">.</span><span class="nx">username</span><span class="o">=</span><span class="nx">advocacia</span>
+<span class="nx">spring</span><span class="p">.</span><span class="nx">datasource</span><span class="p">.</span><span class="nx">password</span><span class="o">=</span><span class="nx">PePeFaFe</span><span class="o">!</span><span class="mo">05</span>
 </code></pre></div>
-
 <p>Depois enviamos o arquivo jar por scp para o diretório <code>/opt/backend</code> que criamos na VM:</p>
-<div class="codehilite"><pre><span></span><code>scp<span class="w"> </span>backend.jar<span class="w"> </span>root@192.168.105:/opt/backend/
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>backend.jar<span class="w"> </span>root@192.168.105:/opt/backend/
 </code></pre></div>
-
 <p>Após esse passo executamos o comando:</p>
-<div class="codehilite"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>backend.jar
+<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>backend.jar
 </code></pre></div>
-
 <p><img alt="spring" src="../images/spring.png" /></p>
-<p>Como tudo foi configurado corretamente, a aplicação iniciou.</p>
 <p><img alt="backend" src="../images/backend.png" /></p>
+<blockquote>
+<p>Como tudo foi configurado corretamente, a aplicação iniciou.</p>
+</blockquote>
 <hr />
 <h3 id="5-criando-o-script-para-rodar-a-api-automaticamente">5. Criando o script para rodar a API automaticamente<a class="headerlink" href="#5-criando-o-script-para-rodar-a-api-automaticamente" title="Permanent link">&para;</a></h3>
 <p>Adicionamos um novo usuário chamado <code>backend</code> que é o responsável por rodar a aplicação e definimos a home dele em <code>/opt/backend</code>:</p>
-<div class="codehilite"><pre><span></span><code>adduser<span class="w"> </span>-h<span class="w"> </span>/opt/backend<span class="w"> </span>backend
+<div class="highlight"><pre><span></span><code>adduser<span class="w"> </span>-h<span class="w"> </span>/opt/backend<span class="w"> </span>backend
 </code></pre></div>
-
 <p>Em seguida dentro do diretório <code>/etc/init.d /</code> abrimos um novo arquivo em branco chamado backend:</p>
-<div class="codehilite"><pre><span></span><code>vim<span class="w">  </span>/etc/init.d/backend
+<div class="highlight"><pre><span></span><code>vim<span class="w">  </span>/etc/init.d/backend
 </code></pre></div>
-
 <p>Preenchemos ele com o seguinte script:</p>
-<div class="codehilite"><pre><span></span><code><span class="ch">#!/sbin/openrc-run</span>
-
+<div class="highlight"><pre><span></span><code><span class="ch">#!/sbin/openrc-run</span>
 <span class="nv">description</span><span class="o">=</span><span class="s2">&quot;Lionlaw&quot;</span>
 <span class="nv">java</span><span class="o">=</span><span class="s2">&quot;/usr/bin/java&quot;</span>
 <span class="nv">arquivo</span><span class="o">=</span><span class="s2">&quot;/opt/backend/backend.jar&quot;</span>
@@ -746,11 +735,9 @@ depend<span class="o">()</span><span class="w"> </span><span class="o">{</span>
 <span class="w">    </span>need<span class="w"> </span>net
 <span class="w">    </span>after<span class="w"> </span><span class="nb">local</span>
 <span class="o">}</span>
-
 start_pre<span class="o">()</span><span class="w"> </span><span class="o">{</span>
 <span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Iniciando Spring...&quot;</span>
 <span class="o">}</span>
-
 start<span class="o">()</span><span class="w"> </span><span class="o">{</span>
 <span class="w">    </span><span class="nb">cd</span><span class="w"> </span>/opt/backend<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
 <span class="w">    </span>su<span class="w"> </span>-s<span class="w"> </span>/bin/sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;nohup </span><span class="nv">$java</span><span class="s2"> -jar </span><span class="nv">$arquivo</span><span class="s2"> &gt; </span><span class="nv">$output_log</span><span class="s2"> 2&gt;&amp;1 &amp; echo \$! &gt; </span><span class="nv">$pidfile</span><span class="s2">&quot;</span><span class="w"> </span><span class="nv">$usuario</span>
@@ -765,7 +752,6 @@ start<span class="o">()</span><span class="w"> </span><span class="o">{</span>
 <span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Falha ao iniciar LionLaw.&quot;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="m">1</span>
 <span class="o">}</span>
-
 stop<span class="o">()</span><span class="w"> </span><span class="o">{</span>
 <span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Parando serviço...&quot;</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$pidfile</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
@@ -776,27 +762,22 @@ stop<span class="o">()</span><span class="w"> </span><span class="o">{</span>
 <span class="w">    </span><span class="k">fi</span>
 <span class="o">}</span>
 </code></pre></div>
-
 <p>Tornamos o arquivo executável:</p>
-<div class="codehilite"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>/etc/init.d/backend
+<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>/etc/init.d/backend
 </code></pre></div>
-
-<p>Iniciamos a aplicação e configuramos para que inicie automaticamente :</p>
-<div class="codehilite"><pre><span></span><code>service<span class="w"> </span>backend<span class="w"> </span>start
+<p>Iniciamos a aplicação e configuramos para que inicie automaticamente:</p>
+<div class="highlight"><pre><span></span><code>service<span class="w"> </span>backend<span class="w"> </span>start
 rc-update<span class="w"> </span>add<span class="w"> </span>backend<span class="w"> </span>
 </code></pre></div>
-
-<p>Com essa configuração a aplicação executa automaticamente ao ligar a máquina virtual</p>
-<p><img alt="backendscript" src="../images/backendscript.png" /></p>
+<p>Com essa configuração a aplicação executa automaticamente ao ligar a máquina virtual
+<img alt="backendscript" src="../images/backendscript.png" /></p>
 <hr />
 <h3 id="6-configurando-o-script-de-backup">6. Configurando o script de backup<a class="headerlink" href="#6-configurando-o-script-de-backup" title="Permanent link">&para;</a></h3>
 <p>Criamos o arquivo em <code>/root/</code>:</p>
-<div class="codehilite"><pre><span></span><code>vi<span class="w"> </span>/root/backup_backend
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/root/backup_backend
 </code></pre></div>
-
 <p>E preenchemos da seguinte forma: </p>
-<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/ash</span>
-
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/ash</span>
 <span class="nv">timestamp</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%Y-%m-%d_%H-%M-%S&#39;</span><span class="k">)</span>
 <span class="nv">temp_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/backup_backend_</span><span class="nv">$timestamp</span><span class="s2">&quot;</span>
 <span class="nv">init_script</span><span class="o">=</span><span class="s2">&quot;/etc/init.d/backend&quot;</span>
@@ -827,31 +808,24 @@ scp<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$tar_f
 rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$temp_dir</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$tar_file</span><span class="s2">&quot;</span>
 <span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
 </code></pre></div>
-
 <h4 id="61-resolvendo-o-nome-do-ip-de-backup">6.1 Resolvendo o nome do IP de backup<a class="headerlink" href="#61-resolvendo-o-nome-do-ip-de-backup" title="Permanent link">&para;</a></h4>
-<p>Escolhemos o nome <code>frontend.llw</code>para a <strong>VM Frontend</strong> e para o script funcionar corretamente foi necessário resolver o nome do IP de destino:</p>
-<p>editamos o arquivo <code>hosts</code>:</p>
-<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/hosts
+<p>Escolhemos o nome <code>frontend.llw</code>para a <strong>VM Frontend</strong> e para o script funcionar corretamente foi necessário resolver o nome do IP de destino editamos o arquivo <code>hosts</code>:</p>
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/hosts
 </code></pre></div>
-
 <p>E informamos o IP do frontend com seu respectivo nome:</p>
-<div class="codehilite"><pre><span></span><code><span class="s2">&quot;192.168.0.3&quot;</span><span class="w"> </span>frontend.llw
+<div class="highlight"><pre><span></span><code><span class="s2">&quot;192.168.0.3&quot;</span><span class="w"> </span>frontend.llw
 </code></pre></div>
-
 <hr />
 <h2 id="7-agendamento-de-script-backup-com-crontab">7. Agendamento de Script Backup com Crontab<a class="headerlink" href="#7-agendamento-de-script-backup-com-crontab" title="Permanent link">&para;</a></h2>
 <p>Editamos o arquivo de agendamento padrão do Linux Alpine:</p>
-<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/crontabs/root
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/crontabs/root
 </code></pre></div>
-
 <p>Adicionamos essa linha ao final do arquivo para rodar o script de backup automaticamente a cada 3 horas:</p>
-<div class="codehilite"><pre><span></span><code><span class="m">0</span><span class="w"> </span>*/3<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/root/backup_backend<span class="w"> </span><span class="m">1</span>&gt;&gt;<span class="w"> </span>/var/log/backup_backend.log<span class="w"> </span><span class="m">2</span>&gt;&gt;<span class="w"> </span>/var/log/backup_backend_error.log
+<div class="highlight"><pre><span></span><code><span class="m">0</span><span class="w"> </span>*/3<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/root/backup_backend<span class="w"> </span><span class="m">1</span>&gt;&gt;<span class="w"> </span>/var/log/backup_backend.log<span class="w"> </span><span class="m">2</span>&gt;&gt;<span class="w"> </span>/var/log/backup_backend_error.log
 </code></pre></div>
-
-<p>Utilizamos o comando <code>cat</code> em <code>messages</code> depois do tempo proposto </p>
-<div class="codehilite"><pre><span></span><code>cat<span class="w"> </span>/var/log/messages<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>backup<span class="w"> </span>
+<p>Utilizamos o comando <code>cat</code> em <code>messages</code> depois do tempo proposto: </p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/log/messages<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>backup<span class="w"> </span>
 </code></pre></div>
-
 <p><img alt="backupbackend" src="../images/backupbackend.png" /></p>
 <blockquote>
 <p>Resultado do log do Cron</p>

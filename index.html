@@ -815,9 +815,8 @@
 <li><strong>Senha</strong>: <em>(vazio)</em></li>
 </ul>
 <p>E o seguinte comando para iniciar a instalação do <strong>Alpine Linux</strong>:</p>
-<div class="codehilite"><pre><span></span><code>setup-alpine
+<div class="highlight"><pre><span></span><code>setup-alpine
 </code></pre></div>
-
 <hr />
 <h2 id="5-configuracoes-do-setup-do-alpine-linux">5. Configurações do Setup do Alpine Linux<a class="headerlink" href="#5-configuracoes-do-setup-do-alpine-linux" title="Permanent link">&para;</a></h2>
 <p>Essas foram nossas escolhas para configurar a VM base, mas elas podem ser alteradas mais tarde dependendo da necessidade de cada tipo de VM.</p>
@@ -843,9 +842,8 @@
 <hr />
 <h2 id="6-finalizando-a-instalacao">6. Finalizando a Instalação<a class="headerlink" href="#6-finalizando-a-instalacao" title="Permanent link">&para;</a></h2>
 <p>Após concluir o processo de instalação, desligamos a máquina virtual:</p>
-<div class="codehilite"><pre><span></span><code>poweroff
+<div class="highlight"><pre><span></span><code>poweroff
 </code></pre></div>
-
 <blockquote>
 <p>Removemos o dispositivo que contém ISO do Alpine, pois o sistema já foi instalado no disco rígido.</p>
 </blockquote>
@@ -853,95 +851,79 @@
 <h2 id="7-gerenciamento-de-pacotes">7. Gerenciamento de Pacotes<a class="headerlink" href="#7-gerenciamento-de-pacotes" title="Permanent link">&para;</a></h2>
 <h3 id="71-habilitando-repositorios-da-comunidade">7.1 Habilitando Repositórios da Comunidade<a class="headerlink" href="#71-habilitando-repositorios-da-comunidade" title="Permanent link">&para;</a></h3>
 <p>Abrimos o arquivo <strong>repositories</strong> em modo de edição:</p>
-<div class="codehilite"><pre><span></span><code>vi<span class="w"> </span>/etc/apk/repositories
+<div class="highlight"><pre><span></span><code>vi<span class="w"> </span>/etc/apk/repositories
 </code></pre></div>
-
 <p>Removemos o <code>#</code> na frente do link para habilitar o repositório <code>community</code>, que possui pacotes utilizados em nosso projeto.</p>
-<div class="codehilite"><pre><span></span><code>http://dl-cdn.alpinelinux.org/alpine/v3.19/community
+<div class="highlight"><pre><span></span><code>http://dl-cdn.alpinelinux.org/alpine/v3.19/community
 </code></pre></div>
-
 <h3 id="72-atualizando-o-sistema">7.2 Atualizando o Sistema<a class="headerlink" href="#72-atualizando-o-sistema" title="Permanent link">&para;</a></h3>
 <p>Executamos os comandos para atualização dos pacotes: </p>
 <p>O primeiro lista os pacotes disponíveis nos repositórios:</p>
-<div class="codehilite"><pre><span></span><code>apk<span class="w"> </span>update
+<div class="highlight"><pre><span></span><code>apk<span class="w"> </span>update
 </code></pre></div>
-
 <p>O segundo atualiza os pacotes instalados em caso de existirem atualizações:</p>
-<div class="codehilite"><pre><span></span><code>apk<span class="w"> </span>upgrade
+<div class="highlight"><pre><span></span><code>apk<span class="w"> </span>upgrade
 </code></pre></div>
-
 <h3 id="73-instalando-um-editor-de-texto-alternativo">7.3 Instalando um Editor de Texto Alternativo<a class="headerlink" href="#73-instalando-um-editor-de-texto-alternativo" title="Permanent link">&para;</a></h3>
 <p>Parte do nosso grupo utilizou o editor de texto nano e parte utilizou o vim, para essa documentação os exemplos serão com vim: </p>
-<div class="codehilite"><pre><span></span><code>apk<span class="w"> </span>add<span class="w"> </span>vim
+<div class="highlight"><pre><span></span><code>apk<span class="w"> </span>add<span class="w"> </span>vim
 </code></pre></div>
-
 <hr />
 <h2 id="8-melhorando-a-integracao-com-o-host">8. Melhorando a integração com o host<a class="headerlink" href="#8-melhorando-a-integracao-com-o-host" title="Permanent link">&para;</a></h2>
 <p>Instalamos o  <strong>VirtualBox Guest Additions</strong> para melhorar a integração com o host:</p>
-<div class="codehilite"><pre><span></span><code>apk<span class="w"> </span>add<span class="w"> </span>virtualbox-guest-additions
+<div class="highlight"><pre><span></span><code>apk<span class="w"> </span>add<span class="w"> </span>virtualbox-guest-additions
 </code></pre></div>
-
 <p>Em seguida iniciamos o serviço e configuramos para que inicie automaticamente:</p>
-<div class="codehilite"><pre><span></span><code>rc-service<span class="w"> </span>virtualbox-guest-additions<span class="w"> </span>start
+<div class="highlight"><pre><span></span><code>rc-service<span class="w"> </span>virtualbox-guest-additions<span class="w"> </span>start
 rc-update<span class="w"> </span>add<span class="w"> </span>virtualbox-guest-additions
 </code></pre></div>
-
 <hr />
 <h2 id="9-configurando-acesso-ssh">9. Configurando Acesso SSH<a class="headerlink" href="#9-configurando-acesso-ssh" title="Permanent link">&para;</a></h2>
 <p>Editamos o arquivo de configuração do SSH para permitir o acesso por senha temporariamente:</p>
-<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/ssh/sshd_config
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/ssh/sshd_config
 </code></pre></div>
-
 <p>Alteramos duas linhas para permitir conexão ssh com root e para permitir login com senha:</p>
-<div class="codehilite"><pre><span></span><code>PermitRootLogin yes
-PasswordAuthentication yes
+<div class="highlight"><pre><span></span><code>PermitRootLogin<span class="w"> </span>yes
+PasswordAuthentication<span class="w"> </span>yes
 </code></pre></div>
-
 <p>E reiniciamos o serviço para confirmar as alterações:</p>
-<div class="codehilite"><pre><span></span><code>rc-service<span class="w"> </span>sshd<span class="w"> </span>restart
+<div class="highlight"><pre><span></span><code>rc-service<span class="w"> </span>sshd<span class="w"> </span>restart
 </code></pre></div>
-
 <hr />
 <h2 id="10-acesso-via-chave-ssh">10. Acesso via Chave SSH<a class="headerlink" href="#10-acesso-via-chave-ssh" title="Permanent link">&para;</a></h2>
 <h3 id="101-gerando-chave-no-host">10.1 Gerando Chave no Host<a class="headerlink" href="#101-gerando-chave-no-host" title="Permanent link">&para;</a></h3>
 <p>No powershell do <strong>Windows</strong> geramos um par de chaves:</p>
-<div class="codehilite"><pre><span></span><code>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>rsa<span class="w"> </span>-b<span class="w"> </span><span class="m">4096</span><span class="w"> </span>-f<span class="w"> </span>id_rsa
+<div class="highlight"><pre><span></span><code><span class="n">ssh-keygen</span> <span class="n">-t</span> <span class="n">rsa</span> <span class="n">-b</span> <span class="n">4096</span> <span class="o">-f</span> <span class="n">id_rsa</span>
 </code></pre></div>
-
 <blockquote>
 <p>No momento de gerar as chaves deixamos o campo de senha vazio.</p>
 </blockquote>
 <hr />
 <h3 id="102-preparando-a-vm-para-receber-a-chave">10.2 Preparando a VM para Receber a Chave<a class="headerlink" href="#102-preparando-a-vm-para-receber-a-chave" title="Permanent link">&para;</a></h3>
 <p>Na <strong>VM</strong> criamos o diretório .ssh:</p>
-<div class="codehilite"><pre><span></span><code>mkdir<span class="w"> </span>/root/.ssh
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>/root/.ssh
 </code></pre></div>
-
 <p>E no <strong>Windows</strong> enviamos a chave pública para a pasta .ssh da <strong>VM</strong> via scp:</p>
-<div class="codehilite"><pre><span></span><code>scp<span class="w"> </span>.ssh/id_rsa.pub<span class="w"> </span>root@192.168.1.108:/root/.ssh/authorized_keys
+<div class="highlight"><pre><span></span><code><span class="n">scp</span> <span class="p">.</span><span class="n">ssh</span><span class="p">/</span><span class="n">id_rsa</span><span class="p">.</span><span class="n">pub</span> <span class="n">root</span><span class="nv">@192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">108</span><span class="p">:/</span><span class="n">root</span><span class="p">/.</span><span class="n">ssh</span><span class="p">/</span><span class="n">authorized_keys</span>
 </code></pre></div>
-
 <p>Ajustamos as permissões do arquivo enviado:</p>
-<div class="codehilite"><pre><span></span><code>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/root/.ssh/authorized_keys
+<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/root/.ssh/authorized_keys
 </code></pre></div>
-
 <p>e em seguida testamos a conexão:</p>
-<div class="codehilite"><pre><span></span><code>ssh<span class="w"> </span>root@192.168.1.108
+<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>root@192.168.1.108
 </code></pre></div>
-
 <hr />
 <h3 id="103-desabilitando-acesso-por-senha">10.3 Desabilitando Acesso por Senha<a class="headerlink" href="#103-desabilitando-acesso-por-senha" title="Permanent link">&para;</a></h3>
 <p>Editamos novamente o <code>sshd_config</code>, dessa vez para impedir o acesso por senha:</p>
-<div class="codehilite"><pre><span></span><code>PasswordAuthentication<span class="w"> </span>no
+<div class="highlight"><pre><span></span><code>PasswordAuthentication<span class="w"> </span>no
 </code></pre></div>
-
 <p>E reiniciamos o serviço para aplicar as configurações:</p>
-<div class="codehilite"><pre><span></span><code>rc-service<span class="w"> </span>sshd<span class="w"> </span>restart
+<div class="highlight"><pre><span></span><code>rc-service<span class="w"> </span>sshd<span class="w"> </span>restart
 </code></pre></div>
-
 <blockquote>
 <p>A partir deste ponto, o acesso à VM será feito <strong>exclusivamente via chave SSH</strong> e sem utilização de senha.</p>
 </blockquote>
+<hr />
 
 
 

@@ -747,11 +747,10 @@
 <hr />
 <h4 id="11-configuracao-da-interface-em-modo-bridge">1.1 Configuração da Interface em modo bridge<a class="headerlink" href="#11-configuracao-da-interface-em-modo-bridge" title="Permanent link">&para;</a></h4>
 <p>Para cada VM que clonamos foi necessário atribuir um IP próprio editando o arquivo de interfaces:</p>
-<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/network/interfaces
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/network/interfaces
 </code></pre></div>
-
 <p>Como a nossa interface em modo bridge é o adaptador 2, ela fica identificada como eth1:</p>
-<div class="codehilite"><pre><span></span><code>auto<span class="w"> </span>lo
+<div class="highlight"><pre><span></span><code>auto<span class="w"> </span>lo
 iface<span class="w"> </span>lo<span class="w"> </span>inet<span class="w"> </span>loopback
 
 auto<span class="w"> </span>eth0
@@ -762,92 +761,76 @@ iface<span class="w"> </span>eth1<span class="w"> </span>inet<span class="w"> </
 <span class="w">    </span>address<span class="w"> </span><span class="m">192</span>.168.0.3
 <span class="w">    </span>netmask<span class="w"> </span><span class="m">255</span>.255.255.0
 </code></pre></div>
-
 <p>Após salvar o arquivo reiniciamos o serviço:</p>
-<div class="codehilite"><pre><span></span><code>rc-service<span class="w"> </span>networking<span class="w"> </span>restart
+<div class="highlight"><pre><span></span><code>rc-service<span class="w"> </span>networking<span class="w"> </span>restart
 </code></pre></div>
-
 <hr />
 <h3 id="2-alterando-o-hostname">2. Alterando o Hostname<a class="headerlink" href="#2-alterando-o-hostname" title="Permanent link">&para;</a></h3>
 <p>Para diferenciar a VM Frontend das demais, alteramos seu hostname para <strong>frontend</strong>, editando o arquivo de hostname:</p>
-<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/hostname
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/hostname
 </code></pre></div>
-
 <blockquote>
 <p>As alterações no hostname só têm efeito após um reboot:</p>
 </blockquote>
 <hr />
 <h3 id="3-configurando-resolucao-de-nome-para-os-ips">3. Configurando resolução de nome para  os IPs<a class="headerlink" href="#3-configurando-resolucao-de-nome-para-os-ips" title="Permanent link">&para;</a></h3>
 <p>Para nosso projeto utilizamos o nome <code>backend.llw</code> para o backend e é através dele que o frontend realiza requisições, então foi necessário alterar o arquivo <code>hosts</code>:</p>
-<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/hosts
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/hosts
 </code></pre></div>
-
 <p>E informamos o IP do backend com seu respectivo nome:</p>
-<div class="codehilite"><pre><span></span><code><span class="s2">&quot;192.168.0.1&quot;</span><span class="w"> </span>backend.llw
+<div class="highlight"><pre><span></span><code>&quot;192.168.0.1&quot; backend.llw
 </code></pre></div>
-
 <hr />
 <h3 id="4-arquivo-hosts-no-windows">4. Arquivo Hosts no Windows<a class="headerlink" href="#4-arquivo-hosts-no-windows" title="Permanent link">&para;</a></h3>
 <p>Editamos o arquivo hosts do Windows com permissões de administrador que fica localizado no seguinte diretório:</p>
-<div class="codehilite"><pre><span></span><code>C:<span class="se">\W</span>indows<span class="se">\S</span>ystem32<span class="se">\d</span>rivers<span class="se">\e</span>tc<span class="se">\h</span>osts
+<div class="highlight"><pre><span></span><code>C:<span class="se">\W</span>indows<span class="se">\S</span>ystem32<span class="se">\d</span>rivers<span class="se">\e</span>tc<span class="se">\h</span>osts
 </code></pre></div>
-
 <p>E informamos o IP do backend com seu respectivo nome assim como fizemos na VM:</p>
-<div class="codehilite"><pre><span></span><code><span class="m">192</span>.168.1.106<span class="w"> </span>backend.llw
+<div class="highlight"><pre><span></span><code><span class="m">192</span>.168.1.106<span class="w"> </span>backend.llw
 </code></pre></div>
-
 <hr />
 <h3 id="5-instalando-o-nginx">5. Instalando o Nginx<a class="headerlink" href="#5-instalando-o-nginx" title="Permanent link">&para;</a></h3>
 <p>Instalamos o servidor web nginx:</p>
-<div class="codehilite"><pre><span></span><code>apk<span class="w"> </span>add<span class="w"> </span>nginx
+<div class="highlight"><pre><span></span><code>apk<span class="w"> </span>add<span class="w"> </span>nginx
 </code></pre></div>
-
 <p>Iniciamos o serviço e configuramos para que inicie automaticamente:</p>
-<div class="codehilite"><pre><span></span><code>rc-service<span class="w"> </span>nginx<span class="w"> </span>start
+<div class="highlight"><pre><span></span><code>rc-service<span class="w"> </span>nginx<span class="w"> </span>start
 rc-update<span class="w"> </span>add<span class="w"> </span>nginx
 </code></pre></div>
-
 <hr />
 <h3 id="6-configurando-o-nginx">6. Configurando o Nginx<a class="headerlink" href="#6-configurando-o-nginx" title="Permanent link">&para;</a></h3>
 <p>Editamos o arquivo de configuração do nginx:</p>
-<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/nginx/http.d/default.conf
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/nginx/http.d/default.conf
 </code></pre></div>
-
 <p>Adicionamos logs de acesso e de erros no arquivo:</p>
-<div class="codehilite"><pre><span></span><code>access_log<span class="w"> </span>/var/log/nginx/frontend_access.log<span class="p">;</span>
+<div class="highlight"><pre><span></span><code>access_log<span class="w"> </span>/var/log/nginx/frontend_access.log<span class="p">;</span>
 error_log<span class="w"> </span>/var/log/nginx/frontend_error.log<span class="p">;</span>
 </code></pre></div>
-
 <p>Indicamos o caminho onde os nossos arquivos estáticos de frontend estão localizados:</p>
-<div class="codehilite"><pre><span></span><code>location<span class="w"> </span>/<span class="w"> </span><span class="o">{</span>
+<div class="highlight"><pre><span></span><code>location<span class="w"> </span>/<span class="w"> </span><span class="o">{</span>
 <span class="w">    </span>root<span class="w"> </span>/opt/frontend<span class="p">;</span>
 <span class="w">    </span>index<span class="w"> </span>index.html<span class="p">;</span>
 <span class="w">    </span>try_files<span class="w"> </span><span class="nv">$uri</span><span class="w"> </span><span class="nv">$uri</span>/<span class="w"> </span>/index.html<span class="p">;</span>
 <span class="o">}</span>
 </code></pre></div>
-
-<p>E recarregamos o nginx para confirmar as alterações</p>
-<div class="codehilite"><pre><span></span><code>nginx<span class="w"> </span>-s<span class="w"> </span>reload
+<p>E recarregamos o nginx para confirmar as alterações:</p>
+<div class="highlight"><pre><span></span><code>nginx<span class="w"> </span>-s<span class="w"> </span>reload
 </code></pre></div>
-
 <hr />
 <h3 id="7-buildando-o-frontend">7. Buildando o Frontend<a class="headerlink" href="#7-buildando-o-frontend" title="Permanent link">&para;</a></h3>
 <p>No Windows antes de fazer o build do frontend, foi necessário configurar corretamente o endereço IP da <strong>API Backend</strong>. </p>
 <p>Editamos o arquivo <code>environment.server.ts</code> do angular:</p>
-<div class="codehilite"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">environment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">environment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="nx">production</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
 <span class="w">  </span><span class="nx">apiUrl</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;http://backend.llw:8080&#39;</span>
 <span class="p">};</span>
 </code></pre></div>
-
 <p>Realizamos o <strong>build</strong> e compactamos os arquivos em um .zip, para só então realizar o envio via scp para a VM no diretório que criamos em <code>/opt/frontend</code></p>
-<div class="codehilite"><pre><span></span><code>scp<span class="w"> </span>site.zip<span class="w"> </span>root@192.168.1.105:/opt/frontend/
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>site.zip<span class="w"> </span>root@192.168.1.105:/opt/frontend/
 </code></pre></div>
-
 <p>Já na VM descompactamos o arquivo usando o comando:</p>
-<div class="codehilite"><pre><span></span><code>unzip<span class="w"> </span>site.zip
+<div class="highlight"><pre><span></span><code>unzip<span class="w"> </span>site.zip
 </code></pre></div>
-
 <blockquote>
 <p>Com esse passo já foi possível visualizar a tela inicial do projeto utilizando o ip da VM Frontend no navegador.</p>
 </blockquote>
@@ -855,80 +838,63 @@ error_log<span class="w"> </span>/var/log/nginx/frontend_error.log<span class="p
 <hr />
 <h3 id="8-preparando-o-ambiente-para-o-backup">8. Preparando o ambiente para o backup<a class="headerlink" href="#8-preparando-o-ambiente-para-o-backup" title="Permanent link">&para;</a></h3>
 <p>Criamos um diretório para armazenar os backups:</p>
-<div class="codehilite"><pre><span></span><code>mkdir<span class="w"> </span>/opt/backup/
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>/opt/backup/
 </code></pre></div>
-
 <p>Em seguida diretórios que separam os backups buscando organizar os arquivos:</p>
-<div class="codehilite"><pre><span></span><code>mkdir<span class="w"> </span>/opt/backup/frontend/
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>/opt/backup/frontend/
 mkdir<span class="w"> </span>/opt/backup/backend/
 mkdir<span class="w"> </span>/opt/backup/database/
 </code></pre></div>
-
 <p>E por fim adicionamos um novo usuário chamado <code>backup_sys</code> definindo a home dele dentro do diretório de backups:</p>
-<div class="codehilite"><pre><span></span><code>adduser<span class="w"> </span>-h<span class="w"> </span>/opt/backup<span class="w"> </span>backup_sys
+<div class="highlight"><pre><span></span><code>adduser<span class="w"> </span>-h<span class="w"> </span>/opt/backup<span class="w"> </span>backup_sys
 </code></pre></div>
-
 <h3 id="9-recebendo-as-chaves-rsa-das-outras-vms">9. Recebendo as chaves RSA das outras VM's:<a class="headerlink" href="#9-recebendo-as-chaves-rsa-das-outras-vms" title="Permanent link">&para;</a></h3>
 <h4 id="91-criando-o-par-de-chaves">9.1 Criando o par de chaves<a class="headerlink" href="#91-criando-o-par-de-chaves" title="Permanent link">&para;</a></h4>
 <p>Na VM <strong>Backend</strong> e <strong>Database</strong> criamos as chaves RSA:</p>
-<div class="codehilite"><pre><span></span><code>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>rsa<span class="w"> </span>-b<span class="w"> </span><span class="m">4096</span><span class="w"> </span>-f<span class="w"> </span>id_rsa
+<div class="highlight"><pre><span></span><code>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>rsa<span class="w"> </span>-b<span class="w"> </span><span class="m">4096</span><span class="w"> </span>-f<span class="w"> </span>id_rsa
 </code></pre></div>
-
 <p>E na VM Frontend editamos o arquivo de configuração do ssh: </p>
-<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/ssh/sshd_config
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/ssh/sshd_config
 </code></pre></div>
-
 <p>Permitimos o login com senha provisoriamente, apenas para conseguirmos enviar a chave pública:</p>
-<div class="codehilite"><pre><span></span><code>PasswordAuthentication<span class="w"> </span>yes
+<div class="highlight"><pre><span></span><code>PasswordAuthentication<span class="w"> </span>yes
 </code></pre></div>
-
 <p>Reiniciamos o serviço para aplicar as configurações:</p>
-<div class="codehilite"><pre><span></span><code>rc-service<span class="w"> </span>sshd<span class="w"> </span>restart
+<div class="highlight"><pre><span></span><code>rc-service<span class="w"> </span>sshd<span class="w"> </span>restart
 </code></pre></div>
-
 <h4 id="92-enviando-a-chave-publica-para-backup_sys">9.2 Enviando a chave pública para backup_sys<a class="headerlink" href="#92-enviando-a-chave-publica-para-backup_sys" title="Permanent link">&para;</a></h4>
 <p>Enviamos a chave pública da VM Backend para o backup_sys modificando o nome para <code>authorized_keys</code>:</p>
-<div class="codehilite"><pre><span></span><code>scp<span class="w"> </span>id_rsa.pub<span class="w"> </span>backup_sys@frontend.llw:/opt/backup/.ssh/authorized_keys
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>id_rsa.pub<span class="w"> </span>backup_sys@frontend.llw:/opt/backup/.ssh/authorized_keys
 </code></pre></div>
-
 <p>Em seguida enviamos a chave pública da VM Database para o backup_sys, mas sem dar um nome diferente para a chave:</p>
-<div class="codehilite"><pre><span></span><code>scp<span class="w"> </span>id_rsa.pub<span class="w"> </span>backup_sys@frontend.llw:/opt/backup/.ssh/
+<div class="highlight"><pre><span></span><code>scp<span class="w"> </span>id_rsa.pub<span class="w"> </span>backup_sys@frontend.llw:/opt/backup/.ssh/
 </code></pre></div>
-
 <p>Na VM <strong>Frontend</strong>, utilizamos o comando cat para adicionar a segunda chave pública no final do arquivo <strong>authorized_keys</strong>:</p>
-<div class="codehilite"><pre><span></span><code>cat<span class="w"> </span>/opt/backup/.ssh/id_rsa.pub<span class="w"> </span>&gt;&gt;<span class="w"> </span>/opt/backup/.ssh/authorized_keys
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/opt/backup/.ssh/id_rsa.pub<span class="w"> </span>&gt;&gt;<span class="w"> </span>/opt/backup/.ssh/authorized_keys
 </code></pre></div>
-
 <p>Apagamos o arquivo id_rsa.pub que ficou sobrando:</p>
-<div class="codehilite"><pre><span></span><code>rm<span class="w"> </span>/opt/backup/.ssh/id_rsa.pub
+<div class="highlight"><pre><span></span><code>rm<span class="w"> </span>/opt/backup/.ssh/id_rsa.pub
 </code></pre></div>
-
 <p>Modificamos as permissões da chave:</p>
-<div class="codehilite"><pre><span></span><code>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/opt/backup/.ssh/authorized_keys
+<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/opt/backup/.ssh/authorized_keys
 </code></pre></div>
-
 <p>E alteramos o proprietário dessa pasta .ssh localizada em <code>/opt/backup</code>:</p>
-<div class="codehilite"><pre><span></span><code>chown<span class="w"> </span>-R<span class="w"> </span>backup_sys:backup_sys<span class="w"> </span>/opt/backup/.ssh
+<div class="highlight"><pre><span></span><code>chown<span class="w"> </span>-R<span class="w"> </span>backup_sys:backup_sys<span class="w"> </span>/opt/backup/.ssh
 </code></pre></div>
-
 <h4 id="93-retirando-a-autenticacao-por-senha">9.3 Retirando a autenticação por senha<a class="headerlink" href="#93-retirando-a-autenticacao-por-senha" title="Permanent link">&para;</a></h4>
 <p>Por fim editamos novamente o <code>sshd_config</code>, dessa vez para impedir o acesso por senha:</p>
-<div class="codehilite"><pre><span></span><code>PasswordAuthentication<span class="w"> </span>no
+<div class="highlight"><pre><span></span><code>PasswordAuthentication<span class="w"> </span>no
 </code></pre></div>
-
 <p>E reiniciamos o serviço para aplicar as configurações uma última vez:</p>
-<div class="codehilite"><pre><span></span><code>rc-service<span class="w"> </span>sshd<span class="w"> </span>restart
+<div class="highlight"><pre><span></span><code>rc-service<span class="w"> </span>sshd<span class="w"> </span>restart
 </code></pre></div>
-
 <hr />
 <h3 id="10-configurando-o-script-de-backup-local">10. Configurando o script de backup local<a class="headerlink" href="#10-configurando-o-script-de-backup-local" title="Permanent link">&para;</a></h3>
 <p>Criamos o arquivo em <code>/root/</code>:</p>
-<div class="codehilite"><pre><span></span><code>vi<span class="w"> </span>/root/backup_front
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/root/backup_front
 </code></pre></div>
-
 <p>E preenchemos da seguinte forma: </p>
-<div class="codehilite"><pre><span></span><code><span class="ch">#!/bin/sh</span>
-
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/sh</span>
 <span class="nv">timestamp</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%Y-%m-%d_%H-%M-%S&#39;</span><span class="k">)</span>
 <span class="nv">temp_dir</span><span class="o">=</span><span class="s2">&quot;/tmp/backup_front_</span><span class="nv">$timestamp</span><span class="s2">&quot;</span>
 <span class="nv">front_dir</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$temp_dir</span><span class="s2">/front&quot;</span>
@@ -953,25 +919,20 @@ tar<span class="w"> </span>-czf<span class="w"> </span><span class="s2">&quot;</
 rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$temp_dir</span><span class="s2">&quot;</span>
 <span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
 </code></pre></div>
-
 <p>E por fim tornamos o arquivo executável:</p>
-<div class="codehilite"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>/root/backup_front
+<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>/root/backup_front
 </code></pre></div>
-
 <hr />
 <h2 id="11-agendamento-de-script-backup-com-crontab">11. Agendamento de Script Backup com Crontab<a class="headerlink" href="#11-agendamento-de-script-backup-com-crontab" title="Permanent link">&para;</a></h2>
 <p>Editamos o arquivo de agendamento padrão do Linux Alpine:</p>
-<div class="codehilite"><pre><span></span><code>vim<span class="w"> </span>/etc/crontabs/root
+<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/crontabs/root
 </code></pre></div>
-
 <p>Adicionamos essa linha ao final do arquivo para rodar o script de backup automaticamente a cada 3 horas:</p>
-<div class="codehilite"><pre><span></span><code><span class="m">0</span><span class="w"> </span>*/3<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/root/backup_front<span class="w"> </span><span class="m">1</span>&gt;&gt;<span class="w"> </span>/var/log/backup_front.log<span class="w"> </span><span class="m">2</span>&gt;&gt;<span class="w"> </span>/var/log/backup_front_error.log
+<div class="highlight"><pre><span></span><code><span class="m">0</span><span class="w"> </span>*/3<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/root/backup_front<span class="w"> </span><span class="m">1</span>&gt;&gt;<span class="w"> </span>/var/log/backup_front.log<span class="w"> </span><span class="m">2</span>&gt;&gt;<span class="w"> </span>/var/log/backup_front_error.log
 </code></pre></div>
-
-<p>Utilizamos o comando <code>cat</code> em <code>messages</code> depois do tempo proposto </p>
-<div class="codehilite"><pre><span></span><code>cat<span class="w"> </span>/var/log/messages<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>backup<span class="w"> </span>
+<p>Utilizamos o comando <code>cat</code> em <code>messages</code> depois do tempo proposto: </p>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/var/log/messages<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>backup<span class="w"> </span>
 </code></pre></div>
-
 <p><img alt="backupfrontend" src="../images/backupfrontend.png" /></p>
 <blockquote>
 <p>Resultado do log do Cron</p>
