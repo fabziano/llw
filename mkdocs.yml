@@ -1,0 +1,44 @@
+site_name: Documentação
+
+nav:
+  - Projeto Mensal 2: mensal.md
+  - Configuração Base: index.md
+  - Configuração Frontend: frontend.md
+  - Configuração Backend: backend.md
+  - Configuração Database: database.md
+  - Segurança Extra: extra.md
+
+theme:
+  name: material
+  language: pt-BR
+  logo: llw.ico
+  favicon: llw.ico
+  features:
+    - search.suggest
+    - search.highlight
+    - search.share
+    - navigation.footer
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Modo claro
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Modo escuro
+plugins:
+  - search
+extra:
+  generator: false
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - pymdownx.superfences
+  - toc:
+      permalink: true
+      
+copyright: '© 2025 LionLaw - LLW'
