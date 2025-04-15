@@ -215,3 +215,15 @@ iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 ```
 
 ---
+
+## 3. Permissões do MariaDB 
+
+> Essa configuração foi mostrada anteriormente no capítulo de Database, mas adicionada a essa sessão por também fazer parte de um tópico extra.
+
+Passamos apenas permissões necessárias para o usuário mysql do backend, impedindo que ele realize o **DROP** de tabelas por exemplo:
+
+```bash
+GRANT SELECT,INSERT,UPDATE,DELETE ON adv.* TO 'llw'@'backend.llw';
+```
+
+---
