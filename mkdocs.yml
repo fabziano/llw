@@ -1,12 +1,8 @@
 site_name: Documentação
 
 nav:
-  - Projeto Mensal 2: mensal.md
-  - Configuração Base: index.md
-  - Configuração Frontend: frontend.md
-  - Configuração Backend: backend.md
-  - Configuração Database: database.md
-  - Segurança Extra: extra.md
+  - Projeto Mensal 3: mensal.md
+  - Mensal 2 - Infraestrutura Segura e Automatizada: mensal2.md
 
 theme:
   name: material

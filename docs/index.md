@@ -1,229 +1,368 @@
-# Instalação e Configuração do Alpine Linux no VirtualBox (VM Base)
+# Documentação
 
-Este documento explica passo a passo a configuração realizada na **VM Base**, e serve como template para as máquinas virtuais criadas posteriormente, com a possibilidade de clonar essa base, evitamos a necessidade de refazer configurações que são comuns a todas elas. Permitindo que o foco fique em configurar apenas o necessário para que determinada máquina virtual cumpra o objetivo para o qual foi criada, seja Frontend, Backend, Database ou qualquer possibilidade que possa surgir futuramente. 
+Essa documentação cobri-rá os passos realizados para aplicar TLS, substituindo o protocolo HTTP, por HTTPS em todos os caminhos de conexão entre nossas 3 VM's, Frontend, Backend, e Database.
 
----
+## 1 - Gerando certificados digitais auto-assinados
 
-## 1. Download dos Recursos Necessários
+#### 1.1 - Gerar a chave privada da CA
 
-Começamos com o download e instalação de um **hypervisor**, um software que permite executar várias máquinas virtuais em uma única máquina física. A escolha para esse projeto foi o **Oracle VirtualBox**.
+````bash
+openssl genrsa -out llw-ca.key 4096
+````
 
-Em seguida  fizemos o download da  **ISO do Alpine Linux**, em sua versão virtual, que dispensa interface gráfica, contando apenas com o Bash, uma interface de linha de comando (CLI) usada para interpretar comandos.
+### 1.2 - Gerar o certificado da CA 
 
----
+````bash
+openssl req -x509 -new -nodes -key llw-ca.key -sha256 -days 365 \
+  -out llw-ca.crt \
+  -subj "/C=BR/ST=Parana/L=Foz/O=LionLaw/CN=LLW-CA"
+````
 
-## 2. Criação da Máquina Virtual
+### 1.3 - Arquivo de configuração para SAN (Subject Alternative Names)
 
-Após instalar o VirtualBox e baixar a ISO do Alpine, criamos a máquina **máquina virtual (VM)** com as seguintes especificações:
+Vamos utilizar o conteudo desse arquivo llw-cert.cnf como base para criação de nosso certificado.
 
-- **CPU**: 1 core  
-- **RAM**: 512 MB  
-- **Disco**: 20 GB  
-- **ISO de Boot**: Alpine Linux (modo virtual)
+````ini
+[req]
+default_bits = 2048
+prompt = no
+default_md = sha256
+req_extensions = req_ext
+distinguished_name = dn
 
-![criar](images/criar.png)
+[dn]
+C = BR
+ST = Parana
+L = Foz
+O = LionLaw
+CN = llw.local
 
----
+[req_ext]
+subjectAltName = @alt_names
 
-## 3. Ajustes Iniciais da VM
+[alt_names]
+DNS.1 = frontend.llw
+DNS.2 = backend.llw
+DNS.3 = database.llw
+````
 
-### Configuração de Rede
+> Esse certificado será utilizado para todas as conexões do nosso projeto por isso terá varios "subject alternative names" (SAN).
 
-Adicionamos uma nova **interface de rede em modo Bridge**, para permitir que a VM se conecte a outros dispositivos na mesma rede, como se fosse um dispositivo físico separado.
+### 1.4 - Gerar chave privada e CSR com SANs
 
-![eth1](images/eth1.png)
+````bash
+openssl req -new -nodes -out llw.csr -newkey rsa:2048 -keyout llw.key -config llw-cert.cnf
+````
 
----
+### 1.5 - Gerar e assinar o certificado usando a CA
 
-## 4. Boot e Setup do Alpine Linux
+````bash
+openssl x509 -req -in llw.csr -CA llw-ca.crt -CAkey llw-ca.key -CAcreateserial \
+  -out llw.crt -days 365 -sha256 -extfile llw-cert.cnf -extensions req_ext
+````
 
-Ao iniciar pela primeira vez, utilizamos o login com root sem informar senha:
+## 2 - Configurando o NGINX para usar TLS
 
-- **Login**: `root`  
-- **Senha**: *(vazio)*
+### 2.1 -  Modificar o arquivo de configuração do nginx
 
-E o seguinte comando para iniciar a instalação do **Alpine Linux**:
+Adicionaremos as seguintes configurações e modificaremos as já existentes no arquivo de configuração do nginx **(/etc/nginx/http.d/default.conf)**.
 
-```bash
-setup-alpine
-```
+````nginx
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+
+    http2 on;
+
+    ssl_certificate /etc/ssl/certs/llw.crt;
+    ssl_certificate_key /etc/ssl/private/llw.key;
+
+    # HSTS (ngx_http_headers_module is required) (63072000 seconds)
+    add_header Strict-Transport-Security "max-age=63072000" always;
+}
+
+# HSTS Redirect
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    return 301 https://$host$request_uri;
+}
+
+ssl_ecdh_curve X25519:prime256v1:secp384r1;
+ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA2ssl_session_cache shared:MozSSL:10m;
+ssl_dhparam "/etc/ssl/dhparam";
+````
+
+> Configuração gerada pelo Mozilla SSL Configuration Generator para o nginx, configuração intermediaria e com HSTS.
+
+### 2.2 - Baixar o DHParam
+
+````bash
+curl https://ssl-config.mozilla.org/ffdhe2048.txt > /etc/ssl/dhparam
+````
+
+> Tambem utilizamos o sugerido pelo próprio site da Mozilla
+
+### 2.3 - Copiar os certificados para os diretórios corretos
+
+````bash
+cp llw.crt /etc/ssl/certs/llw.crt
+cp llw.key /etc/ssl/private/llw.key
+````
+
+>Após esses passos (e reiniciando o nginx) já deve ser possivel acessar nosso front utilizando HTTPS ao inves de HTTP, será necessário uma confirmação para prosseguir, pois o navegador não confia em certificado auto-assinados de cara.
+
+## 3 - Baixando e instalando o Tomcat
+
+Parar podermos utilizar do tomcat teremos que baixar e fazer a instalação manualmente, devido a ausencia do serviço nos repósitorios oficiais da distro que estamos utilizando (Alpine Linux).
+
+### 3.1 - Baixando o arquivo compactado
+````bash
+wget https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.41/bin/apache-tomcat-10.1.41.tar.gz
+````
+>Arquivo .tar.gz da versão 10.1.41 do tomcat, obtida do site oficial do Apache Tomcat.
+
+### 3.2 - Extraindo o conteudo
+````bash
+tar -xvzf apache-tomcat-10.1.41.tar.gz
+````
+
+### 3.3 - Movendo para uma pasta aprópriada
+````bash
+mv apache-tomcat-10.1.41 /etc/tomcat
+````
+
+### 3.4 - Criando um script de serviço
+
+````bash
+nano /etc/init.d/tomcat
+````
+>Como estamos instalando manualmente criamos um script OpenRC para trata-lo como um service.
+
+#### Conteudo do script
+````bash
+#!/sbin/openrc-run
+
+description="Apache Tomcat"
+command="/etc/tomcat/bin/catalina.sh"
+command_args="start"
+command_background="yes"
+depend() {
+    need net
+    use dns logger
+    after firewall
+}
+    
+start() {
+    ebegin "Starting Tomcat"
+    ${command} start
+    eend $?
+}
+    
+stop() {
+    ebegin "Stopping Tomcat"
+    ${command} stop
+    eend $?
+}
+    
+restart() {
+    ebegin "Restarting Tomcat"
+    ${command} stop
+    sleep 2
+    ${command} start
+    eend $?
+}
+````
+
+### 3.5 - Tornando o script executavel
+````bash
+chmod +x /etc/init.d/tomcat
+````
+
+### 3.6 - Iniciando o serviço
+````bash
+service tomcat start
+````
+
+### 3.7 - Fazendo-o iniciar ao ligar a VM
+````bash
+rc-update add tomcat default
+````
+
+>Agora o tomcat já é um serviço reconhecido e ja vai iniciar ao ligar a VM, podemos acessar sua página inicial acessando em um navegador a porta 8080 padrão que o tomcat sobe seu serviço, porem só é possivel acessar essa página localmente. Mas é possivel fazer um port-forwarding no virtual-box para acessarmos do host.
+
+## 4 - Configurando o Tomcat para usar TLS
+
+### 4.1 - Modificando arquivo de configuração do Tomcat (/etc/tomcat/bin/server.xml)
+````bash
+<Connector
+    port="443"
+    SSLEnabled="true">
 
----
+    <SSLHostConfig
+        ciphers="TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-CHACHA20-POLY1305"
+        disableSessionTickets="true"
+        honorCipherOrder="false"
+        protocols="TLSv1.2,TLSv1.3">
+
+        <Certificate
+            certificateFile="/etc/ssl/certs/llw.crt"
+            certificateKeyFile="/etc/ssl/private/llw.key" />
+    </SSLHostConfig>
+
+    <UpgradeProtocol className="org.apache.coyote.http2.Http2Protocol" />
+</Connector>
+````
+
+### 4.3 - Movendo os certificados para as pastas certas
+
+````bash
+cp llw.crt /etc/ssl/certs/llw.crt
+cp llw.key /etc/ssl/private/llw.key
+````
+
+>Utilizamos os certificados utilizados pelo nginx que também serão válidos para o tomcat apresentar pois possui varios SAN. Por padrão o nginx confia em certificados auto-assinados, por isso não teremos que modificar nada para isso ocorrer. E agora o sistema já está preparado para o deploy do war.
+
+## 5 - Gerando arquivo war e deploy da API
+
+Até agora utilizamos um arquivo JAR (standalone), ele já incluia todas as dependências necessárias para a execução da aplicação, incluindo um servidor Tomcat embutido. Isso facilita-va o processo de deploy, pois não dependia de um servidor de aplicação externo mas agora como lidamos com TLS usamos o tomcat por fora, e para gerarmos nosso war precisaremos modificar algumas configurações em nossa aplicação Spring, começando pelo **pom.xml**:
 
-## 5. Configurações do Setup do Alpine Linux
+### 5.1 - Empacotamento
 
-Essas foram nossas escolhas para configurar a VM base, mas elas podem ser alteradas mais tarde dependendo da necessidade de cada tipo de VM.
+````xml
+<packaging>war</packaging>
+````
+>Mudaremos o modo de empacotamento que por padrão do maven é **JAR**
 
-- **Layout de Teclado**: `br-br`  
-- **Hostname**: `localhost`  
-- **Interfaces de Rede**: `eth0 (NAT)`, `eth1 (Bridge)`  
-- **Endereço IP**: `DHCP`  
-- **Configuração Manual da Interface**: `n`  
-- **Senha do usuário root**: `root`  
-- **Fuso Horário**: `America/Sao_Paulo`  
-- **Proxy**: `none`  
-- **NTP**: `chrony`  
-- **Repositório (Mirror)**: `1`  
-- **Criar um usuário comum**: `n`  
-- **Servidor SSH**: `openssh`  
-- **Permitir login root via SSH**: `prohibit-password`  
-- **Chave SSH para root**: `none`  
-- **Disco selecionado**: `sda`  
-- **Modo de uso do disco**: `sys`  
-- **Apagar dados do disco**: `y`
+### 5.2 - Dependência
 
----
+````xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-tomcat</artifactId>
+    <scope>provided</scope>
+</dependency>
+````
 
-## 6. Finalizando a Instalação
+>Ja tinhamos a dependencia mas o diferencial é que agora o tomcat é provido por fora por isso a linha **provided**.
 
-Após concluir o processo de instalação, desligamos a máquina virtual:
+### 5.3 - Plugin
 
-```bash
-poweroff
-```
+````xml
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-war-plugin</artifactId>
+</plugin>
+````
 
-> Removemos o dispositivo que contém ISO do Alpine, pois o sistema já foi instalado no disco rígido.
+>Substituiremos o antigo **spring-boot-maven-plugin** pelo **maven-war-plugin**.
 
----
+### 5.4 - Servlet Initializer
 
-## 7. Gerenciamento de Pacotes
+````java
+package com.Advocacia;
 
-### 7.1 Habilitando Repositórios da Comunidade
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
-Abrimos o arquivo **repositories** em modo de edição:
+public class ServletInitializer extends SpringBootServletInitializer {
 
-```bash
-vi /etc/apk/repositories
-```
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(AdvocaciaApplication.class);
+    }
+}
+````
 
-Removemos o `#` na frente do link para habilitar o repositório `community`, que possui pacotes utilizados em nosso projeto.
+>Criaremos essa classe que servirá a mesma função da classe main.
 
-```bash
-http://dl-cdn.alpinelinux.org/alpine/v3.19/community
-```
+### 5.5 - Buildando o projeto
 
-### 7.2 Atualizando o Sistema
+````bash
+clean package
+````
 
-Executamos os comandos para atualização dos pacotes: 
+>Após o build estar completo teremos nosso war que ja poderemos levar ao Tomcat.
 
-O primeiro lista os pacotes disponíveis nos repositórios:
+### 5.6 - Deploy do war no Tomcat
 
-```bash
-apk update
-```
+Após transferir o war a VM podemos leva-lo a pasta **webapps** dentro dos arquivos do Tomcat.
 
-O segundo atualiza os pacotes instalados em caso de existirem atualizações:
+````bash
+mv Advocacia.war /etc/tomcat/webapps/backend.war
+````
 
-```bash
-apk upgrade
-```
+>Por padrão o Tomcat (inicializado) ja roda automatico um war quando detecta alguma mudança ou novo arquivo;
 
-### 7.3 Instalando um Editor de Texto Alternativo
+### 5.7 - Adaptando proxy reverso (nginx)
 
-Parte do nosso grupo utilizou o editor de texto nano e parte utilizou o vim, para essa documentação os exemplos serão com vim: 
+Após o deploy temos nossa api rodando em https://backend.llw/backend, note que a primeira diretiva é o caminho com nome do war então para acessarmos a api de fato temos que acessar pelo nome do war, por isso teremos que adaptar o proxy reverso no nosso front, para adicionar uma diretiva extra ao redirecionar o acesso, de /api/requisição para /backend/api/requisição.
 
-```bash
-apk add vim
-```
+````nginx
+location /api/ {
+        proxy_pass https://backend.llw/backend/api/;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_pass_request_headers on;
+        proxy_pass_request_body on;
+    }
+````
 
----
+> Tambem modificamos a requisição de HTTP para HTTPS, não sendo necessario explicitar a porta 443 pois já é a padrão do protocolo.
 
-## 8. Melhorando a integração com o host 
+### 5.8 - Moficando o front-end
 
-Instalamos o  **VirtualBox Guest Additions** para melhorar a integração com o host:
+Tambem será necessario mudar no front o caminho que a requisição é feita.
 
-```bash
-apk add virtualbox-guest-additions
-```
+````ts
+export const environment = {
+    SERVIDOR: "https://frontend.llw"
+};
+````
 
-Em seguida iniciamos o serviço e configuramos para que inicie automaticamente:
+>Após isso buildamos o front e fazemos deploy dele novamente, e agora já será possivel fazer requisições ao back utilizando HTTPS tambem.
 
-```bash
-rc-service virtualbox-guest-additions start
-rc-update add virtualbox-guest-additions
-```
 
----
+## 6 - Configurando o mariadb para usar TLS
 
-## 9. Configurando Acesso SSH
+### 6.1 - Modificando o arquivo de configuração do mariadb (/etc/my.cnf.d/mariadb-server.cnf)
 
-Editamos o arquivo de configuração do SSH para permitir o acesso por senha temporariamente:
+````ini
+require_secure_transport = on
+ssl-cert = /etc/ssl/certs/llw.crt
+ssl-key = /etc/ssl/private/llw.key
+ssl-ca = /etc/ssl/certs/llw-ca.crt
+tls_version = TLSv1.2,TLSv1.3
+ssl-cipher = ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-CHACHA20-POLY1305
+````
 
-```bash
-vim /etc/ssh/sshd_config
-```
+### 6.2 - Movendo os certificados para as pastas certas
 
-Alteramos duas linhas para permitir conexão ssh com root e para permitir login com senha:
+````bash
+cp llw.crt /etc/ssl/certs/llw.crt
+cp llw.key /etc/ssl/private/llw.key
+cp llw-ca.crt /etc/ssl/certs/llw.crt
+````
 
-```bash
-PermitRootLogin yes
-PasswordAuthentication yes
-```
+### 6.3 - Modificando a conexão com o BD do back
 
-E reiniciamos o serviço para confirmar as alterações:
+Teremos que modificar o jeito que o back faz conexão com o banco, como não é http não é tao simples como mudar pra https, então devemos adicionar alguns extras no url.
 
-```bash
-rc-service sshd restart
-```
+````properties
+spring.datasource.url=jdbc:mysql://database.llw:3306/adv?useSSL=true&requireSSL=true&verifyServerCertificate=true
+````
 
----
+### 6.4 - Adicionando o crt no truststore do java
 
-## 10. Acesso via Chave SSH
+Para que o spring confie no certificado que o banco apresenta ele terá que estar presente no arquivo truststore do java que estamos utilizando.
 
-### 10.1 Gerando Chave no Host
+````bash
+keytool -importcert -alias llw -file llw.crt -keystore /usr/lib/jvm/java-17-openjdk/lib/security/cacerts -storepass changeit
+keytool -importcert -alias llw -file llw-ca.crt -keystore /usr/lib/jvm/java-17-openjdk/lib/security/cacerts -storepass changeit
+````
 
-No powershell do **Windows** geramos um par de chaves:
-
-```powershell
-ssh-keygen -t rsa -b 4096 -f id_rsa
-```
-
-> No momento de gerar as chaves deixamos o campo de senha vazio.
-
----
-
-### 10.2 Preparando a VM para Receber a Chave
-
-Na **VM** criamos o diretório .ssh:
-
-```bash
-mkdir /root/.ssh
-```
-
-E no **Windows** enviamos a chave pública para a pasta .ssh da **VM** via scp:
-
-```powershell
-scp .ssh/id_rsa.pub root@192.168.1.108:/root/.ssh/authorized_keys
-```
-
-Ajustamos as permissões do arquivo enviado:
-
-```bash
-chmod 600 /root/.ssh/authorized_keys
-```
-
-e em seguida testamos a conexão:
-
-```bash
-ssh root@192.168.1.108
-```
-
----
-
-### 10.3 Desabilitando Acesso por Senha
-
-Editamos novamente o `sshd_config`, dessa vez para impedir o acesso por senha:
-
-```bash
-PasswordAuthentication no
-```
-
-E reiniciamos o serviço para aplicar as configurações:
-
-```bash
-rc-service sshd restart
-```
-
-> A partir deste ponto, o acesso à VM será feito **exclusivamente via chave SSH** e sem utilização de senha.
-
----
+>Ele perguntará se deseja mesmo confiar nesse certificado, responderemos "**yes**", e ele confirmará com "**Certificate was added to keystore**"
