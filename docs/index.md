@@ -1,10 +1,10 @@
-# Documentação
+# Configuração de Ambiente Distribuído com Alta Disponibilidade, Segurança e Autenticação Unificada
 
-Essa documentação cobri-rá os passos realizados para aplicar TLS, substituindo o protocolo HTTP, por HTTPS em todos os caminhos de conexão entre nossas 3 VM's, Frontend, Backend, e Database.
+Esta documento explica nossos passos na aplicação do TLS, substituindo HTTP por HTTPS em todas as conexões entre as VMs Frontend, Backend e Database.
 
 ## 1 - Gerando certificados digitais auto-assinados
 
-#### 1.1 - Gerar a chave privada da CA
+#### 1.1 - Gerar a chave privada da CA 
 
 ````bash
 openssl genrsa -out llw-ca.key 4096

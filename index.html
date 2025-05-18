@@ -9,10 +9,6 @@
       
       
       
-        <link rel="prev" href="mensal/">
-      
-      
-        <link rel="next" href="frontend/">
       
       
       <link rel="icon" href="llw.ico">
@@ -72,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#instalacao-e-configuracao-do-alpine-linux-no-virtualbox-vm-base" class="md-skip">
+        <a href="#configuracao-de-ambiente-distribuido-com-alta-disponibilidade-seguranca-e-autenticacao-unificada" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -107,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Configuração Base
+              Configuração de Ambiente Distribuído com Alta Disponibilidade, Segurança e Autenticação Unificada
             
           </span>
         </div>
@@ -240,264 +236,7 @@
   
   
   <span class="md-ellipsis">
-    Projeto Mensal 2
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Configuração Base
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    Configuração Base
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Índice">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Índice
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-download-dos-recursos-necessarios" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Download dos Recursos Necessários
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-criacao-da-maquina-virtual" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Criação da Máquina Virtual
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-ajustes-iniciais-da-vm" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Ajustes Iniciais da VM
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Ajustes Iniciais da VM">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#configuracao-de-rede" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configuração de Rede
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-boot-e-setup-do-alpine-linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. Boot e Setup do Alpine Linux
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-configuracoes-do-setup-do-alpine-linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Configurações do Setup do Alpine Linux
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-finalizando-a-instalacao" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Finalizando a Instalação
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-gerenciamento-de-pacotes" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Gerenciamento de Pacotes
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Gerenciamento de Pacotes">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#71-habilitando-repositorios-da-comunidade" class="md-nav__link">
-    <span class="md-ellipsis">
-      7.1 Habilitando Repositórios da Comunidade
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#72-atualizando-o-sistema" class="md-nav__link">
-    <span class="md-ellipsis">
-      7.2 Atualizando o Sistema
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#73-instalando-um-editor-de-texto-alternativo" class="md-nav__link">
-    <span class="md-ellipsis">
-      7.3 Instalando um Editor de Texto Alternativo
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-melhorando-a-integracao-com-o-host" class="md-nav__link">
-    <span class="md-ellipsis">
-      8. Melhorando a integração com o host
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-configurando-acesso-ssh" class="md-nav__link">
-    <span class="md-ellipsis">
-      9. Configurando Acesso SSH
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-acesso-via-chave-ssh" class="md-nav__link">
-    <span class="md-ellipsis">
-      10. Acesso via Chave SSH
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="10. Acesso via Chave SSH">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#101-gerando-chave-no-host" class="md-nav__link">
-    <span class="md-ellipsis">
-      10.1 Gerando Chave no Host
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#102-preparando-a-vm-para-receber-a-chave" class="md-nav__link">
-    <span class="md-ellipsis">
-      10.2 Preparando a VM para Receber a Chave
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#103-desabilitando-acesso-por-senha" class="md-nav__link">
-    <span class="md-ellipsis">
-      10.3 Desabilitando Acesso por Senha
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="frontend/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Configuração Frontend
+    Projeto Mensal 3
     
   </span>
   
@@ -514,56 +253,12 @@
   
   
     <li class="md-nav__item">
-      <a href="backend/" class="md-nav__link">
+      <a href="mensal2/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Configuração Backend
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="database/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Configuração Database
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="extra/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Segurança Extra
+    Mensal 2 - Infraestrutura Segura e Automatizada
     
   </span>
   
@@ -600,37 +295,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-download-dos-recursos-necessarios" class="md-nav__link">
+  <a href="#1-gerando-certificados-digitais-auto-assinados" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Download dos Recursos Necessários
+      1 - Gerando certificados digitais auto-assinados
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-criacao-da-maquina-virtual" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Criação da Máquina Virtual
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-ajustes-iniciais-da-vm" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Ajustes Iniciais da VM
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. Ajustes Iniciais da VM">
+    <nav class="md-nav" aria-label="1 - Gerando certificados digitais auto-assinados">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#configuracao-de-rede" class="md-nav__link">
+  <a href="#11-gerar-a-chave-privada-da-ca" class="md-nav__link">
     <span class="md-ellipsis">
-      Configuração de Rede
+      1.1 - Gerar a chave privada da CA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-gerar-o-certificado-da-ca" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 - Gerar o certificado da CA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-arquivo-de-configuracao-para-san-subject-alternative-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 - Arquivo de configuração para SAN (Subject Alternative Names)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-gerar-chave-privada-e-csr-com-sans" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4 - Gerar chave privada e CSR com SANs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-gerar-e-assinar-o-certificado-usando-a-ca" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5 - Gerar e assinar o certificado usando a CA
     </span>
   </a>
   
@@ -642,64 +355,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-boot-e-setup-do-alpine-linux" class="md-nav__link">
+  <a href="#2-configurando-o-nginx-para-usar-tls" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Boot e Setup do Alpine Linux
+      2 - Configurando o NGINX para usar TLS
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-configuracoes-do-setup-do-alpine-linux" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Configurações do Setup do Alpine Linux
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-finalizando-a-instalacao" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. Finalizando a Instalação
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-gerenciamento-de-pacotes" class="md-nav__link">
-    <span class="md-ellipsis">
-      7. Gerenciamento de Pacotes
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Gerenciamento de Pacotes">
+    <nav class="md-nav" aria-label="2 - Configurando o NGINX para usar TLS">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#71-habilitando-repositorios-da-comunidade" class="md-nav__link">
+  <a href="#21-modificar-o-arquivo-de-configuracao-do-nginx" class="md-nav__link">
     <span class="md-ellipsis">
-      7.1 Habilitando Repositórios da Comunidade
+      2.1 - Modificar o arquivo de configuração do nginx
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#72-atualizando-o-sistema" class="md-nav__link">
+  <a href="#22-baixar-o-dhparam" class="md-nav__link">
     <span class="md-ellipsis">
-      7.2 Atualizando o Sistema
+      2.2 - Baixar o DHParam
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#73-instalando-um-editor-de-texto-alternativo" class="md-nav__link">
+  <a href="#23-copiar-os-certificados-para-os-diretorios-corretos" class="md-nav__link">
     <span class="md-ellipsis">
-      7.3 Instalando um Editor de Texto Alternativo
+      2.3 - Copiar os certificados para os diretórios corretos
     </span>
   </a>
   
@@ -711,55 +397,259 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-melhorando-a-integracao-com-o-host" class="md-nav__link">
+  <a href="#3-baixando-e-instalando-o-tomcat" class="md-nav__link">
     <span class="md-ellipsis">
-      8. Melhorando a integração com o host
+      3 - Baixando e instalando o Tomcat
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-configurando-acesso-ssh" class="md-nav__link">
-    <span class="md-ellipsis">
-      9. Configurando Acesso SSH
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-acesso-via-chave-ssh" class="md-nav__link">
-    <span class="md-ellipsis">
-      10. Acesso via Chave SSH
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="10. Acesso via Chave SSH">
+    <nav class="md-nav" aria-label="3 - Baixando e instalando o Tomcat">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#101-gerando-chave-no-host" class="md-nav__link">
+  <a href="#31-baixando-o-arquivo-compactado" class="md-nav__link">
     <span class="md-ellipsis">
-      10.1 Gerando Chave no Host
+      3.1 - Baixando o arquivo compactado
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#102-preparando-a-vm-para-receber-a-chave" class="md-nav__link">
+  <a href="#32-extraindo-o-conteudo" class="md-nav__link">
     <span class="md-ellipsis">
-      10.2 Preparando a VM para Receber a Chave
+      3.2 - Extraindo o conteudo
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#103-desabilitando-acesso-por-senha" class="md-nav__link">
+  <a href="#33-movendo-para-uma-pasta-apropriada" class="md-nav__link">
     <span class="md-ellipsis">
-      10.3 Desabilitando Acesso por Senha
+      3.3 - Movendo para uma pasta aprópriada
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-criando-um-script-de-servico" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 - Criando um script de serviço
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 - Criando um script de serviço">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conteudo-do-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conteudo do script
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-tornando-o-script-executavel" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5 - Tornando o script executavel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-iniciando-o-servico" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6 - Iniciando o serviço
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-fazendo-o-iniciar-ao-ligar-a-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.7 - Fazendo-o iniciar ao ligar a VM
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-configurando-o-tomcat-para-usar-tls" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 - Configurando o Tomcat para usar TLS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 - Configurando o Tomcat para usar TLS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-modificando-arquivo-de-configuracao-do-tomcat-etctomcatbinserverxml" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 - Modificando arquivo de configuração do Tomcat (/etc/tomcat/bin/server.xml)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-movendo-os-certificados-para-as-pastas-certas" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 - Movendo os certificados para as pastas certas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-gerando-arquivo-war-e-deploy-da-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 - Gerando arquivo war e deploy da API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5 - Gerando arquivo war e deploy da API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-empacotamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 - Empacotamento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-dependencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 - Dependência
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 - Plugin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-servlet-initializer" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4 - Servlet Initializer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-buildando-o-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.5 - Buildando o projeto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-deploy-do-war-no-tomcat" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.6 - Deploy do war no Tomcat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-adaptando-proxy-reverso-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.7 - Adaptando proxy reverso (nginx)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#58-moficando-o-front-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.8 - Moficando o front-end
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-configurando-o-mariadb-para-usar-tls" class="md-nav__link">
+    <span class="md-ellipsis">
+      6 - Configurando o mariadb para usar TLS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6 - Configurando o mariadb para usar TLS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-modificando-o-arquivo-de-configuracao-do-mariadb-etcmycnfdmariadb-servercnf" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 - Modificando o arquivo de configuração do mariadb (/etc/my.cnf.d/mariadb-server.cnf)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-movendo-os-certificados-para-as-pastas-certas" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 - Movendo os certificados para as pastas certas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-modificando-a-conexao-com-o-bd-do-back" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 - Modificando a conexão com o BD do back
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-adicionando-o-crt-no-truststore-do-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4 - Adicionando o crt no truststore do java
     </span>
   </a>
   
@@ -786,144 +676,295 @@
 
 
 
-<h1 id="instalacao-e-configuracao-do-alpine-linux-no-virtualbox-vm-base">Instalação e Configuração do Alpine Linux no VirtualBox (VM Base)<a class="headerlink" href="#instalacao-e-configuracao-do-alpine-linux-no-virtualbox-vm-base" title="Permanent link">&para;</a></h1>
-<p>Este documento explica passo a passo a configuração realizada na <strong>VM Base</strong>, e serve como template para as máquinas virtuais criadas posteriormente, com a possibilidade de clonar essa base, evitamos a necessidade de refazer configurações que são comuns a todas elas. Permitindo que o foco fique em configurar apenas o necessário para que determinada máquina virtual cumpra o objetivo para o qual foi criada, seja Frontend, Backend, Database ou qualquer possibilidade que possa surgir futuramente. </p>
-<hr />
-<h2 id="1-download-dos-recursos-necessarios">1. Download dos Recursos Necessários<a class="headerlink" href="#1-download-dos-recursos-necessarios" title="Permanent link">&para;</a></h2>
-<p>Começamos com o download e instalação de um <strong>hypervisor</strong>, um software que permite executar várias máquinas virtuais em uma única máquina física. A escolha para esse projeto foi o <strong>Oracle VirtualBox</strong>.</p>
-<p>Em seguida  fizemos o download da  <strong>ISO do Alpine Linux</strong>, em sua versão virtual, que dispensa interface gráfica, contando apenas com o Bash, uma interface de linha de comando (CLI) usada para interpretar comandos.</p>
-<hr />
-<h2 id="2-criacao-da-maquina-virtual">2. Criação da Máquina Virtual<a class="headerlink" href="#2-criacao-da-maquina-virtual" title="Permanent link">&para;</a></h2>
-<p>Após instalar o VirtualBox e baixar a ISO do Alpine, criamos a máquina <strong>máquina virtual (VM)</strong> com as seguintes especificações:</p>
-<ul>
-<li><strong>CPU</strong>: 1 core  </li>
-<li><strong>RAM</strong>: 512 MB  </li>
-<li><strong>Disco</strong>: 20 GB  </li>
-<li><strong>ISO de Boot</strong>: Alpine Linux (modo virtual)</li>
-</ul>
-<p><img alt="criar" src="images/criar.png" /></p>
-<hr />
-<h2 id="3-ajustes-iniciais-da-vm">3. Ajustes Iniciais da VM<a class="headerlink" href="#3-ajustes-iniciais-da-vm" title="Permanent link">&para;</a></h2>
-<h3 id="configuracao-de-rede">Configuração de Rede<a class="headerlink" href="#configuracao-de-rede" title="Permanent link">&para;</a></h3>
-<p>Adicionamos uma nova <strong>interface de rede em modo Bridge</strong>, para permitir que a VM se conecte a outros dispositivos na mesma rede, como se fosse um dispositivo físico separado.</p>
-<p><img alt="eth1" src="images/eth1.png" /></p>
-<hr />
-<h2 id="4-boot-e-setup-do-alpine-linux">4. Boot e Setup do Alpine Linux<a class="headerlink" href="#4-boot-e-setup-do-alpine-linux" title="Permanent link">&para;</a></h2>
-<p>Ao iniciar pela primeira vez, utilizamos o login com root sem informar senha:</p>
-<ul>
-<li><strong>Login</strong>: <code>root</code>  </li>
-<li><strong>Senha</strong>: <em>(vazio)</em></li>
-</ul>
-<p>E o seguinte comando para iniciar a instalação do <strong>Alpine Linux</strong>:</p>
-<div class="highlight"><pre><span></span><code>setup-alpine
+<h1 id="configuracao-de-ambiente-distribuido-com-alta-disponibilidade-seguranca-e-autenticacao-unificada">Configuração de Ambiente Distribuído com Alta Disponibilidade, Segurança e Autenticação Unificada<a class="headerlink" href="#configuracao-de-ambiente-distribuido-com-alta-disponibilidade-seguranca-e-autenticacao-unificada" title="Permanent link">&para;</a></h1>
+<p>Esta documento explica nossos passos na aplicação do TLS, substituindo HTTP por HTTPS em todas as conexões entre as VMs Frontend, Backend e Database.</p>
+<h2 id="1-gerando-certificados-digitais-auto-assinados">1 - Gerando certificados digitais auto-assinados<a class="headerlink" href="#1-gerando-certificados-digitais-auto-assinados" title="Permanent link">&para;</a></h2>
+<h4 id="11-gerar-a-chave-privada-da-ca">1.1 - Gerar a chave privada da CA<a class="headerlink" href="#11-gerar-a-chave-privada-da-ca" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>genrsa<span class="w"> </span>-out<span class="w"> </span>llw-ca.key<span class="w"> </span><span class="m">4096</span>
 </code></pre></div>
-<hr />
-<h2 id="5-configuracoes-do-setup-do-alpine-linux">5. Configurações do Setup do Alpine Linux<a class="headerlink" href="#5-configuracoes-do-setup-do-alpine-linux" title="Permanent link">&para;</a></h2>
-<p>Essas foram nossas escolhas para configurar a VM base, mas elas podem ser alteradas mais tarde dependendo da necessidade de cada tipo de VM.</p>
-<ul>
-<li><strong>Layout de Teclado</strong>: <code>br-br</code>  </li>
-<li><strong>Hostname</strong>: <code>localhost</code>  </li>
-<li><strong>Interfaces de Rede</strong>: <code>eth0 (NAT)</code>, <code>eth1 (Bridge)</code>  </li>
-<li><strong>Endereço IP</strong>: <code>DHCP</code>  </li>
-<li><strong>Configuração Manual da Interface</strong>: <code>n</code>  </li>
-<li><strong>Senha do usuário root</strong>: <code>root</code>  </li>
-<li><strong>Fuso Horário</strong>: <code>America/Sao_Paulo</code>  </li>
-<li><strong>Proxy</strong>: <code>none</code>  </li>
-<li><strong>NTP</strong>: <code>chrony</code>  </li>
-<li><strong>Repositório (Mirror)</strong>: <code>1</code>  </li>
-<li><strong>Criar um usuário comum</strong>: <code>n</code>  </li>
-<li><strong>Servidor SSH</strong>: <code>openssh</code>  </li>
-<li><strong>Permitir login root via SSH</strong>: <code>prohibit-password</code>  </li>
-<li><strong>Chave SSH para root</strong>: <code>none</code>  </li>
-<li><strong>Disco selecionado</strong>: <code>sda</code>  </li>
-<li><strong>Modo de uso do disco</strong>: <code>sys</code>  </li>
-<li><strong>Apagar dados do disco</strong>: <code>y</code></li>
-</ul>
-<hr />
-<h2 id="6-finalizando-a-instalacao">6. Finalizando a Instalação<a class="headerlink" href="#6-finalizando-a-instalacao" title="Permanent link">&para;</a></h2>
-<p>Após concluir o processo de instalação, desligamos a máquina virtual:</p>
-<div class="highlight"><pre><span></span><code>poweroff
+<h3 id="12-gerar-o-certificado-da-ca">1.2 - Gerar o certificado da CA<a class="headerlink" href="#12-gerar-o-certificado-da-ca" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>req<span class="w"> </span>-x509<span class="w"> </span>-new<span class="w"> </span>-nodes<span class="w"> </span>-key<span class="w"> </span>llw-ca.key<span class="w"> </span>-sha256<span class="w"> </span>-days<span class="w"> </span><span class="m">365</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-out<span class="w"> </span>llw-ca.crt<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-subj<span class="w"> </span><span class="s2">&quot;/C=BR/ST=Parana/L=Foz/O=LionLaw/CN=LLW-CA&quot;</span>
+</code></pre></div>
+<h3 id="13-arquivo-de-configuracao-para-san-subject-alternative-names">1.3 - Arquivo de configuração para SAN (Subject Alternative Names)<a class="headerlink" href="#13-arquivo-de-configuracao-para-san-subject-alternative-names" title="Permanent link">&para;</a></h3>
+<p>Vamos utilizar o conteudo desse arquivo llw-cert.cnf como base para criação de nosso certificado.</p>
+<div class="highlight"><pre><span></span><code><span class="k">[req]</span>
+<span class="na">default_bits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">2048</span>
+<span class="na">prompt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">no</span>
+<span class="na">default_md</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">sha256</span>
+<span class="na">req_extensions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">req_ext</span>
+<span class="na">distinguished_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">dn</span>
+
+<span class="k">[dn]</span>
+<span class="na">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">BR</span>
+<span class="na">ST</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Parana</span>
+<span class="na">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">Foz</span>
+<span class="na">O</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">LionLaw</span>
+<span class="na">CN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">llw.local</span>
+
+<span class="k">[req_ext]</span>
+<span class="na">subjectAltName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">@alt_names</span>
+
+<span class="k">[alt_names]</span>
+<span class="na">DNS.1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">frontend.llw</span>
+<span class="na">DNS.2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">backend.llw</span>
+<span class="na">DNS.3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">database.llw</span>
 </code></pre></div>
 <blockquote>
-<p>Removemos o dispositivo que contém ISO do Alpine, pois o sistema já foi instalado no disco rígido.</p>
+<p>Esse certificado será utilizado para todas as conexões do nosso projeto por isso terá varios "subject alternative names" (SAN).</p>
 </blockquote>
-<hr />
-<h2 id="7-gerenciamento-de-pacotes">7. Gerenciamento de Pacotes<a class="headerlink" href="#7-gerenciamento-de-pacotes" title="Permanent link">&para;</a></h2>
-<h3 id="71-habilitando-repositorios-da-comunidade">7.1 Habilitando Repositórios da Comunidade<a class="headerlink" href="#71-habilitando-repositorios-da-comunidade" title="Permanent link">&para;</a></h3>
-<p>Abrimos o arquivo <strong>repositories</strong> em modo de edição:</p>
-<div class="highlight"><pre><span></span><code>vi<span class="w"> </span>/etc/apk/repositories
+<h3 id="14-gerar-chave-privada-e-csr-com-sans">1.4 - Gerar chave privada e CSR com SANs<a class="headerlink" href="#14-gerar-chave-privada-e-csr-com-sans" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>req<span class="w"> </span>-new<span class="w"> </span>-nodes<span class="w"> </span>-out<span class="w"> </span>llw.csr<span class="w"> </span>-newkey<span class="w"> </span>rsa:2048<span class="w"> </span>-keyout<span class="w"> </span>llw.key<span class="w"> </span>-config<span class="w"> </span>llw-cert.cnf
 </code></pre></div>
-<p>Removemos o <code>#</code> na frente do link para habilitar o repositório <code>community</code>, que possui pacotes utilizados em nosso projeto.</p>
-<div class="highlight"><pre><span></span><code>http://dl-cdn.alpinelinux.org/alpine/v3.19/community
+<h3 id="15-gerar-e-assinar-o-certificado-usando-a-ca">1.5 - Gerar e assinar o certificado usando a CA<a class="headerlink" href="#15-gerar-e-assinar-o-certificado-usando-a-ca" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>x509<span class="w"> </span>-req<span class="w"> </span>-in<span class="w"> </span>llw.csr<span class="w"> </span>-CA<span class="w"> </span>llw-ca.crt<span class="w"> </span>-CAkey<span class="w"> </span>llw-ca.key<span class="w"> </span>-CAcreateserial<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-out<span class="w"> </span>llw.crt<span class="w"> </span>-days<span class="w"> </span><span class="m">365</span><span class="w"> </span>-sha256<span class="w"> </span>-extfile<span class="w"> </span>llw-cert.cnf<span class="w"> </span>-extensions<span class="w"> </span>req_ext
 </code></pre></div>
-<h3 id="72-atualizando-o-sistema">7.2 Atualizando o Sistema<a class="headerlink" href="#72-atualizando-o-sistema" title="Permanent link">&para;</a></h3>
-<p>Executamos os comandos para atualização dos pacotes: </p>
-<p>O primeiro lista os pacotes disponíveis nos repositórios:</p>
-<div class="highlight"><pre><span></span><code>apk<span class="w"> </span>update
-</code></pre></div>
-<p>O segundo atualiza os pacotes instalados em caso de existirem atualizações:</p>
-<div class="highlight"><pre><span></span><code>apk<span class="w"> </span>upgrade
-</code></pre></div>
-<h3 id="73-instalando-um-editor-de-texto-alternativo">7.3 Instalando um Editor de Texto Alternativo<a class="headerlink" href="#73-instalando-um-editor-de-texto-alternativo" title="Permanent link">&para;</a></h3>
-<p>Parte do nosso grupo utilizou o editor de texto nano e parte utilizou o vim, para essa documentação os exemplos serão com vim: </p>
-<div class="highlight"><pre><span></span><code>apk<span class="w"> </span>add<span class="w"> </span>vim
-</code></pre></div>
-<hr />
-<h2 id="8-melhorando-a-integracao-com-o-host">8. Melhorando a integração com o host<a class="headerlink" href="#8-melhorando-a-integracao-com-o-host" title="Permanent link">&para;</a></h2>
-<p>Instalamos o  <strong>VirtualBox Guest Additions</strong> para melhorar a integração com o host:</p>
-<div class="highlight"><pre><span></span><code>apk<span class="w"> </span>add<span class="w"> </span>virtualbox-guest-additions
-</code></pre></div>
-<p>Em seguida iniciamos o serviço e configuramos para que inicie automaticamente:</p>
-<div class="highlight"><pre><span></span><code>rc-service<span class="w"> </span>virtualbox-guest-additions<span class="w"> </span>start
-rc-update<span class="w"> </span>add<span class="w"> </span>virtualbox-guest-additions
-</code></pre></div>
-<hr />
-<h2 id="9-configurando-acesso-ssh">9. Configurando Acesso SSH<a class="headerlink" href="#9-configurando-acesso-ssh" title="Permanent link">&para;</a></h2>
-<p>Editamos o arquivo de configuração do SSH para permitir o acesso por senha temporariamente:</p>
-<div class="highlight"><pre><span></span><code>vim<span class="w"> </span>/etc/ssh/sshd_config
-</code></pre></div>
-<p>Alteramos duas linhas para permitir conexão ssh com root e para permitir login com senha:</p>
-<div class="highlight"><pre><span></span><code>PermitRootLogin<span class="w"> </span>yes
-PasswordAuthentication<span class="w"> </span>yes
-</code></pre></div>
-<p>E reiniciamos o serviço para confirmar as alterações:</p>
-<div class="highlight"><pre><span></span><code>rc-service<span class="w"> </span>sshd<span class="w"> </span>restart
-</code></pre></div>
-<hr />
-<h2 id="10-acesso-via-chave-ssh">10. Acesso via Chave SSH<a class="headerlink" href="#10-acesso-via-chave-ssh" title="Permanent link">&para;</a></h2>
-<h3 id="101-gerando-chave-no-host">10.1 Gerando Chave no Host<a class="headerlink" href="#101-gerando-chave-no-host" title="Permanent link">&para;</a></h3>
-<p>No powershell do <strong>Windows</strong> geramos um par de chaves:</p>
-<div class="highlight"><pre><span></span><code><span class="n">ssh-keygen</span> <span class="n">-t</span> <span class="n">rsa</span> <span class="n">-b</span> <span class="n">4096</span> <span class="o">-f</span> <span class="n">id_rsa</span>
+<h2 id="2-configurando-o-nginx-para-usar-tls">2 - Configurando o NGINX para usar TLS<a class="headerlink" href="#2-configurando-o-nginx-para-usar-tls" title="Permanent link">&para;</a></h2>
+<h3 id="21-modificar-o-arquivo-de-configuracao-do-nginx">2.1 -  Modificar o arquivo de configuração do nginx<a class="headerlink" href="#21-modificar-o-arquivo-de-configuracao-do-nginx" title="Permanent link">&para;</a></h3>
+<p>Adicionaremos as seguintes configurações e modificaremos as já existentes no arquivo de configuração do nginx <strong>(/etc/nginx/http.d/default.conf)</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">443</span><span class="w"> </span><span class="s">ssl</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:443</span><span class="w"> </span><span class="s">ssl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">http2</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">ssl_certificate</span><span class="w"> </span><span class="s">/etc/ssl/certs/llw.crt</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">ssl_certificate_key</span><span class="w"> </span><span class="s">/etc/ssl/private/llw.key</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1"># HSTS (ngx_http_headers_module is required) (63072000 seconds)</span>
+<span class="w">    </span><span class="kn">add_header</span><span class="w"> </span><span class="s">Strict-Transport-Security</span><span class="w"> </span><span class="s">&quot;max-age=63072000&quot;</span><span class="w"> </span><span class="s">always</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1"># HSTS Redirect</span>
+<span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">return</span><span class="w"> </span><span class="mi">301</span><span class="w"> </span><span class="s">https://</span><span class="nv">$host$request_uri</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">ssl_ecdh_curve</span><span class="w"> </span><span class="s">X25519:prime256v1:secp384r1</span><span class="p">;</span>
+<span class="k">ssl_ciphers</span><span class="w"> </span><span class="s">ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA2ssl_session_cache</span><span class="w"> </span><span class="s">shared:MozSSL:10m</span><span class="p">;</span>
+<span class="k">ssl_dhparam</span><span class="w"> </span><span class="s">&quot;/etc/ssl/dhparam&quot;</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
-<p>No momento de gerar as chaves deixamos o campo de senha vazio.</p>
+<p>Configuração gerada pelo Mozilla SSL Configuration Generator para o nginx, configuração intermediaria e com HSTS.</p>
 </blockquote>
-<hr />
-<h3 id="102-preparando-a-vm-para-receber-a-chave">10.2 Preparando a VM para Receber a Chave<a class="headerlink" href="#102-preparando-a-vm-para-receber-a-chave" title="Permanent link">&para;</a></h3>
-<p>Na <strong>VM</strong> criamos o diretório .ssh:</p>
-<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>/root/.ssh
-</code></pre></div>
-<p>E no <strong>Windows</strong> enviamos a chave pública para a pasta .ssh da <strong>VM</strong> via scp:</p>
-<div class="highlight"><pre><span></span><code><span class="n">scp</span> <span class="p">.</span><span class="n">ssh</span><span class="p">/</span><span class="n">id_rsa</span><span class="p">.</span><span class="n">pub</span> <span class="n">root</span><span class="nv">@192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">108</span><span class="p">:/</span><span class="n">root</span><span class="p">/.</span><span class="n">ssh</span><span class="p">/</span><span class="n">authorized_keys</span>
-</code></pre></div>
-<p>Ajustamos as permissões do arquivo enviado:</p>
-<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/root/.ssh/authorized_keys
-</code></pre></div>
-<p>e em seguida testamos a conexão:</p>
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>root@192.168.1.108
-</code></pre></div>
-<hr />
-<h3 id="103-desabilitando-acesso-por-senha">10.3 Desabilitando Acesso por Senha<a class="headerlink" href="#103-desabilitando-acesso-por-senha" title="Permanent link">&para;</a></h3>
-<p>Editamos novamente o <code>sshd_config</code>, dessa vez para impedir o acesso por senha:</p>
-<div class="highlight"><pre><span></span><code>PasswordAuthentication<span class="w"> </span>no
-</code></pre></div>
-<p>E reiniciamos o serviço para aplicar as configurações:</p>
-<div class="highlight"><pre><span></span><code>rc-service<span class="w"> </span>sshd<span class="w"> </span>restart
+<h3 id="22-baixar-o-dhparam">2.2 - Baixar o DHParam<a class="headerlink" href="#22-baixar-o-dhparam" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>https://ssl-config.mozilla.org/ffdhe2048.txt<span class="w"> </span>&gt;<span class="w"> </span>/etc/ssl/dhparam
 </code></pre></div>
 <blockquote>
-<p>A partir deste ponto, o acesso à VM será feito <strong>exclusivamente via chave SSH</strong> e sem utilização de senha.</p>
+<p>Tambem utilizamos o sugerido pelo próprio site da Mozilla</p>
 </blockquote>
-<hr />
+<h3 id="23-copiar-os-certificados-para-os-diretorios-corretos">2.3 - Copiar os certificados para os diretórios corretos<a class="headerlink" href="#23-copiar-os-certificados-para-os-diretorios-corretos" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>llw.crt<span class="w"> </span>/etc/ssl/certs/llw.crt
+cp<span class="w"> </span>llw.key<span class="w"> </span>/etc/ssl/private/llw.key
+</code></pre></div>
+<blockquote>
+<p>Após esses passos (e reiniciando o nginx) já deve ser possivel acessar nosso front utilizando HTTPS ao inves de HTTP, será necessário uma confirmação para prosseguir, pois o navegador não confia em certificado auto-assinados de cara.</p>
+</blockquote>
+<h2 id="3-baixando-e-instalando-o-tomcat">3 - Baixando e instalando o Tomcat<a class="headerlink" href="#3-baixando-e-instalando-o-tomcat" title="Permanent link">&para;</a></h2>
+<p>Parar podermos utilizar do tomcat teremos que baixar e fazer a instalação manualmente, devido a ausencia do serviço nos repósitorios oficiais da distro que estamos utilizando (Alpine Linux).</p>
+<h3 id="31-baixando-o-arquivo-compactado">3.1 - Baixando o arquivo compactado<a class="headerlink" href="#31-baixando-o-arquivo-compactado" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.41/bin/apache-tomcat-10.1.41.tar.gz
+</code></pre></div>
+<blockquote>
+<p>Arquivo .tar.gz da versão 10.1.41 do tomcat, obtida do site oficial do Apache Tomcat.</p>
+</blockquote>
+<h3 id="32-extraindo-o-conteudo">3.2 - Extraindo o conteudo<a class="headerlink" href="#32-extraindo-o-conteudo" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>tar<span class="w"> </span>-xvzf<span class="w"> </span>apache-tomcat-10.1.41.tar.gz
+</code></pre></div>
+<h3 id="33-movendo-para-uma-pasta-apropriada">3.3 - Movendo para uma pasta aprópriada<a class="headerlink" href="#33-movendo-para-uma-pasta-apropriada" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>mv<span class="w"> </span>apache-tomcat-10.1.41<span class="w"> </span>/etc/tomcat
+</code></pre></div>
+<h3 id="34-criando-um-script-de-servico">3.4 - Criando um script de serviço<a class="headerlink" href="#34-criando-um-script-de-servico" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>nano<span class="w"> </span>/etc/init.d/tomcat
+</code></pre></div>
+<blockquote>
+<p>Como estamos instalando manualmente criamos um script OpenRC para trata-lo como um service.</p>
+</blockquote>
+<h4 id="conteudo-do-script">Conteudo do script<a class="headerlink" href="#conteudo-do-script" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/sbin/openrc-run</span>
+
+<span class="nv">description</span><span class="o">=</span><span class="s2">&quot;Apache Tomcat&quot;</span>
+<span class="nv">command</span><span class="o">=</span><span class="s2">&quot;/etc/tomcat/bin/catalina.sh&quot;</span>
+<span class="nv">command_args</span><span class="o">=</span><span class="s2">&quot;start&quot;</span>
+<span class="nv">command_background</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
+depend<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>need<span class="w"> </span>net
+<span class="w">    </span>use<span class="w"> </span>dns<span class="w"> </span>logger
+<span class="w">    </span>after<span class="w"> </span>firewall
+<span class="o">}</span>
+
+start<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>ebegin<span class="w"> </span><span class="s2">&quot;Starting Tomcat&quot;</span>
+<span class="w">    </span><span class="si">${</span><span class="nv">command</span><span class="si">}</span><span class="w"> </span>start
+<span class="w">    </span>eend<span class="w"> </span><span class="nv">$?</span>
+<span class="o">}</span>
+
+stop<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>ebegin<span class="w"> </span><span class="s2">&quot;Stopping Tomcat&quot;</span>
+<span class="w">    </span><span class="si">${</span><span class="nv">command</span><span class="si">}</span><span class="w"> </span>stop
+<span class="w">    </span>eend<span class="w"> </span><span class="nv">$?</span>
+<span class="o">}</span>
+
+restart<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span>ebegin<span class="w"> </span><span class="s2">&quot;Restarting Tomcat&quot;</span>
+<span class="w">    </span><span class="si">${</span><span class="nv">command</span><span class="si">}</span><span class="w"> </span>stop
+<span class="w">    </span>sleep<span class="w"> </span><span class="m">2</span>
+<span class="w">    </span><span class="si">${</span><span class="nv">command</span><span class="si">}</span><span class="w"> </span>start
+<span class="w">    </span>eend<span class="w"> </span><span class="nv">$?</span>
+<span class="o">}</span>
+</code></pre></div>
+<h3 id="35-tornando-o-script-executavel">3.5 - Tornando o script executavel<a class="headerlink" href="#35-tornando-o-script-executavel" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span>+x<span class="w"> </span>/etc/init.d/tomcat
+</code></pre></div>
+<h3 id="36-iniciando-o-servico">3.6 - Iniciando o serviço<a class="headerlink" href="#36-iniciando-o-servico" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>service<span class="w"> </span>tomcat<span class="w"> </span>start
+</code></pre></div>
+<h3 id="37-fazendo-o-iniciar-ao-ligar-a-vm">3.7 - Fazendo-o iniciar ao ligar a VM<a class="headerlink" href="#37-fazendo-o-iniciar-ao-ligar-a-vm" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>rc-update<span class="w"> </span>add<span class="w"> </span>tomcat<span class="w"> </span>default
+</code></pre></div>
+<blockquote>
+<p>Agora o tomcat já é um serviço reconhecido e ja vai iniciar ao ligar a VM, podemos acessar sua página inicial acessando em um navegador a porta 8080 padrão que o tomcat sobe seu serviço, porem só é possivel acessar essa página localmente. Mas é possivel fazer um port-forwarding no virtual-box para acessarmos do host.</p>
+</blockquote>
+<h2 id="4-configurando-o-tomcat-para-usar-tls">4 - Configurando o Tomcat para usar TLS<a class="headerlink" href="#4-configurando-o-tomcat-para-usar-tls" title="Permanent link">&para;</a></h2>
+<h3 id="41-modificando-arquivo-de-configuracao-do-tomcat-etctomcatbinserverxml">4.1 - Modificando arquivo de configuração do Tomcat (/etc/tomcat/bin/server.xml)<a class="headerlink" href="#41-modificando-arquivo-de-configuracao-do-tomcat-etctomcatbinserverxml" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>&lt;Connector
+<span class="w">    </span><span class="nv">port</span><span class="o">=</span><span class="s2">&quot;443&quot;</span>
+<span class="w">    </span><span class="nv">SSLEnabled</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>&gt;
+
+<span class="w">    </span>&lt;SSLHostConfig
+<span class="w">        </span><span class="nv">ciphers</span><span class="o">=</span><span class="s2">&quot;TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-CHACHA20-POLY1305&quot;</span>
+<span class="w">        </span><span class="nv">disableSessionTickets</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>
+<span class="w">        </span><span class="nv">honorCipherOrder</span><span class="o">=</span><span class="s2">&quot;false&quot;</span>
+<span class="w">        </span><span class="nv">protocols</span><span class="o">=</span><span class="s2">&quot;TLSv1.2,TLSv1.3&quot;</span>&gt;
+
+<span class="w">        </span>&lt;Certificate
+<span class="w">            </span><span class="nv">certificateFile</span><span class="o">=</span><span class="s2">&quot;/etc/ssl/certs/llw.crt&quot;</span>
+<span class="w">            </span><span class="nv">certificateKeyFile</span><span class="o">=</span><span class="s2">&quot;/etc/ssl/private/llw.key&quot;</span><span class="w"> </span>/&gt;
+<span class="w">    </span>&lt;/SSLHostConfig&gt;
+
+<span class="w">    </span>&lt;UpgradeProtocol<span class="w"> </span><span class="nv">className</span><span class="o">=</span><span class="s2">&quot;org.apache.coyote.http2.Http2Protocol&quot;</span><span class="w"> </span>/&gt;
+&lt;/Connector&gt;
+</code></pre></div>
+<h3 id="43-movendo-os-certificados-para-as-pastas-certas">4.3 - Movendo os certificados para as pastas certas<a class="headerlink" href="#43-movendo-os-certificados-para-as-pastas-certas" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>llw.crt<span class="w"> </span>/etc/ssl/certs/llw.crt
+cp<span class="w"> </span>llw.key<span class="w"> </span>/etc/ssl/private/llw.key
+</code></pre></div>
+<blockquote>
+<p>Utilizamos os certificados utilizados pelo nginx que também serão válidos para o tomcat apresentar pois possui varios SAN. Por padrão o nginx confia em certificados auto-assinados, por isso não teremos que modificar nada para isso ocorrer. E agora o sistema já está preparado para o deploy do war.</p>
+</blockquote>
+<h2 id="5-gerando-arquivo-war-e-deploy-da-api">5 - Gerando arquivo war e deploy da API<a class="headerlink" href="#5-gerando-arquivo-war-e-deploy-da-api" title="Permanent link">&para;</a></h2>
+<p>Até agora utilizamos um arquivo JAR (standalone), ele já incluia todas as dependências necessárias para a execução da aplicação, incluindo um servidor Tomcat embutido. Isso facilita-va o processo de deploy, pois não dependia de um servidor de aplicação externo mas agora como lidamos com TLS usamos o tomcat por fora, e para gerarmos nosso war precisaremos modificar algumas configurações em nossa aplicação Spring, começando pelo <strong>pom.xml</strong>:</p>
+<h3 id="51-empacotamento">5.1 - Empacotamento<a class="headerlink" href="#51-empacotamento" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;packaging&gt;</span>war<span class="nt">&lt;/packaging&gt;</span>
+</code></pre></div>
+<blockquote>
+<p>Mudaremos o modo de empacotamento que por padrão do maven é <strong>JAR</strong></p>
+</blockquote>
+<h3 id="52-dependencia">5.2 - Dependência<a class="headerlink" href="#52-dependencia" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependency&gt;</span>
+<span class="w">    </span><span class="nt">&lt;groupId&gt;</span>org.springframework.boot<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>spring-boot-starter-tomcat<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;scope&gt;</span>provided<span class="nt">&lt;/scope&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+<blockquote>
+<p>Ja tinhamos a dependencia mas o diferencial é que agora o tomcat é provido por fora por isso a linha <strong>provided</strong>.</p>
+</blockquote>
+<h3 id="53-plugin">5.3 - Plugin<a class="headerlink" href="#53-plugin" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;plugin&gt;</span>
+<span class="w">    </span><span class="nt">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>maven-war-plugin<span class="nt">&lt;/artifactId&gt;</span>
+<span class="nt">&lt;/plugin&gt;</span>
+</code></pre></div>
+<blockquote>
+<p>Substituiremos o antigo <strong>spring-boot-maven-plugin</strong> pelo <strong>maven-war-plugin</strong>.</p>
+</blockquote>
+<h3 id="54-servlet-initializer">5.4 - Servlet Initializer<a class="headerlink" href="#54-servlet-initializer" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">com.Advocacia</span><span class="p">;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.boot.builder.SpringApplicationBuilder</span><span class="p">;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">org.springframework.boot.web.servlet.support.SpringBootServletInitializer</span><span class="p">;</span>
+
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ServletInitializer</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">SpringBootServletInitializer</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">protected</span><span class="w"> </span><span class="n">SpringApplicationBuilder</span><span class="w"> </span><span class="nf">configure</span><span class="p">(</span><span class="n">SpringApplicationBuilder</span><span class="w"> </span><span class="n">application</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">application</span><span class="p">.</span><span class="na">sources</span><span class="p">(</span><span class="n">AdvocaciaApplication</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Criaremos essa classe que servirá a mesma função da classe main.</p>
+</blockquote>
+<h3 id="55-buildando-o-projeto">5.5 - Buildando o projeto<a class="headerlink" href="#55-buildando-o-projeto" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>clean<span class="w"> </span>package
+</code></pre></div>
+<blockquote>
+<p>Após o build estar completo teremos nosso war que ja poderemos levar ao Tomcat.</p>
+</blockquote>
+<h3 id="56-deploy-do-war-no-tomcat">5.6 - Deploy do war no Tomcat<a class="headerlink" href="#56-deploy-do-war-no-tomcat" title="Permanent link">&para;</a></h3>
+<p>Após transferir o war a VM podemos leva-lo a pasta <strong>webapps</strong> dentro dos arquivos do Tomcat.</p>
+<div class="highlight"><pre><span></span><code>mv<span class="w"> </span>Advocacia.war<span class="w"> </span>/etc/tomcat/webapps/backend.war
+</code></pre></div>
+<blockquote>
+<p>Por padrão o Tomcat (inicializado) ja roda automatico um war quando detecta alguma mudança ou novo arquivo;</p>
+</blockquote>
+<h3 id="57-adaptando-proxy-reverso-nginx">5.7 - Adaptando proxy reverso (nginx)<a class="headerlink" href="#57-adaptando-proxy-reverso-nginx" title="Permanent link">&para;</a></h3>
+<p>Após o deploy temos nossa api rodando em https://backend.llw/backend, note que a primeira diretiva é o caminho com nome do war então para acessarmos a api de fato temos que acessar pelo nome do war, por isso teremos que adaptar o proxy reverso no nosso front, para adicionar uma diretiva extra ao redirecionar o acesso, de /api/requisição para /backend/api/requisição.</p>
+<div class="highlight"><pre><span></span><code><span class="k">location</span><span class="w"> </span><span class="s">/api/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">https://backend.llw/backend/api/</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_http_version</span><span class="w"> </span><span class="mi">1</span><span class="s">.1</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-Proto</span><span class="w"> </span><span class="nv">$scheme</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_pass_request_headers</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_pass_request_body</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Tambem modificamos a requisição de HTTP para HTTPS, não sendo necessario explicitar a porta 443 pois já é a padrão do protocolo.</p>
+</blockquote>
+<h3 id="58-moficando-o-front-end">5.8 - Moficando o front-end<a class="headerlink" href="#58-moficando-o-front-end" title="Permanent link">&para;</a></h3>
+<p>Tambem será necessario mudar no front o caminho que a requisição é feita.</p>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">environment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">SERVIDOR</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;https://frontend.llw&quot;</span>
+<span class="p">};</span>
+</code></pre></div>
+<blockquote>
+<p>Após isso buildamos o front e fazemos deploy dele novamente, e agora já será possivel fazer requisições ao back utilizando HTTPS tambem.</p>
+</blockquote>
+<h2 id="6-configurando-o-mariadb-para-usar-tls">6 - Configurando o mariadb para usar TLS<a class="headerlink" href="#6-configurando-o-mariadb-para-usar-tls" title="Permanent link">&para;</a></h2>
+<h3 id="61-modificando-o-arquivo-de-configuracao-do-mariadb-etcmycnfdmariadb-servercnf">6.1 - Modificando o arquivo de configuração do mariadb (/etc/my.cnf.d/mariadb-server.cnf)<a class="headerlink" href="#61-modificando-o-arquivo-de-configuracao-do-mariadb-etcmycnfdmariadb-servercnf" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="na">require_secure_transport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">on</span>
+<span class="na">ssl-cert</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/etc/ssl/certs/llw.crt</span>
+<span class="na">ssl-key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/etc/ssl/private/llw.key</span>
+<span class="na">ssl-ca</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">/etc/ssl/certs/llw-ca.crt</span>
+<span class="na">tls_version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">TLSv1.2,TLSv1.3</span>
+<span class="na">ssl-cipher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-CHACHA20-POLY1305</span>
+</code></pre></div>
+<h3 id="62-movendo-os-certificados-para-as-pastas-certas">6.2 - Movendo os certificados para as pastas certas<a class="headerlink" href="#62-movendo-os-certificados-para-as-pastas-certas" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>llw.crt<span class="w"> </span>/etc/ssl/certs/llw.crt
+cp<span class="w"> </span>llw.key<span class="w"> </span>/etc/ssl/private/llw.key
+cp<span class="w"> </span>llw-ca.crt<span class="w"> </span>/etc/ssl/certs/llw.crt
+</code></pre></div>
+<h3 id="63-modificando-a-conexao-com-o-bd-do-back">6.3 - Modificando a conexão com o BD do back<a class="headerlink" href="#63-modificando-a-conexao-com-o-bd-do-back" title="Permanent link">&para;</a></h3>
+<p>Teremos que modificar o jeito que o back faz conexão com o banco, como não é http não é tao simples como mudar pra https, então devemos adicionar alguns extras no url.</p>
+<div class="highlight"><pre><span></span><code><span class="na">spring.datasource.url</span><span class="o">=</span><span class="s">jdbc:mysql://database.llw:3306/adv?useSSL=true&amp;requireSSL=true&amp;verifyServerCertificate=true</span>
+</code></pre></div>
+<h3 id="64-adicionando-o-crt-no-truststore-do-java">6.4 - Adicionando o crt no truststore do java<a class="headerlink" href="#64-adicionando-o-crt-no-truststore-do-java" title="Permanent link">&para;</a></h3>
+<p>Para que o spring confie no certificado que o banco apresenta ele terá que estar presente no arquivo truststore do java que estamos utilizando.</p>
+<div class="highlight"><pre><span></span><code>keytool<span class="w"> </span>-importcert<span class="w"> </span>-alias<span class="w"> </span>llw<span class="w"> </span>-file<span class="w"> </span>llw.crt<span class="w"> </span>-keystore<span class="w"> </span>/usr/lib/jvm/java-17-openjdk/lib/security/cacerts<span class="w"> </span>-storepass<span class="w"> </span>changeit
+keytool<span class="w"> </span>-importcert<span class="w"> </span>-alias<span class="w"> </span>llw<span class="w"> </span>-file<span class="w"> </span>llw-ca.crt<span class="w"> </span>-keystore<span class="w"> </span>/usr/lib/jvm/java-17-openjdk/lib/security/cacerts<span class="w"> </span>-storepass<span class="w"> </span>changeit
+</code></pre></div>
+<blockquote>
+<p>Ele perguntará se deseja mesmo confiar nesse certificado, responderemos "<strong>yes</strong>", e ele confirmará com "<strong>Certificate was added to keystore</strong>"</p>
+</blockquote>
 
 
 
@@ -948,44 +989,6 @@ PasswordAuthentication<span class="w"> </span>yes
       
         <footer class="md-footer">
   
-    
-      
-      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
-        
-          
-          <a href="mensal/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Projeto Mensal 2">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Anterior
-              </span>
-              <div class="md-ellipsis">
-                Projeto Mensal 2
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="frontend/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Configuração Frontend">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Próximo
-              </span>
-              <div class="md-ellipsis">
-                Configuração Frontend
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
     
   
   <div class="md-footer-meta md-typeset">
