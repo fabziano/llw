@@ -295,6 +295,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#diagrama-de-arquitetura-do-ambiente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de arquitetura do ambiente.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#1-gerando-certificados-digitais-auto-assinados" class="md-nav__link">
     <span class="md-ellipsis">
       1 - Gerando certificados digitais auto-assinados
@@ -678,6 +687,8 @@
 
 <h1 id="configuracao-de-ambiente-distribuido-com-alta-disponibilidade-seguranca-e-autenticacao-unificada">Configuração de Ambiente Distribuído com Alta Disponibilidade, Segurança e Autenticação Unificada<a class="headerlink" href="#configuracao-de-ambiente-distribuido-com-alta-disponibilidade-seguranca-e-autenticacao-unificada" title="Permanent link">&para;</a></h1>
 <p>Esta documento explica nossos passos na aplicação do TLS, substituindo HTTP por HTTPS em todas as conexões entre as VMs Frontend, Backend e Database.</p>
+<h2 id="diagrama-de-arquitetura-do-ambiente">Diagrama de arquitetura do ambiente.<a class="headerlink" href="#diagrama-de-arquitetura-do-ambiente" title="Permanent link">&para;</a></h2>
+<p><img alt="diagrama" src="images/diagrama.png" /></p>
 <h2 id="1-gerando-certificados-digitais-auto-assinados">1 - Gerando certificados digitais auto-assinados<a class="headerlink" href="#1-gerando-certificados-digitais-auto-assinados" title="Permanent link">&para;</a></h2>
 <h4 id="11-gerar-a-chave-privada-da-ca">1.1 - Gerar a chave privada da CA<a class="headerlink" href="#11-gerar-a-chave-privada-da-ca" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>openssl<span class="w"> </span>genrsa<span class="w"> </span>-out<span class="w"> </span>llw-ca.key<span class="w"> </span><span class="m">4096</span>

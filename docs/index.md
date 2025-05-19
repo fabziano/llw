@@ -2,6 +2,10 @@
 
 Esta documento explica nossos passos na aplicação do TLS, substituindo HTTP por HTTPS em todas as conexões entre as VMs Frontend, Backend e Database.
 
+## Diagrama de arquitetura do ambiente.
+
+![diagrama](images/diagrama.png)
+
 ## 1 - Gerando certificados digitais auto-assinados
 
 #### 1.1 - Gerar a chave privada da CA 
