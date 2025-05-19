@@ -9,6 +9,10 @@
       
       
       
+        <link rel="prev" href="enunciado/">
+      
+      
+        <link rel="next" href="keycloak/">
       
       
       <link rel="icon" href="llw.ico">
@@ -103,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Configuração de Ambiente Distribuído com Alta Disponibilidade, Segurança e Autenticação Unificada
+              TLS
             
           </span>
         </div>
@@ -231,12 +235,473 @@
   
   
     <li class="md-nav__item">
-      <a href="mensal/" class="md-nav__link">
+      <a href="enunciado/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    Projeto Mensal 3
+    Mensal 3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    TLS
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    TLS
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#diagrama-de-arquitetura-do-ambiente" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagrama de arquitetura do ambiente.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-gerando-certificados-digitais-auto-assinados" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 - Gerando certificados digitais auto-assinados
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1 - Gerando certificados digitais auto-assinados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-gerar-a-chave-privada-da-ca" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1 - Gerar a chave privada da CA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-gerar-o-certificado-da-ca" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 - Gerar o certificado da CA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-arquivo-de-configuracao-para-san-subject-alternative-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 - Arquivo de configuração para SAN (Subject Alternative Names)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-gerar-chave-privada-e-csr-com-sans" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4 - Gerar chave privada e CSR com SANs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#15-gerar-e-assinar-o-certificado-usando-a-ca" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5 - Gerar e assinar o certificado usando a CA
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-configurando-o-nginx-para-usar-tls" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 - Configurando o NGINX para usar TLS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 - Configurando o NGINX para usar TLS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-modificar-o-arquivo-de-configuracao-do-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 - Modificar o arquivo de configuração do nginx
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-baixar-o-dhparam" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 - Baixar o DHParam
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-copiar-os-certificados-para-os-diretorios-corretos" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 - Copiar os certificados para os diretórios corretos
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-baixando-e-instalando-o-tomcat" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 - Baixando e instalando o Tomcat
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 - Baixando e instalando o Tomcat">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-baixando-o-arquivo-compactado" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 - Baixando o arquivo compactado
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-extraindo-o-conteudo" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 - Extraindo o conteudo
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-movendo-para-uma-pasta-apropriada" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 - Movendo para uma pasta aprópriada
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-criando-um-script-de-servico" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 - Criando um script de serviço
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 - Criando um script de serviço">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conteudo-do-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conteudo do script
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-tornando-o-script-executavel" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5 - Tornando o script executavel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-iniciando-o-servico" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6 - Iniciando o serviço
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-fazendo-o-iniciar-ao-ligar-a-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.7 - Fazendo-o iniciar ao ligar a VM
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-configurando-o-tomcat-para-usar-tls" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 - Configurando o Tomcat para usar TLS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 - Configurando o Tomcat para usar TLS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-modificando-arquivo-de-configuracao-do-tomcat-etctomcatbinserverxml" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1 - Modificando arquivo de configuração do Tomcat (/etc/tomcat/bin/server.xml)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-movendo-os-certificados-para-as-pastas-certas" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.3 - Movendo os certificados para as pastas certas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-gerando-arquivo-war-e-deploy-da-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 - Gerando arquivo war e deploy da API
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5 - Gerando arquivo war e deploy da API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-empacotamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.1 - Empacotamento
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-dependencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.2 - Dependência
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.3 - Plugin
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-servlet-initializer" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.4 - Servlet Initializer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-buildando-o-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.5 - Buildando o projeto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-deploy-do-war-no-tomcat" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.6 - Deploy do war no Tomcat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-adaptando-proxy-reverso-nginx" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.7 - Adaptando proxy reverso (nginx)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#58-moficando-o-front-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.8 - Moficando o front-end
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-configurando-o-mariadb-para-usar-tls" class="md-nav__link">
+    <span class="md-ellipsis">
+      6 - Configurando o mariadb para usar TLS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6 - Configurando o mariadb para usar TLS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-modificando-o-arquivo-de-configuracao-do-mariadb-etcmycnfdmariadb-servercnf" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1 - Modificando o arquivo de configuração do mariadb (/etc/my.cnf.d/mariadb-server.cnf)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-movendo-os-certificados-para-as-pastas-certas" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2 - Movendo os certificados para as pastas certas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-modificando-a-conexao-com-o-bd-do-back" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3 - Modificando a conexão com o BD do back
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-adicionando-o-crt-no-truststore-do-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4 - Adicionando o crt no truststore do java
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="keycloak/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Keycloak
     
   </span>
   
@@ -1000,6 +1465,44 @@ keytool<span class="w"> </span>-importcert<span class="w"> </span>-alias<span cl
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
+        
+          
+          <a href="enunciado/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Mensal 3">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Mensal 3
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="keycloak/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Keycloak">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Próximo
+              </span>
+              <div class="md-ellipsis">
+                Keycloak
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

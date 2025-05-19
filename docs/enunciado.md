@@ -1,4 +1,4 @@
-# Implementação de Infraestrutura Segura e Automatizada
+# Configuração de Ambiente Distribuído com Alta Disponibilidade, Segurança e Autenticação Unificada
 
 #### Integrantes do grupo
 - Fabiano Da Silva Santos  
@@ -6,7 +6,6 @@
 - Pedro Henrique Alves Dos Santos  
 - Pedro Lucas De Oliveira Soares  
 
-#### Professores
+#### Professor
 
 - Wilson Varaschin
-- Laércio Bubiak da Cruz

@@ -1,7 +1,9 @@
 site_name: Documentação
 
 nav:
-  - Projeto Mensal 3: mensal.md
+  - Mensal 3: enunciado.md
+  - TLS: index.md
+  - Keycloak: keycloak.md
   - Mensal 2 - Infraestrutura Segura e Automatizada: mensal2.md
 
 theme:
