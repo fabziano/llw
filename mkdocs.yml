@@ -1,7 +1,7 @@
 site_name: Documentação
 
 nav:
-  - Mensal 3: enunciado.md
+  - Integrantes: enunciado.md
   - TLS: index.md
   - Keycloak: keycloak.md
   - Mensal 2 - Infraestrutura Segura e Automatizada: mensal2.md
