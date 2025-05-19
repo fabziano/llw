@@ -9,8 +9,10 @@
       
       
       
+        <link rel="prev" href="../keycloak/">
       
-        <link rel="next" href="..">
+      
+        <link rel="next" href="../mensal2/">
       
       
       <link rel="icon" href="../llw.ico">
@@ -18,7 +20,7 @@
     
     
       
-        <title>Integrantes - Documentação</title>
+        <title>Relatório OWASP ZAP - Documentação</title>
       
     
     
@@ -70,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#configuracao-de-ambiente-distribuido-com-alta-disponibilidade-seguranca-e-autenticacao-unificada" class="md-skip">
+        <a href="#dicas-de-correcao-de-vulnerabilidades-relatorio-zap" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -105,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Integrantes
+              Relatório OWASP ZAP
             
           </span>
         </div>
@@ -230,32 +232,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Integrantes
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../enunciado/" class="md-nav__link">
         
   
   
@@ -266,44 +246,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Índice">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Índice
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#integrantes-do-grupo" class="md-nav__link">
-    <span class="md-ellipsis">
-      Integrantes do grupo
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#professor" class="md-nav__link">
-    <span class="md-ellipsis">
-      Professor
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -356,10 +298,32 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../zap/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Relatório OWASP ZAP
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -370,6 +334,134 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-csp-failure-to-define-directive-with-no-fallback" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. CSP: Failure to Define Directive with No Fallback
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recomendacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recomendação:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-configuracao-incorreta-entre-dominios-cors" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Configuração Incorreta Entre Domínios (CORS)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recomendacao_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recomendação:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-content-security-policy-csp-header-not-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Content Security Policy (CSP) Header Not Set
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recomendacao_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recomendação:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-missing-anti-clickjacking-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Missing Anti-clickjacking Header
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recomendacao_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recomendação:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-x-content-type-options-header-missing" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. X-Content-Type-Options Header Missing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recomendacao_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recomendação:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-divulgacao-de-comentarios-suspeitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Divulgação de Comentários Suspeitos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recomendacao_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recomendação:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -423,18 +515,108 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#integrantes-do-grupo" class="md-nav__link">
+  <a href="#1-csp-failure-to-define-directive-with-no-fallback" class="md-nav__link">
     <span class="md-ellipsis">
-      Integrantes do grupo
+      1. CSP: Failure to Define Directive with No Fallback
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#professor" class="md-nav__link">
+  <a href="#recomendacao" class="md-nav__link">
     <span class="md-ellipsis">
-      Professor
+      Recomendação:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-configuracao-incorreta-entre-dominios-cors" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Configuração Incorreta Entre Domínios (CORS)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recomendacao_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recomendação:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-content-security-policy-csp-header-not-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Content Security Policy (CSP) Header Not Set
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recomendacao_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recomendação:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-missing-anti-clickjacking-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Missing Anti-clickjacking Header
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recomendacao_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recomendação:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-x-content-type-options-header-missing" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. X-Content-Type-Options Header Missing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recomendacao_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recomendação:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-divulgacao-de-comentarios-suspeitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Divulgação de Comentários Suspeitos
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recomendacao_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recomendação:
     </span>
   </a>
   
@@ -456,18 +638,50 @@
 
 
 
-<h1 id="configuracao-de-ambiente-distribuido-com-alta-disponibilidade-seguranca-e-autenticacao-unificada">Configuração de Ambiente Distribuído com Alta Disponibilidade, Segurança e Autenticação Unificada<a class="headerlink" href="#configuracao-de-ambiente-distribuido-com-alta-disponibilidade-seguranca-e-autenticacao-unificada" title="Permanent link">&para;</a></h1>
-<h4 id="integrantes-do-grupo">Integrantes do grupo<a class="headerlink" href="#integrantes-do-grupo" title="Permanent link">&para;</a></h4>
+<h1 id="dicas-de-correcao-de-vulnerabilidades-relatorio-zap">DICAS DE CORREÇÃO DE VULNERABILIDADES - Relatório ZAP<a class="headerlink" href="#dicas-de-correcao-de-vulnerabilidades-relatorio-zap" title="Permanent link">&para;</a></h1>
+<h2 id="1-csp-failure-to-define-directive-with-no-fallback"><strong>1. CSP: Failure to Define Directive with No Fallback</strong><a class="headerlink" href="#1-csp-failure-to-define-directive-with-no-fallback" title="Permanent link">&para;</a></h2>
+<p>Descrição:</p>
+<p>A política de segurança de conteúdo (CSP) falha ao definir diretivas como 'frame-ancestors' e 'form-action'.</p>
+<h2 id="recomendacao"><strong>Recomendação:</strong><a class="headerlink" href="#recomendacao" title="Permanent link">&para;</a></h2>
+<p>Configure o cabeçalho HTTP "Content-Security-Policy" incluindo todas as diretivas necessárias com valores apropriados.</p>
+<p>Exemplo:</p>
+<p>Content-Security-Policy: default-src 'self'; frame-ancestors 'none'; form-action 'self';</p>
+<h2 id="2-configuracao-incorreta-entre-dominios-cors"><strong>2. Configuração Incorreta Entre Domínios (CORS)</strong><a class="headerlink" href="#2-configuracao-incorreta-entre-dominios-cors" title="Permanent link">&para;</a></h2>
+<p>Descrição:</p>
+<p>O servidor está permitindo acessos entre domínios de qualquer origem (Access-Control-Allow-Origin: *).</p>
+<h2 id="recomendacao_1"><strong>Recomendação:</strong><a class="headerlink" href="#recomendacao_1" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Fabiano Da Silva Santos  </li>
-<li>Felipe Jacinto Camilo  </li>
-<li>Pedro Henrique Alves Dos Santos  </li>
-<li>Pedro Lucas De Oliveira Soares  </li>
+<li>Configure o cabeçalho CORS com um domínio confiável ou remova completamente o cabeçalho se não for necessário.</li>
 </ul>
-<h4 id="professor">Professor<a class="headerlink" href="#professor" title="Permanent link">&para;</a></h4>
-<ul>
-<li>Wilson Varaschin</li>
-</ul>
+<p>Exemplo:</p>
+<p>Access-Control-Allow-Origin: https://seudominio.com</p>
+<h2 id="3-content-security-policy-csp-header-not-set"><strong>3. Content Security Policy (CSP) Header Not Set</strong><a class="headerlink" href="#3-content-security-policy-csp-header-not-set" title="Permanent link">&para;</a></h2>
+<p>Descrição:</p>
+<p>O cabeçalho de política de segurança de conteúdo não está definido.</p>
+<h2 id="recomendacao_2"><strong>Recomendação:</strong><a class="headerlink" href="#recomendacao_2" title="Permanent link">&para;</a></h2>
+<p>Adicionar o cabeçalho "Content-Security-Policy" com regras para scripts, estilos, imagens, etc.</p>
+<p>Exemplo:</p>
+<p>Content-Security-Policy: default-src 'self'; script-src 'self' https://cdn.exemplo.com;</p>
+<h2 id="4-missing-anti-clickjacking-header"><strong>4. Missing Anti-clickjacking Header</strong><a class="headerlink" href="#4-missing-anti-clickjacking-header" title="Permanent link">&para;</a></h2>
+<p>Descrição:</p>
+<p>Falta proteção contra clickjacking.</p>
+<h2 id="recomendacao_3"><strong>Recomendação:</strong><a class="headerlink" href="#recomendacao_3" title="Permanent link">&para;</a></h2>
+<p>Use X-Frame-Options ou CSP com frame-ancestors.</p>
+<p>Exemplos:</p>
+<p>X-Frame-Options: DENY</p>
+<p>Content-Security-Policy: frame-ancestors 'none';</p>
+<h2 id="5-x-content-type-options-header-missing"><strong>5. X-Content-Type-Options Header Missing</strong><a class="headerlink" href="#5-x-content-type-options-header-missing" title="Permanent link">&para;</a></h2>
+<p>Descrição:</p>
+<p>Falta o cabeçalho que impede o navegador de interpretar tipos MIME incorretamente.</p>
+<h2 id="recomendacao_4"><strong>Recomendação:</strong><a class="headerlink" href="#recomendacao_4" title="Permanent link">&para;</a></h2>
+<p>Adicionar o cabeçalho HTTP:</p>
+<p>X-Content-Type-Options: nosniff</p>
+<h2 id="6-divulgacao-de-comentarios-suspeitos"><strong>6. Divulgação de Comentários Suspeitos</strong><a class="headerlink" href="#6-divulgacao-de-comentarios-suspeitos" title="Permanent link">&para;</a></h2>
+<p>Descrição:</p>
+<p>Comentários no código JavaScript podem revelar informações sensíveis.</p>
+<h2 id="recomendacao_5"><strong>Recomendação:</strong><a class="headerlink" href="#recomendacao_5" title="Permanent link">&para;</a></h2>
+<p>Remover comentários antes da publicação.</p>
+<p>Automatizar esse processo com ferramentas de build (Webpack, esbuild, etc).</p>
 
 
 
@@ -496,15 +710,31 @@
       
       <nav class="md-footer__inner md-grid" aria-label="Rodapé" >
         
+          
+          <a href="../keycloak/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: Keycloak">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                Keycloak
+              </div>
+            </div>
+          </a>
+        
         
           
-          <a href=".." class="md-footer__link md-footer__link--next" aria-label="Próximo: TLS">
+          <a href="../mensal2/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Mensal 2 - Infraestrutura Segura e Automatizada">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Próximo
               </span>
               <div class="md-ellipsis">
-                TLS
+                Mensal 2 - Infraestrutura Segura e Automatizada
               </div>
             </div>
             <div class="md-footer__button md-icon">

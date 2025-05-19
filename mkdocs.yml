@@ -4,6 +4,7 @@ nav:
   - Integrantes: enunciado.md
   - TLS: index.md
   - Keycloak: keycloak.md
+  - Relatório OWASP ZAP: zap.md
   - Mensal 2 - Infraestrutura Segura e Automatizada: mensal2.md
 
 theme:
