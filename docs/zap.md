@@ -6,7 +6,7 @@ Descrição:
 
 A política de segurança de conteúdo (CSP) falha ao definir diretivas como `frame-ancestors` e `form-action`.
 
-### Recomendação:
+Recomendação:
 
 Precisamos configurar o cabeçalho HTTP `Content-Security-Policy` incluindo todas as diretivas necessárias com valores apropriados.
 
@@ -24,7 +24,7 @@ Descrição:
 
 O servidor está permitindo acessos entre domínios de qualquer origem `(Access-Control-Allow-Origin: \*)`.
 
-### Recomendação:
+Recomendação:
 
 Precisamos configurar o cabeçalho CORS com um domínio confiável ou remova completamente o cabeçalho se não for necessário.
 
@@ -42,7 +42,7 @@ Descrição:
 
 O cabeçalho de política de segurança de conteúdo não está definido.
 
-### Recomendação:
+Recomendação:
 
 Precisamos adicionar o cabeçalho `Content-Security-Policy` com regras para scripts, estilos, imagens, etc.
 
@@ -60,7 +60,7 @@ Descrição:
 
 Falta proteção contra clickjacking.
 
-### Recomendação:
+Recomendação:
 
 Uma alternativa é utilizar X-Frame-Options ou CSP com frame-ancestors.
 
@@ -80,7 +80,7 @@ Descrição:
 
 Falta o cabeçalho que impede o navegador de interpretar tipos MIME incorretamente.
 
-### Recomendação:
+Recomendação:
 
 Ainda precisamos adicionar o cabeçalho HTTP:
 
@@ -96,7 +96,7 @@ Descrição:
 
 Comentários no código JavaScript podem revelar informações sensíveis.
 
-### Recomendação:
+Recomendação:
 
 Removeremos os comentários.
 
