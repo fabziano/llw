@@ -12,15 +12,13 @@
         <link rel="prev" href="..">
       
       
-        <link rel="next" href="../zap/">
-      
       
       <link rel="icon" href="../llw.ico">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
     
     
       
-        <title>Keycloak - Documentação</title>
+        <title>Keycloak - Documentação LLW</title>
       
     
     
@@ -72,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#diagrama-de-arquitetura-do-ambiente" class="md-skip">
+        <a href="#adaptando-api-para-rodar-com-keycloak-no-angular" class="md-skip">
           Pular para conteúdo
         </a>
       
@@ -88,7 +86,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
-    <a href=".." title="Documentação" class="md-header__button md-logo" aria-label="Documentação" data-md-component="logo">
+    <a href=".." title="Documentação LLW" class="md-header__button md-logo" aria-label="Documentação LLW" data-md-component="logo">
       
   <img src="../llw.ico" alt="logo">
 
@@ -101,7 +99,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Documentação
+            Documentação LLW
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -218,12 +216,12 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navegação" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Documentação" class="md-nav__button md-logo" aria-label="Documentação" data-md-component="logo">
+    <a href=".." title="Documentação LLW" class="md-nav__button md-logo" aria-label="Documentação LLW" data-md-component="logo">
       
   <img src="../llw.ico" alt="logo">
 
     </a>
-    Documentação
+    Documentação LLW
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -241,6 +239,28 @@
   
   <span class="md-ellipsis">
     Integrantes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mensal2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Infraestrutura Segura e Automatizada
     
   </span>
   
@@ -323,15 +343,6 @@
       Índice
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#diagrama-de-arquitetura-do-ambiente" class="md-nav__link">
-    <span class="md-ellipsis">
-      Diagrama de arquitetura do ambiente.
-    </span>
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#adaptando-api-para-rodar-com-keycloak-no-angular" class="md-nav__link">
@@ -521,50 +532,6 @@
   
 
     
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../zap/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Relatório OWASP ZAP
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../mensal2/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    Mensal 2 - Infraestrutura Segura e Automatizada
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
   </ul>
 </nav>
                   </div>
@@ -588,15 +555,6 @@
       Índice
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#diagrama-de-arquitetura-do-ambiente" class="md-nav__link">
-    <span class="md-ellipsis">
-      Diagrama de arquitetura do ambiente.
-    </span>
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#adaptando-api-para-rodar-com-keycloak-no-angular" class="md-nav__link">
@@ -797,8 +755,6 @@
   <h1>Keycloak</h1>
 
 <p>Essa documentação vai passar pelos passos necessários para implementação da autenticação com keycloak.</p>
-<h2 id="diagrama-de-arquitetura-do-ambiente">Diagrama de arquitetura do ambiente.<a class="headerlink" href="#diagrama-de-arquitetura-do-ambiente" title="Permanent link">&para;</a></h2>
-<p><img alt="diagrama" src="../images/diagrama.png" /></p>
 <h2 id="adaptando-api-para-rodar-com-keycloak-no-angular">Adaptando API para rodar com keycloak no angular<a class="headerlink" href="#adaptando-api-para-rodar-com-keycloak-no-angular" title="Permanent link">&para;</a></h2>
 <h3 id="instalando-o-pacote-no-angular">Instalando o pacote (no angular)<a class="headerlink" href="#instalando-o-pacote-no-angular" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>npm<span class="w"> </span>install<span class="w"> </span>keycloak-js
@@ -1087,22 +1043,6 @@ iptables<span class="w"> </span>-A<span class="w"> </span>INPUT<span class="w"> 
             </div>
           </a>
         
-        
-          
-          <a href="../zap/" class="md-footer__link md-footer__link--next" aria-label="Próximo: Relatório OWASP ZAP">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Próximo
-              </span>
-              <div class="md-ellipsis">
-                Relatório OWASP ZAP
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
         
       </nav>
     

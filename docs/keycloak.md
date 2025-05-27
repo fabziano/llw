@@ -1,9 +1,5 @@
 Essa documentação vai passar pelos passos necessários para implementação da autenticação com keycloak.
 
-## Diagrama de arquitetura do ambiente.
-
-![diagrama](images/diagrama.png)
-
 ## Adaptando API para rodar com keycloak no angular
 
 ### Instalando o pacote (no angular)

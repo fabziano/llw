@@ -6,6 +6,7 @@
 - Pedro Henrique Alves Dos Santos  
 - Pedro Lucas De Oliveira Soares  
 
-#### Professor
+#### Professores
 
 - Wilson Varaschin
+- Laércio Bubiak da Cruz
