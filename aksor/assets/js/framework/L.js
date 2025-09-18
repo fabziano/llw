@@ -1,0 +1,1 @@
+"use strict";export class L{error(r,e){console.error(r,e)}}

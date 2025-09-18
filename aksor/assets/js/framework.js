@@ -1,0 +1,1 @@
+"use strict";import{L}from"./framework/L.js";import{A}from"./framework/A.js";import{V}from"./framework/V.js";import{C}from"./framework/C.js";const l=new L,a=new A,v=new V,c=new C(a,v,l);c.init();
